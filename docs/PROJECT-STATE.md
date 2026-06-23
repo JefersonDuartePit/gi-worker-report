@@ -1,10 +1,10 @@
 # PROJECT-STATE.md — GI Group · Portal do Worker
 
 **Atualizado em:** 23 de junho de 2026
-**Status do projeto:** Spec 1 concluída — shell funcional, pronto para iniciar Spec 2
+**Status do projeto:** Spec 1 concluída · Galaxy Layout redesign em implementação
 **Specs concluídas:** Spec 1 — Setup e Shell
-**Spec em andamento:** nenhuma
-**Próxima spec:** Spec 2 — S1 Hero
+**Spec em andamento:** Galaxy Layout (plano pronto, subagentes em execução)
+**Próxima spec após galaxy:** Spec 2 — S1 Hero
 
 ---
 
@@ -140,6 +140,28 @@ gi-worker-report/
 ---
 
 ## 6. Histórico de Atualizações
+
+### Atualização — Galaxy Layout Redesign — 2026-06-23
+
+**Status:** plano completo, implementação em andamento via subagentes
+
+**Contexto:** O layout sidebar+scroll da Spec 1 foi substituído por uma experiência de galáxia lúdica e gamificada. Cada módulo do relatório é um planeta navegável. Esta é uma decisão de produto confirmada pelo humano (Jeff) antes de qualquer conteúdo ser implementado nas Specs 2–8.
+
+**Impacto para Specs 2–8:**
+- Cada seção (`S1Hero`, `S2Diagnostico`, etc.) continua existindo como componente próprio — sem mudança na interface interna
+- O componente de seção é renderizado diretamente (`<activeSection.Component />`) — sem wrapper de scroll
+- O fundo de cada seção segue o design system (ver DESIGN-SYSTEM.md §7)
+- As seções S1–S7 são planetas independentes — cada uma deve funcionar em tela cheia (`min-h-screen`) com seu próprio esquema visual
+- **Não usar** `Sidebar`, `Section`, `useActiveSection` — todos removidos
+
+**Artefatos gerados:**
+- `docs/superpowers/specs/2026-06-23-galaxy-layout-design.md` — design spec aprovado
+- `docs/superpowers/plans/2026-06-23-galaxy-layout.md` — plano de implementação (8 tasks)
+- `.superpowers/brainstorm/` — mockups do companion visual (não commitar)
+
+**Próximo passo após conclusão:** Spec 2 — S1 Hero
+
+---
 
 ### Atualização — Spec 1 — Setup e Shell — 2026-06-23
 
