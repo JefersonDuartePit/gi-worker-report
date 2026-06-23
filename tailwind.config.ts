@@ -32,6 +32,9 @@ export default {
       fontFamily: {
         sans: ['Lato', 'sans-serif'],
       },
+      backgroundImage: {
+        'galaxy-header': 'linear-gradient(to bottom, rgba(0, 8, 32, 0.67), transparent)',
+      },
     },
   },
   plugins: [],
