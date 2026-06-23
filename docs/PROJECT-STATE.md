@@ -52,16 +52,28 @@ O relatório será apresentado primeiro ao service designer interno da Perform I
 
 ## 2. Estado Atual das Specs
 
-| Spec | Nome                          | Status      | Artefatos                              |
-| ---- | ----------------------------- | ----------- | -------------------------------------- |
-| 1    | Setup e Shell                 | ✅ Concluída | `spec-1-implement-done.md`             |
-| 2    | S1 — Hero                     | ⬜ Pendente  | —                                      |
-| 3    | S2 — Diagnóstico Sistêmico    | ⬜ Pendente  | —                                      |
-| 4    | S3 — Dores por Persona        | ⬜ Pendente  | —                                      |
-| 5    | S4 — Arquitetura As-is/To-be  | ⬜ Pendente  | —                                      |
-| 6    | S5 — Iniciativas              | ⬜ Pendente  | —                                      |
-| 7    | S6 — Portal do Worker         | ⬜ Pendente  | —                                      |
-| 8    | S7 — Provocações e Próximos Passos | ⬜ Pendente | —                                 |
+| Spec | Nome                          | Status              | Artefatos                                          |
+| ---- | ----------------------------- | ------------------- | -------------------------------------------------- |
+| 1    | Setup e Shell                 | ✅ Concluída         | `spec-1-implement-done.md`                         |
+| 2    | S1 — Hero                     | ⬜ Pendente          | —                                                  |
+| 3    | S2 — Diagnóstico Sistêmico    | ⬜ Pendente          | —                                                  |
+| 4    | S3 — Dores por Persona        | ⬜ Pendente          | —                                                  |
+| 5    | S4 — Arquitetura As-is/To-be  | ⬜ Pendente          | —                                                  |
+| 6    | S5 — Iniciativas              | ⬜ Pendente          | —                                                  |
+| 7    | S6 — Portal do Worker         | 🔀 Em paralelo       | `spec-7-research-done.md`, `spec-7-plan-done.md`   |
+| 8    | S7 — Provocações e Próximos Passos | ⬜ Pendente   | —                                                  |
+
+---
+
+## 2.1 Desenvolvimento Paralelo Ativo
+
+| Branch                      | Spec | Responsável | Arquivos exclusivos (não tocar nas demais branches)                          |
+| --------------------------- | ---- | ----------- | ---------------------------------------------------------------------------- |
+| `spec/07-portal-do-worker`  | 7    | Designer    | `src/components/portal/`, `src/components/sections/S6Portal/`, `src/hooks/usePortalNav.ts` |
+
+**Para agentes trabalhando nas Specs 2–6 e 8:** os arquivos listados acima são propriedade exclusiva da branch `spec/07-portal-do-worker`. Não criar, modificar nem referenciar esses caminhos. A seção S6Portal existe como placeholder — deixar intacta.
+
+**Integração:** quando a branch `spec/07-portal-do-worker` for mergeada na main, não haverá conflitos com as Specs 2–6 e 8. O merge será limpo por design.
 
 ---
 
