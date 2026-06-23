@@ -13,6 +13,7 @@ export interface PlanetConfig {
 
 // cx/cy são as coordenadas do centro do planeta em px
 // dentro de um container fixo de 700×480px (GalaxyMap)
+// Ordem horária a partir de hero (302°): hero→dores→arquitetura→provocacoes→iniciativas→portal→diagnostico
 export const PLANETS: PlanetConfig[] = [
   {
     id: 'hero',
@@ -27,20 +28,8 @@ export const PLANETS: PlanetConfig[] = [
     glowColor: '#2255aa66',
   },
   {
-    id: 'diagnostico',
-    num: 2,
-    label: 'Diagnóstico',
-    size: 64,
-    colorFrom: '#334488',
-    colorTo: '#000830',
-    hasRing: true,
-    cx: 52,
-    cy: 172,
-    glowColor: '#00145A88',
-  },
-  {
     id: 'dores',
-    num: 3,
+    num: 2,
     label: 'Dores',
     size: 38,
     colorFrom: '#884455',
@@ -52,7 +41,7 @@ export const PLANETS: PlanetConfig[] = [
   },
   {
     id: 'arquitetura',
-    num: 4,
+    num: 3,
     label: 'Arquitetura',
     size: 72,
     colorFrom: '#4488ff',
@@ -61,6 +50,18 @@ export const PLANETS: PlanetConfig[] = [
     cx: 604,
     cy: 86,
     glowColor: '#1D57FB88',
+  },
+  {
+    id: 'provocacoes',
+    num: 4,
+    label: 'Próximos Passos',
+    size: 34,
+    colorFrom: '#556677',
+    colorTo: '#111222',
+    hasRing: false,
+    cx: 663,
+    cy: 217,
+    glowColor: '#33445566',
   },
   {
     id: 'iniciativas',
@@ -87,15 +88,15 @@ export const PLANETS: PlanetConfig[] = [
     glowColor: '#1D57FBaa',
   },
   {
-    id: 'provocacoes',
+    id: 'diagnostico',
     num: 7,
-    label: 'Próximos Passos',
-    size: 34,
-    colorFrom: '#556677',
-    colorTo: '#111222',
-    hasRing: false,
-    cx: 663,
-    cy: 217,
-    glowColor: '#33445566',
+    label: 'Diagnóstico',
+    size: 64,
+    colorFrom: '#334488',
+    colorTo: '#000830',
+    hasRing: true,
+    cx: 52,
+    cy: 172,
+    glowColor: '#00145A88',
   },
 ]
