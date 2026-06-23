@@ -6,9 +6,11 @@ const SUN_CY = 240
 interface MiniMapProps {
   activeStep: number
   onPlanetClick: (sectionId: string) => void
+  mode: 'presentation' | 'exploration'
+  onToggleMode: () => void
 }
 
-function MiniMap({ activeStep, onPlanetClick }: MiniMapProps) {
+function MiniMap({ activeStep, onPlanetClick, mode, onToggleMode }: MiniMapProps) {
   const activePlanet = PLANETS[activeStep]
   const activePlanetId = activePlanet?.id ?? ''
 
@@ -158,6 +160,15 @@ function MiniMap({ activeStep, onPlanetClick }: MiniMapProps) {
             )
           })}
         </svg>
+      </div>
+
+      <div className="p-3 border-t border-gi-blue/20">
+        <button
+          onClick={onToggleMode}
+          className="w-full text-xs py-2 px-3 rounded-lg border border-gi-blue/40 text-gi-stardust hover:bg-gi-blue/20 transition-colors"
+        >
+          {mode === 'exploration' ? 'Apresentação' : 'Exploração'}
+        </button>
       </div>
     </aside>
   )

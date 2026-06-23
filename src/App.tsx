@@ -19,6 +19,7 @@ export const PresentationContext = createContext<PresentationContextValue>({
   next: () => undefined,
   prev: () => undefined,
   toggle: () => undefined,
+  goTo: () => undefined,
 })
 
 const SECTIONS: SectionMeta[] = [
