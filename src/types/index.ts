@@ -47,12 +47,15 @@ export interface Provocacao {
   destinatario: 'carol' | 'jansen' | 'ambos'
 }
 
+export type UiState = 'splash' | 'galaxy' | 'module'
+
 export interface PresentationContextValue {
   mode: 'presentation' | 'exploration'
   currentStep: number
   next: () => void
   prev: () => void
   toggle: () => void
+  goTo: (step: number) => void
 }
 
 export interface SectionMeta {

@@ -20,5 +20,9 @@ export function usePresentation(): PresentationContextValue {
     setCurrentStep(0)
   }
 
-  return { mode, currentStep, next, prev, toggle }
+  function goTo(step: number) {
+    setCurrentStep(Math.min(Math.max(step, 0), TOTAL_STEPS - 1))
+  }
+
+  return { mode, currentStep, next, prev, toggle, goTo }
 }
