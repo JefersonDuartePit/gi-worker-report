@@ -4,15 +4,14 @@ const SUN_CX = 350
 const SUN_CY = 240
 
 interface MiniMapProps {
-  activeStep: number
+  activeSectionId: string
   onPlanetClick: (sectionId: string) => void
   mode: 'presentation' | 'exploration'
   onToggleMode: () => void
 }
 
-function MiniMap({ activeStep, onPlanetClick, mode, onToggleMode }: MiniMapProps) {
-  const activePlanet = PLANETS[activeStep]
-  const activePlanetId = activePlanet?.id ?? ''
+function MiniMap({ activeSectionId, onPlanetClick, mode, onToggleMode }: MiniMapProps) {
+  const activePlanetId = activeSectionId
 
   return (
     <aside className="fixed top-[56px] left-0 w-[200px] h-[calc(100vh-56px)] bg-gi-navy flex flex-col z-40">

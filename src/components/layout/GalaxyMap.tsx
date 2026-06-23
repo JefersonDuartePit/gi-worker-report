@@ -24,7 +24,7 @@ function GalaxyMap({ onPlanetClick, activeSectionId }: GalaxyMapProps) {
     >
       <GalaxyHeader />
 
-      <div className="relative flex-1 flex items-center justify-center" style={{ zIndex: 5 }}>
+      <div className="relative flex-1 flex items-center justify-center z-[5]">
         <div className="relative" style={{ width: CONTAINER_W, height: CONTAINER_H }}>
 
           {/* Orbit rings decorativas */}
@@ -49,8 +49,7 @@ function GalaxyMap({ onPlanetClick, activeSectionId }: GalaxyMapProps) {
 
           {/* SVG: linhas tracejadas do sol aos planetas */}
           <svg
-            className="absolute inset-0 pointer-events-none"
-            style={{ zIndex: 3 }}
+            className="absolute inset-0 pointer-events-none z-[3]"
             viewBox={`0 0 ${CONTAINER_W} ${CONTAINER_H}`}
             xmlns="http://www.w3.org/2000/svg"
           >

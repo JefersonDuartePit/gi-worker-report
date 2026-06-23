@@ -88,7 +88,7 @@ export function App() {
 
             {presentation.mode === 'exploration' && (
               <MiniMap
-                activeStep={presentation.currentStep}
+                activeSectionId={activeSection.id}
                 onPlanetClick={handlePlanetClick}
                 mode={presentation.mode}
                 onToggleMode={presentation.toggle}

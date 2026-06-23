@@ -16,7 +16,7 @@ function SplashScreen({ onComplete }: SplashScreenProps) {
       className="fixed inset-0 flex flex-col items-center justify-center z-50 bg-splash-sky cursor-pointer"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.5 }}
       onClick={onComplete}
     >
       <div className="relative z-10 flex flex-col items-center gap-5 text-center">
