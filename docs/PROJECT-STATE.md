@@ -1,10 +1,10 @@
 # PROJECT-STATE.md — GI Group · Portal do Worker
 
-**Atualizado em:** 18 de junho de 2026
-**Status do projeto:** Documentação inicial — pronto para iniciar Spec 1
-**Specs concluídas:** nenhuma
+**Atualizado em:** 23 de junho de 2026
+**Status do projeto:** Spec 1 concluída — shell funcional, pronto para iniciar Spec 2
+**Specs concluídas:** Spec 1 — Setup e Shell
 **Spec em andamento:** nenhuma
-**Próxima spec:** Spec 1 — Setup e Shell
+**Próxima spec:** Spec 2 — S1 Hero
 
 ---
 
@@ -54,7 +54,7 @@ O relatório será apresentado primeiro ao service designer interno da Perform I
 
 | Spec | Nome                          | Status      | Artefatos                              |
 | ---- | ----------------------------- | ----------- | -------------------------------------- |
-| 1    | Setup e Shell                 | ⬜ Pendente  | —                                      |
+| 1    | Setup e Shell                 | ✅ Concluída | `spec-1-implement-done.md`             |
 | 2    | S1 — Hero                     | ⬜ Pendente  | —                                      |
 | 3    | S2 — Diagnóstico Sistêmico    | ⬜ Pendente  | —                                      |
 | 4    | S3 — Dores por Persona        | ⬜ Pendente  | —                                      |
@@ -67,7 +67,7 @@ O relatório será apresentado primeiro ao service designer interno da Perform I
 
 ## 3. Estrutura Atual do Projeto
 
-O projeto ainda não foi inicializado. A estrutura esperada após a Spec 1 é:
+Estrutura implantada pela Spec 1 (branch `spec/01-setup-shell`):
 
 ```
 gi-worker-report/
@@ -127,7 +127,36 @@ gi-worker-report/
 
 ---
 
-## 6. Instruções para Atualização
+## 6. Histórico de Atualizações
+
+### Atualização — Spec 1 — Setup e Shell — 2026-06-23
+
+**Status:** concluída ✅
+
+**Artefatos gerados:**
+- `package.json`, `vite.config.ts`, `tsconfig.json`, `postcss.config.js`, `index.html`
+- `tailwind.config.ts`, `src/index.css`
+- `src/types/index.ts`, `src/lib/utils.ts`
+- `src/data/sistemas.ts`, `src/data/dores.ts`, `src/data/iniciativas.ts`, `src/data/provocacoes.ts`
+- `src/hooks/useActiveSection.ts`, `src/hooks/usePresentation.ts`, `src/hooks/usePortalNav.ts`
+- `src/components/layout/Section.tsx`, `src/components/layout/Sidebar.tsx`, `src/components/layout/Header.tsx`
+- `src/components/ui/Badge.tsx`, `src/components/ui/Card.tsx`, `src/components/ui/Button.tsx`, `src/components/ui/Tag.tsx`, `src/components/ui/Tooltip.tsx`, `src/components/ui/ProgressBar.tsx`
+- `src/components/sections/S1Hero/index.tsx` … `S7Provocacoes/index.tsx`
+- `src/App.tsx`, `src/main.tsx`, `src/assets/logo-gi-group.png`
+- `.agent/specs/spec-1-implement-done.md`
+
+**Desvios do plano:** nenhum
+
+**Verificações:**
+- `npx tsc --noEmit` → sem erros
+- `npm run build` → dist/ gerado (171 KB JS, 12 KB CSS)
+- `npm run dev` → servidor em http://localhost:5173/
+
+**Próxima spec:** Spec 2 — S1 Hero
+
+---
+
+## 7. Instruções para Atualização
 
 Este documento é atualizado **apenas pelo humano** ao final de cada spec implementada.
 
