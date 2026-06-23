@@ -81,7 +81,7 @@ Todos os artefatos ficam na pasta `.agent/specs/`.
 
 1. **Nunca misturar fases** — Research não planeja. Plan não implementa. Implement não decide.
 2. **Nunca modificar arquivo fora da lista de Arquivos Permitidos** do plan-done.md.
-3. **Nunca atualizar `PROJECT-STATE.md`** — apenas o humano atualiza.
+3. **`PROJECT-STATE.md` é atualizado pelo agente somente ao final da fase Implement, mediante autorização explícita do humano.** O agente propõe a atualização no `implement-done.md`; o humano autoriza; o agente executa.
 4. **Nunca inferir requisitos** — se não está documentado, perguntar.
 5. **Nunca criar componentes de UI do zero** quando o design system já define o equivalente.
 6. **Nunca usar `any`** em TypeScript — sem exceção.
