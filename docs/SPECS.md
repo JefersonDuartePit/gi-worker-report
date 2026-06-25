@@ -50,7 +50,7 @@
 - Título principal: "Centralização CARE & SMS — Jornada do Worker"
 - Subtítulo: "Diagnóstico sistêmico e propostas de transformação digital"
 - Data e versão do relatório
-- 3 métricas de impacto do design sprint (ex: 5 dias de workshop, 11 iniciativas priorizadas, 3 macrojornadas mapeadas)
+- 3 métricas de impacto do design sprint (ex: 5 dias de workshop, 17 iniciativas mapeadas, 3 macrojornadas mapeadas)
 - CTA: "Iniciar a leitura" (scroll para S2)
 - Fundo: `gi-navy`, texto branco
 

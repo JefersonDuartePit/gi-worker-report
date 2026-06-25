@@ -13,7 +13,7 @@ export interface PlanetConfig {
 
 // cx/cy são as coordenadas do centro do planeta em px
 // dentro de um container fixo de 700×480px (GalaxyMap)
-// Ordem horária a partir de hero (302°): hero→dores→arquitetura→provocacoes→iniciativas→portal→diagnostico
+// id/num/label seguem a ordem horária das specs: S1→S2→S3→S4→S5→S6→S7
 export const PLANETS: PlanetConfig[] = [
   {
     id: 'hero',
@@ -28,9 +28,9 @@ export const PLANETS: PlanetConfig[] = [
     glowColor: '#2255aa66',
   },
   {
-    id: 'dores',
+    id: 'diagnostico',
     num: 2,
-    label: 'Dores',
+    label: 'Diagnóstico',
     size: 38,
     colorFrom: '#884455',
     colorTo: '#220011',
@@ -40,9 +40,9 @@ export const PLANETS: PlanetConfig[] = [
     glowColor: '#88224466',
   },
   {
-    id: 'arquitetura',
+    id: 'dores',
     num: 3,
-    label: 'Arquitetura',
+    label: 'Dores',
     size: 72,
     colorFrom: '#4488ff',
     colorTo: '#0a2288',
@@ -52,9 +52,9 @@ export const PLANETS: PlanetConfig[] = [
     glowColor: '#1D57FB88',
   },
   {
-    id: 'provocacoes',
+    id: 'arquitetura',
     num: 4,
-    label: 'Próximos Passos',
+    label: 'Arquitetura',
     size: 34,
     colorFrom: '#556677',
     colorTo: '#111222',
@@ -88,9 +88,9 @@ export const PLANETS: PlanetConfig[] = [
     glowColor: '#1D57FBaa',
   },
   {
-    id: 'diagnostico',
+    id: 'provocacoes',
     num: 7,
-    label: 'Diagnóstico',
+    label: 'Próximos Passos',
     size: 64,
     colorFrom: '#334488',
     colorTo: '#000830',

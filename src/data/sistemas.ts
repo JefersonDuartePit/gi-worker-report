@@ -8,6 +8,8 @@ export const SISTEMAS: Sistema[] = [
     status: 'usa',
     doresAssociadas: ['D03'],
     restricao: 'Integração unidirecional com plataforma de folha — sem retorno automatizado',
+    problema: 'Integração unidirecional com a plataforma de folha — dados não retornam automaticamente após admissão.',
+    decisaoProposta: 'Integrar via iPaaS quando OutSystems assumir o portal de admissão.',
   },
   {
     id: 'S02',
@@ -16,6 +18,8 @@ export const SISTEMAS: Sistema[] = [
     status: 'substitui',
     doresAssociadas: ['D03'],
     restricao: 'Substituição prevista para 2027 — não amarrar arquitetura',
+    problema: 'ERP legado sem API robusta; redigitação manual de dados do IEM; substituição prevista para 2027.',
+    decisaoProposta: 'Substituir por plataforma moderna — não amarrar arquitetura neste sistema.',
   },
   {
     id: 'S03',
@@ -24,6 +28,8 @@ export const SISTEMAS: Sistema[] = [
     status: 'nao-toca',
     doresAssociadas: [],
     restricao: 'Intocável sem aprovação do Global',
+    problema: 'Controlado pela matriz italiana — qualquer alteração exige aprovação global.',
+    decisaoProposta: 'Manter intocável; construir integração intermediária quando aprovado pelo Global.',
   },
   {
     id: 'S04',
@@ -32,6 +38,8 @@ export const SISTEMAS: Sistema[] = [
     status: 'nao-toca',
     doresAssociadas: [],
     restricao: 'Intocável sem aprovação do Global',
+    problema: 'Controlado pelo Global — Brasil não tem autonomia sobre o processo de candidatura.',
+    decisaoProposta: 'Manter intocável; focar no ciclo ativo e offboarding onde há autonomia local.',
   },
   {
     id: 'S05',
@@ -39,6 +47,8 @@ export const SISTEMAS: Sistema[] = [
     funcao: 'Canal de comunicação com workers via chatbot e WhatsApp',
     status: 'substitui',
     doresAssociadas: ['D04', 'D05'],
+    problema: 'Canais pessoais dos analistas bloqueados por volume (>100 msgs/dia); sem histórico consolidado.',
+    decisaoProposta: 'Substituir pelo Portal do Worker com central de atendimento unificada (I07).',
   },
   {
     id: 'S06',
@@ -46,6 +56,8 @@ export const SISTEMAS: Sistema[] = [
     funcao: 'Helpdesk de solicitações — atendimento de dúvidas e chamados do worker',
     status: 'substitui',
     doresAssociadas: ['D05'],
+    problema: 'Usado para tudo — inclusive processos que deveriam ser workflows automatizados.',
+    decisaoProposta: 'Substituir pela central de atendimento unificada com SLA único (I07).',
   },
   {
     id: 'S07',
@@ -53,6 +65,8 @@ export const SISTEMAS: Sistema[] = [
     funcao: 'Helpdesk de TI interno — chamados de suporte técnico',
     status: 'substitui',
     doresAssociadas: [],
+    problema: 'Helpdesk de TI separado do TomTicket — mesma fragmentação, canais duplicados.',
+    decisaoProposta: 'Consolidar no helpdesk único; GLPI mantido apenas para suporte técnico interno.',
   },
   {
     id: 'S08',
@@ -60,6 +74,8 @@ export const SISTEMAS: Sistema[] = [
     funcao: 'Canal de comunicação alternativo — mensagens e notificações',
     status: 'substitui',
     doresAssociadas: ['D05'],
+    problema: 'Mais um canal de comunicação sem integração — aumenta a dispersão da informação.',
+    decisaoProposta: 'Substituir pelo Portal do Worker como canal único de comunicação.',
   },
   {
     id: 'S09',
@@ -67,6 +83,8 @@ export const SISTEMAS: Sistema[] = [
     funcao: 'Assinatura eletrônica de contratos e documentos rescisórios',
     status: 'integra',
     doresAssociadas: ['D02', 'D10'],
+    problema: 'Baixa de documentos feita um a um, manualmente — sem envio em lote.',
+    decisaoProposta: 'Integrar para assinatura padronizada em lote (I05 — admissão; I14 — rescisão).',
   },
   {
     id: 'S10',
@@ -74,6 +92,8 @@ export const SISTEMAS: Sistema[] = [
     funcao: 'Gestão de ASO admissional, demissional e afastamentos médicos',
     status: 'integra',
     doresAssociadas: [],
+    problema: 'Sistema completamente isolado — sem integração com folha ou fluxo de admissão.',
+    decisaoProposta: 'Integrar para automação de agendamento e controle de ASO (I16).',
   },
   {
     id: 'S11',
@@ -81,6 +101,8 @@ export const SISTEMAS: Sistema[] = [
     funcao: 'Controle de ponto dos workers — registro e tratamento de frequência',
     status: 'integra',
     doresAssociadas: ['D08'],
+    problema: 'Integração com plataforma de folha incompleta — fechamento de ponto ainda manual.',
+    decisaoProposta: 'Integrar para tratamento e fechamento automatizado de frequência (I09).',
   },
   {
     id: 'S12',
@@ -88,5 +110,7 @@ export const SISTEMAS: Sistema[] = [
     funcao: 'Plataforma low-code — portal de admissão em construção',
     status: 'usa',
     doresAssociadas: [],
+    problema: 'Plataforma em construção — portal de admissão em implantação, ainda sem entrar em produção.',
+    decisaoProposta: 'Usar como pilar do portal de admissão digital; não retrabalhar — referência de contexto.',
   },
 ]

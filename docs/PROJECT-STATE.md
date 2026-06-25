@@ -20,7 +20,7 @@ O projeto nasceu de um design sprint de 5 dias conduzido pela **Perform IT** com
 - Mapeamento de jornada ponta a ponta com times de CARE e SMS
 - Identificação de 24 iniciativas de melhoria
 - Priorização por impacto no negócio, experiência do worker e esforço de implantação
-- Votação resultou em 11 iniciativas prioritárias para o relatório
+- Votação resultou em 17 iniciativas estruturadas para o relatório
 
 **Alinhamento com Djansen (pré-workshop)**
 - Definição da estrutura de cocriação
@@ -42,7 +42,7 @@ O projeto nasceu de um design sprint de 5 dias conduzido pela **Perform IT** com
 O entregável principal da Perform IT foi definido como um **relatório interativo em React** — um site estático que apresenta:
 - Diagnóstico sistêmico (as-is)
 - Arquitetura proposta (to-be)
-- As 11 iniciativas priorizadas
+- As 17 iniciativas
 - Telas navegáveis do portal do worker (alta fidelidade)
 - Provocações técnicas e próximos passos
 
@@ -55,8 +55,8 @@ O relatório será apresentado primeiro ao service designer interno da Perform I
 | Spec | Nome                          | Status              | Artefatos                                          |
 | ---- | ----------------------------- | ------------------- | -------------------------------------------------- |
 | 1    | Setup e Shell                 | ✅ Concluída         | `spec-1-implement-done.md`                         |
-| 2    | S1 — Hero                     | ⬜ Pendente          | —                                                  |
-| 3    | S2 — Diagnóstico Sistêmico    | ⬜ Pendente          | —                                                  |
+| 2    | S1 — Hero                     | ✅ Concluída         | `spec-2-implement-done.md`                         |
+| 3    | S2 — Diagnóstico Sistêmico    | ✅ Concluída         | `spec-3-implement-done.md`                         |
 | 4    | S3 — Dores por Persona        | ⬜ Pendente          | —                                                  |
 | 5    | S4 — Arquitetura As-is/To-be  | ⬜ Pendente          | —                                                  |
 | 6    | S5 — Iniciativas              | ⬜ Pendente          | —                                                  |
@@ -160,6 +160,42 @@ gi-worker-report/
 - `.superpowers/brainstorm/` — mockups do companion visual (não commitar)
 
 **Próximo passo após conclusão:** Spec 2 — S1 Hero
+
+---
+
+### Atualização — Spec 3 — S2 Diagnóstico Sistêmico — 2026-06-25
+
+**Status:** concluída ✅
+
+**Artefatos gerados:**
+- `src/types/index.ts` (modificado — campos `problema` e `decisaoProposta` adicionados a `Sistema`)
+- `src/data/sistemas.ts` (modificado — 12 sistemas enriquecidos com os novos campos)
+- `src/components/sections/S2Diagnostico/SistemaCard.tsx`
+- `src/components/sections/S2Diagnostico/MapaSistemas.tsx`
+- `src/components/sections/S2Diagnostico/index.tsx`
+- `.agent/specs/spec-3-implement-done.md`
+
+**Desvios do plano:**
+- `MapaSistemas.tsx`: substituída a classe `opacity-30` por `animate={{ opacity: isDimmed ? 0.3 : 1 }}` na `motion.div` dos quadrantes, para contornar conflito entre Framer Motion inline style e Tailwind CSS. Resultado visual idêntico ao especificado.
+- `src/data/planets.ts` e `src/App.tsx`: corrigida a ordem dos planetas para seguir a numeração das specs em sentido horário (S1→S2→…→S7). Editados fora do escopo do plan-done.md por instrução explícita do humano.
+
+**Próxima spec:** Spec 4 — S3 Dores por Persona
+
+---
+
+### Atualização — Spec 2 — S1 Hero — 2026-06-25
+
+**Status:** concluída ✅
+
+**Artefatos gerados:**
+- `src/components/sections/S1Hero/index.tsx`
+- `src/vite-env.d.ts` (boilerplate Vite ausente desde Spec 1 — adicionado com autorização explícita)
+- `.agent/specs/spec-2-implement-done.md`
+
+**Desvios do plano:**
+- `src/vite-env.d.ts` criado além dos arquivos permitidos — necessário para resolver imports de assets estáticos (.png, .svg); autorizado pelo humano durante a implementação.
+
+**Próxima spec:** Spec 3 — S2 Diagnóstico Sistêmico
 
 ---
 
