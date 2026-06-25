@@ -20,7 +20,7 @@ O projeto nasceu de um design sprint de 5 dias conduzido pela **Perform IT** com
 - Mapeamento de jornada ponta a ponta com times de CARE e SMS
 - Identificação de 24 iniciativas de melhoria
 - Priorização por impacto no negócio, experiência do worker e esforço de implantação
-- Votação resultou em 11 iniciativas prioritárias para o relatório
+- Votação resultou em 17 iniciativas estruturadas para o relatório
 
 **Alinhamento com Djansen (pré-workshop)**
 - Definição da estrutura de cocriação
@@ -42,7 +42,7 @@ O projeto nasceu de um design sprint de 5 dias conduzido pela **Perform IT** com
 O entregável principal da Perform IT foi definido como um **relatório interativo em React** — um site estático que apresenta:
 - Diagnóstico sistêmico (as-is)
 - Arquitetura proposta (to-be)
-- As 11 iniciativas priorizadas
+- As 17 iniciativas
 - Telas navegáveis do portal do worker (alta fidelidade)
 - Provocações técnicas e próximos passos
 
