@@ -24,15 +24,15 @@ export const PresentationContext = createContext<PresentationContextValue>({
   goTo: () => undefined,
 })
 
-// Ordem horária a partir de hero (302°): hero→dores→arquitetura→provocacoes→iniciativas→portal→diagnostico
+// Ordem das specs: S1→S2→S3→S4→S5→S6→S7
 const SECTIONS: SectionMeta[] = [
   { id: 'hero',        label: 'Contexto',         Component: S1Hero },
+  { id: 'diagnostico', label: 'Diagnóstico',      Component: S2Diagnostico },
   { id: 'dores',       label: 'Dores',            Component: S3Dores },
   { id: 'arquitetura', label: 'Arquitetura',      Component: S4Arquitetura },
-  { id: 'provocacoes', label: 'Próximos Passos',  Component: S7Provocacoes },
   { id: 'iniciativas', label: 'Iniciativas',      Component: S5Iniciativas },
   { id: 'portal',      label: 'Portal do Worker', Component: S6Portal },
-  { id: 'diagnostico', label: 'Diagnóstico',      Component: S2Diagnostico },
+  { id: 'provocacoes', label: 'Próximos Passos',  Component: S7Provocacoes },
 ]
 
 export function App() {
