@@ -38,6 +38,8 @@ export interface Sistema {
   status: StatusSistema
   doresAssociadas: string[]
   restricao?: string
+  problema: string
+  decisaoProposta: string
 }
 
 export interface Provocacao {
