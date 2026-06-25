@@ -113,11 +113,12 @@ function MapaSistemas() {
             <motion.div
               key={status}
               variants={quadranteVariants}
+              animate={{ opacity: isDimmed ? 0.3 : 1 }}
+              transition={{ duration: 0.3 }}
               className={cn(
-                'rounded-xl border-2 p-4 transition-opacity duration-300',
+                'rounded-xl border-2 p-4',
                 bgClass,
                 borderClass,
-                isDimmed && 'opacity-30',
               )}
             >
               <h3 className={cn('text-xs font-bold uppercase tracking-widest mb-4', headerClass)}>
