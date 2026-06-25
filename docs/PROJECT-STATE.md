@@ -55,7 +55,7 @@ O relatório será apresentado primeiro ao service designer interno da Perform I
 | Spec | Nome                          | Status              | Artefatos                                          |
 | ---- | ----------------------------- | ------------------- | -------------------------------------------------- |
 | 1    | Setup e Shell                 | ✅ Concluída         | `spec-1-implement-done.md`                         |
-| 2    | S1 — Hero                     | ⬜ Pendente          | —                                                  |
+| 2    | S1 — Hero                     | ✅ Concluída         | `spec-2-implement-done.md`                         |
 | 3    | S2 — Diagnóstico Sistêmico    | ⬜ Pendente          | —                                                  |
 | 4    | S3 — Dores por Persona        | ⬜ Pendente          | —                                                  |
 | 5    | S4 — Arquitetura As-is/To-be  | ⬜ Pendente          | —                                                  |
@@ -160,6 +160,22 @@ gi-worker-report/
 - `.superpowers/brainstorm/` — mockups do companion visual (não commitar)
 
 **Próximo passo após conclusão:** Spec 2 — S1 Hero
+
+---
+
+### Atualização — Spec 2 — S1 Hero — 2026-06-25
+
+**Status:** concluída ✅
+
+**Artefatos gerados:**
+- `src/components/sections/S1Hero/index.tsx`
+- `src/vite-env.d.ts` (boilerplate Vite ausente desde Spec 1 — adicionado com autorização explícita)
+- `.agent/specs/spec-2-implement-done.md`
+
+**Desvios do plano:**
+- `src/vite-env.d.ts` criado além dos arquivos permitidos — necessário para resolver imports de assets estáticos (.png, .svg); autorizado pelo humano durante a implementação.
+
+**Próxima spec:** Spec 3 — S2 Diagnóstico Sistêmico
 
 ---
 
