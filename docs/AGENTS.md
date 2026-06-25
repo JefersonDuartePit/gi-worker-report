@@ -353,8 +353,26 @@ Specs podem ser paralelizadas se:
 
 Specs que **não podem** rodar em paralelo:
 - Spec 1 deve estar 100% concluída antes de qualquer outra
-- Spec 7 (Portal) depende dos dados de dores de Spec 4 e iniciativas de Spec 6
 
 Specs que **podem** rodar em paralelo (após Spec 1 concluída):
 - Spec 2 (Hero) e Spec 3 (Diagnóstico)
 - Spec 4 (Dores) e Spec 5 (Arquitetura)
+- **Spec 7 (Portal) e qualquer outra spec** — ver seção 7.1 abaixo
+
+### 7.1 Spec 7 — Status de paralelização
+
+**Spec 7 está em desenvolvimento paralelo ativo na branch `spec/07-portal-do-worker`.**
+
+A dependência original (dados de Specs 4 e 6) foi resolvida na Spec 1: `DORES` e `INICIATIVAS` já existem em `src/data/` desde o início. Não há bloqueio técnico.
+
+**Arquivos exclusivos da Spec 7** — nenhum agente de outra spec deve tocar:
+
+```
+src/components/portal/          ← pasta exclusiva da Spec 7
+src/components/sections/S6Portal/index.tsx
+src/hooks/usePortalNav.ts
+.agent/specs/spec-7-research-done.md
+.agent/specs/spec-7-plan-done.md
+```
+
+**Para agentes de Specs 2–6 e 8:** a seção `S6Portal` existe como placeholder na main. Deixar intacta. O merge da branch `spec/07-portal-do-worker` será limpo por design — os arquivos da Spec 7 não se sobrepõem com nenhuma outra spec.

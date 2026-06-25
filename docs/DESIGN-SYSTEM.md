@@ -24,23 +24,30 @@
 colors: {
   gi: {
     // Primários
-    navy:    '#00145A',   // Azul marinho — cor primária, headers, nav ativa
-    blue:    '#1D57FB',   // Azul elétrico — CTAs, links, destaques
+    navy:     '#00145A',   // Azul marinho — cor primária, headers, nav ativa
+    blue:     '#1D57FB',   // Azul elétrico — CTAs, links, destaques
     // Neutros
-    text:    '#666666',   // Texto corrido
-    dark:    '#1E1E1E',   // Texto forte, títulos escuros
-    charcoal:'#4B4C4D',  // Subtítulos, labels
+    text:     '#666666',   // Texto corrido
+    dark:     '#1E1E1E',   // Texto forte, títulos escuros
+    charcoal: '#4B4C4D',   // Subtítulos, labels
     // Backgrounds
-    white:   '#FFFFFF',
-    light:   '#EFEFEF',   // Background de seções alternadas
-    muted:   '#E6E9EA',   // Superfícies secundárias
-    border:  '#DBDBDB',   // Bordas padrão
+    white:    '#FFFFFF',
+    light:    '#EFEFEF',   // Background de seções alternadas
+    muted:    '#E6E9EA',   // Superfícies secundárias
+    border:   '#DBDBDB',   // Bordas padrão
     // Semânticas
-    red:     '#C10731',   // Erros, alertas críticos (usar com moderação)
-    green:   '#49B100',   // Sucesso, status positivo
-    amber:   '#FFC300',   // Atenção, pendente
-    orange:  '#EB6608',   // Destaques quentes
-    steel:   '#4E7EB1',   // Azul acinzentado — elementos secundários
+    red:      '#C10731',   // Erros, alertas críticos (usar com moderação)
+    green:    '#49B100',   // Sucesso, status positivo
+    amber:    '#FFC300',   // Atenção, pendente
+    orange:   '#EB6608',   // Destaques quentes
+    steel:    '#4E7EB1',   // Azul acinzentado — elementos secundários
+    // Galaxy layout
+    space:    '#000820',   // Fundo do espaço (deep blue-black)
+    stardust: '#8899cc',   // Texto de subtítulo em contexto escuro/galaxy
+    nebula:   '#7799bb',   // Labels de planeta não-ativo
+    comet:    '#aaccff',   // Label de planeta ativo, destaques no dark
+    crater:   '#445566',   // Texto hint/caption em fundo escuro
+    orbit:    '#3355aa',   // Labels muted em fundo navy (sidebar galaxy)
   }
 }
 ```
@@ -200,47 +207,99 @@ Posicionamento: sempre acima do elemento, nunca corta a tela. Implementar com `@
 
 ## 6. Layout do Relatório
 
-### 6.1 Shell principal
+> **⚠️ Layout atualizado — Galaxy Layout (2026-06-23)**
+> O layout original (sidebar fixa + scroll) foi substituído por uma experiência de galáxia interativa. A descrição abaixo reflete o estado atual do projeto.
+
+### 6.1 Estados de UI
+
+O relatório opera em **3 estados distintos**, controlados por `uiState: 'splash' | 'galaxy' | 'module'` em `App.tsx`.
+
+| Estado | Quando aparece | Visual |
+|--------|---------------|--------|
+| `splash` | Abertura do relatório | Fundo espacial, logo GI, título, anel pulsante |
+| `galaxy` | Após splash / botão "← Galáxia" | Mapa com 7 planetas, sol GI, linhas orbitais |
+| `module` | Após click num planeta | Header fixo + sidebar mini-mapa + conteúdo |
+
+### 6.2 Estado Splash
+
+- Fundo: `.bg-splash-sky` (gradiente radial navy→space→black + estrelas CSS)
+- Logo GI Group centralizada, título "Portal do Worker", subtítulo da edição
+- Anel pulsante (Framer Motion `scale` loop, 2s)
+- Auto-avança para galaxy após 2.5s ou no click
+
+### 6.3 Estado Galaxy (mapa de navegação)
+
+```
+┌──────────────────────────────────────────────────────┐
+│ GalaxyHeader: logo · "Escolha um módulo" · [Modo]    │
+├──────────────────────────────────────────────────────┤
+│                                                      │
+│          ☆         ○ 03 Dores                        │
+│  ● 01           ☆                    ○ 04 Arq.       │
+│  Contexto                                            │
+│     ◉ 02                   GI (sol)                  │
+│     Diagnóstico                         ○ 07         │
+│                                                      │
+│          ○ 06 Portal    ○ 05 Iniciativas             │
+│                                                      │
+└──────────────────────────────────────────────────────┘
+       ↑ clique em qualquer planeta para pousar
+```
+
+- Fundo: `.bg-galaxy-sky` (gradiente radial + estrelas CSS estáticas)
+- Sol GI ao centro (56px, gradiente dourado/laranja, glow)
+- 7 planetas com posições absolutas em container `700×480px`
+- Linhas tracejadas SVG conectando sol a cada planeta
+- Órbitas decorativas (`rotateX(70deg)`, dashed)
+- Hover em planeta: `scale(1.1)`, 200ms (Framer Motion `whileHover`)
+
+### 6.4 Planetas — Especificações Visuais
+
+| # | Módulo | Tamanho | Cor base (from→to) | Anel |
+|---|--------|---------|-------------------|------|
+| 01 | Contexto | 44px | `#6699cc` → `#001144` | — |
+| 02 | Diagnóstico | 64px | `#334488` → `#000830` | sim |
+| 03 | Dores | 38px | `#884455` → `#220011` | — |
+| 04 | Arquitetura | 72px | `#4488ff` → `#0a2288` | — |
+| 05 | Iniciativas | 58px | `#448899` → `#001122` | sim |
+| 06 | Portal do Worker | 78px | `#66aaff` → `#003399` | — |
+| 07 | Próximos Passos | 34px | `#556677` → `#111222` | — |
+
+Configuração completa em `src/data/planets.ts`.
+
+### 6.5 Estado Module (conteúdo + mini-mapa)
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│  HEADER (topbar fixa — logo GI + toggle de modo)    │
-├──────────┬──────────────────────────────────────────┤
-│          │                                          │
-│ SIDEBAR  │         CONTEÚDO DA SEÇÃO               │
-│  (240px) │         (scroll vertical)               │
-│  fixa    │                                          │
-│          │                                          │
-└──────────┴──────────────────────────────────────────┘
+│  HEADER: logo · 04 · Arquitetura · [Modo] [←Galáxia]│
+├────────────┬────────────────────────────────────────┤
+│            │                                        │
+│  MINI-MAP  │       CONTEÚDO DO MÓDULO              │
+│  orbital   │       (componente da seção)            │
+│  SVG       │                                        │
+│  (200px)   │                                        │
+│            │                                        │
+│  [Modo]    │                                        │
+└────────────┴────────────────────────────────────────┘
 ```
 
-### 6.2 Sidebar
+**Header (56px):** logo GI + `04 · Arquitetura` + botão "Apresentação" + botão "← Galáxia" (`bg-gi-blue`)
 
-- Largura: 240px, fixa
-- Fundo: `gi-navy`
-- Texto: branco
-- Item ativo: destaque em `gi-blue` com borda esquerda de 3px
-- Logo GI Group no topo
+**MiniMap (200px, `bg-gi-navy`):** SVG do mapa orbital em escala reduzida. Todos os planetas visíveis com labels de texto. Planeta ativo com glow e anel de destaque extra.
 
-```
-Logo GI Group
-──────────────
-○  Contexto
-●  Diagnóstico       ← ativo
-○  Dores
-○  Arquitetura
-○  Iniciativas
-○  Portal do Worker
-○  Próximos passos
-──────────────
-[Modo: Apresentação ↔ Exploração]
+**Modo Apresentação:** MiniMap some; conteúdo ocupa largura total; barra flutuante no rodapé com `← Anterior | N / 7 | Próximo →`.
+
+### 6.6 Backgrounds espaciais (index.css)
+
+```css
+/* Uso: className="bg-galaxy-sky" */
+.bg-galaxy-sky  /* estrelas + gradiente para estado galaxy */
+
+/* Uso: className="bg-splash-sky" */
+.bg-splash-sky  /* estrelas + gradiente para estado splash */
 ```
 
-### 6.3 Header (topbar)
-
-- Altura: 56px, fundo branco, borda inferior `gi-border`
-- Esquerda: breadcrumb da seção ativa
-- Direita: toggle modo apresentação/exploração + botão "Voltar ao início"
+Ambos definidos em `src/index.css` como `@layer utilities` — não usar inline style para esses fundos.
 
 ---
 

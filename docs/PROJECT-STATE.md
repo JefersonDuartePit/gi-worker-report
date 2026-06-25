@@ -1,10 +1,10 @@
 # PROJECT-STATE.md — GI Group · Portal do Worker
 
 **Atualizado em:** 23 de junho de 2026
-**Status do projeto:** Spec 1 concluída — shell funcional, pronto para iniciar Spec 2
+**Status do projeto:** Spec 1 concluída · Galaxy Layout redesign em implementação
 **Specs concluídas:** Spec 1 — Setup e Shell
-**Spec em andamento:** nenhuma
-**Próxima spec:** Spec 2 — S1 Hero
+**Spec em andamento:** Galaxy Layout (plano pronto, subagentes em execução)
+**Próxima spec após galaxy:** Spec 2 — S1 Hero
 
 ---
 
@@ -52,16 +52,28 @@ O relatório será apresentado primeiro ao service designer interno da Perform I
 
 ## 2. Estado Atual das Specs
 
-| Spec | Nome                          | Status      | Artefatos                              |
-| ---- | ----------------------------- | ----------- | -------------------------------------- |
-| 1    | Setup e Shell                 | ✅ Concluída | `spec-1-implement-done.md`             |
-| 2    | S1 — Hero                     | ⬜ Pendente  | —                                      |
-| 3    | S2 — Diagnóstico Sistêmico    | ⬜ Pendente  | —                                      |
-| 4    | S3 — Dores por Persona        | ⬜ Pendente  | —                                      |
-| 5    | S4 — Arquitetura As-is/To-be  | ⬜ Pendente  | —                                      |
-| 6    | S5 — Iniciativas              | ⬜ Pendente  | —                                      |
-| 7    | S6 — Portal do Worker         | ⬜ Pendente  | —                                      |
-| 8    | S7 — Provocações e Próximos Passos | ⬜ Pendente | —                                 |
+| Spec | Nome                          | Status              | Artefatos                                          |
+| ---- | ----------------------------- | ------------------- | -------------------------------------------------- |
+| 1    | Setup e Shell                 | ✅ Concluída         | `spec-1-implement-done.md`                         |
+| 2    | S1 — Hero                     | ⬜ Pendente          | —                                                  |
+| 3    | S2 — Diagnóstico Sistêmico    | ⬜ Pendente          | —                                                  |
+| 4    | S3 — Dores por Persona        | ⬜ Pendente          | —                                                  |
+| 5    | S4 — Arquitetura As-is/To-be  | ⬜ Pendente          | —                                                  |
+| 6    | S5 — Iniciativas              | ⬜ Pendente          | —                                                  |
+| 7    | S6 — Portal do Worker         | 🔀 Em paralelo       | `spec-7-research-done.md`, `spec-7-plan-done.md`   |
+| 8    | S7 — Provocações e Próximos Passos | ⬜ Pendente   | —                                                  |
+
+---
+
+## 2.1 Desenvolvimento Paralelo Ativo
+
+| Branch                      | Spec | Responsável | Arquivos exclusivos (não tocar nas demais branches)                          |
+| --------------------------- | ---- | ----------- | ---------------------------------------------------------------------------- |
+| `spec/07-portal-do-worker`  | 7    | Designer    | `src/components/portal/`, `src/components/sections/S6Portal/`, `src/hooks/usePortalNav.ts` |
+
+**Para agentes trabalhando nas Specs 2–6 e 8:** os arquivos listados acima são propriedade exclusiva da branch `spec/07-portal-do-worker`. Não criar, modificar nem referenciar esses caminhos. A seção S6Portal existe como placeholder — deixar intacta.
+
+**Integração:** quando a branch `spec/07-portal-do-worker` for mergeada na main, não haverá conflitos com as Specs 2–6 e 8. O merge será limpo por design.
 
 ---
 
@@ -128,6 +140,28 @@ gi-worker-report/
 ---
 
 ## 6. Histórico de Atualizações
+
+### Atualização — Galaxy Layout Redesign — 2026-06-23
+
+**Status:** plano completo, implementação em andamento via subagentes
+
+**Contexto:** O layout sidebar+scroll da Spec 1 foi substituído por uma experiência de galáxia lúdica e gamificada. Cada módulo do relatório é um planeta navegável. Esta é uma decisão de produto confirmada pelo humano (Jeff) antes de qualquer conteúdo ser implementado nas Specs 2–8.
+
+**Impacto para Specs 2–8:**
+- Cada seção (`S1Hero`, `S2Diagnostico`, etc.) continua existindo como componente próprio — sem mudança na interface interna
+- O componente de seção é renderizado diretamente (`<activeSection.Component />`) — sem wrapper de scroll
+- O fundo de cada seção segue o design system (ver DESIGN-SYSTEM.md §7)
+- As seções S1–S7 são planetas independentes — cada uma deve funcionar em tela cheia (`min-h-screen`) com seu próprio esquema visual
+- **Não usar** `Sidebar`, `Section`, `useActiveSection` — todos removidos
+
+**Artefatos gerados:**
+- `docs/superpowers/specs/2026-06-23-galaxy-layout-design.md` — design spec aprovado
+- `docs/superpowers/plans/2026-06-23-galaxy-layout.md` — plano de implementação (8 tasks)
+- `.superpowers/brainstorm/` — mockups do companion visual (não commitar)
+
+**Próximo passo após conclusão:** Spec 2 — S1 Hero
+
+---
 
 ### Atualização — Spec 1 — Setup e Shell — 2026-06-23
 
