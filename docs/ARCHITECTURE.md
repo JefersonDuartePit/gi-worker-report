@@ -74,7 +74,7 @@ gi-worker-report/
 │   │   ├── planets.ts           † # Config dos 7 planetas (id, tamanho, cor, posição)
 │   │   ├── sistemas.ts          # Mapa de sistemas (as-is)
 │   │   ├── dores.ts             # Dores por persona
-│   │   ├── iniciativas.ts       # As 11 iniciativas
+│   │   ├── iniciativas.ts       # As 17 iniciativas
 │   │   └── provocacoes.ts       # Perguntas e próximos passos
 │   ├── hooks/
 │   │   ├── usePresentation.ts   # Modo apresentação vs exploração + goTo(step)
