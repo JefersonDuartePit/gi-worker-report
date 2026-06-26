@@ -177,6 +177,8 @@ gi-worker-report/
 **Desvios do plano:**
 - `IniciativaCard.tsx`: `stopPropagation` movido para `div` wrapper em vez de ser passado no `onClick` do Button (`Button.onClick` é `() => void` — não aceita evento). Comportamento idêntico.
 
+**Pendência pós-merge:** após o merge de `spec/07-portal-do-worker`, revisitar `IniciativasList.tsx` para substituir o `goTo(5)` fixo por navegação para a tela específica de cada iniciativa (`telasRelacionadas[0]`), usando a API interna de `usePortalNav`.
+
 **Próxima spec:** Spec 7 — S6 Portal do Worker (branch `spec/07-portal-do-worker`, já em andamento)
 
 ---
