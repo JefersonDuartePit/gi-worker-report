@@ -59,7 +59,7 @@ O relatório será apresentado primeiro ao service designer interno da Perform I
 | 3    | S2 — Diagnóstico Sistêmico    | ✅ Concluída         | `spec-3-implement-done.md`                         |
 | 4    | S3 — Dores por Persona        | ✅ Concluída         | `spec-4-implement-done.md`                         |
 | 5    | S4 — Arquitetura As-is/To-be  | ✅ Concluída         | `spec-5-implement-done.md`                         |
-| 6    | S5 — Iniciativas              | ⬜ Pendente          | —                                                  |
+| 6    | S5 — Iniciativas              | ✅ Concluída         | `spec-6-implement-done.md`                         |
 | 7    | S6 — Portal do Worker         | 🔀 Em paralelo       | `spec-7-research-done.md`, `spec-7-plan-done.md`   |
 | 8    | S7 — Provocações e Próximos Passos | ⬜ Pendente   | —                                                  |
 
@@ -160,6 +160,24 @@ gi-worker-report/
 - `.superpowers/brainstorm/` — mockups do companion visual (não commitar)
 
 **Próximo passo após conclusão:** Spec 2 — S1 Hero
+
+---
+
+### Atualização — Spec 6 — S5 Iniciativas — 2026-06-26
+
+**Status:** concluída ✅
+
+**Artefatos gerados:**
+- `src/components/ui/ProgressBar.tsx` (modificado — prop `fillClassName` adicionada)
+- `src/components/sections/S5Iniciativas/IniciativaCard.tsx` (criado)
+- `src/components/sections/S5Iniciativas/IniciativasList.tsx` (criado)
+- `src/components/sections/S5Iniciativas/index.tsx` (stub substituído)
+- `.agent/specs/spec-6-implement-done.md`
+
+**Desvios do plano:**
+- `IniciativaCard.tsx`: `stopPropagation` movido para `div` wrapper em vez de ser passado no `onClick` do Button (`Button.onClick` é `() => void` — não aceita evento). Comportamento idêntico.
+
+**Próxima spec:** Spec 7 — S6 Portal do Worker (branch `spec/07-portal-do-worker`, já em andamento)
 
 ---
 
