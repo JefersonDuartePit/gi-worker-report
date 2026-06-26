@@ -58,7 +58,7 @@ O relatório será apresentado primeiro ao service designer interno da Perform I
 | 2    | S1 — Hero                     | ✅ Concluída         | `spec-2-implement-done.md`                         |
 | 3    | S2 — Diagnóstico Sistêmico    | ✅ Concluída         | `spec-3-implement-done.md`                         |
 | 4    | S3 — Dores por Persona        | ✅ Concluída         | `spec-4-implement-done.md`                         |
-| 5    | S4 — Arquitetura As-is/To-be  | ⬜ Pendente          | —                                                  |
+| 5    | S4 — Arquitetura As-is/To-be  | ✅ Concluída         | `spec-5-implement-done.md`                         |
 | 6    | S5 — Iniciativas              | ⬜ Pendente          | —                                                  |
 | 7    | S6 — Portal do Worker         | 🔀 Em paralelo       | `spec-7-research-done.md`, `spec-7-plan-done.md`   |
 | 8    | S7 — Provocações e Próximos Passos | ⬜ Pendente   | —                                                  |
@@ -160,6 +160,25 @@ gi-worker-report/
 - `.superpowers/brainstorm/` — mockups do companion visual (não commitar)
 
 **Próximo passo após conclusão:** Spec 2 — S1 Hero
+
+---
+
+### Atualização — Spec 5 — S4 Arquitetura As-is/To-be — 2026-06-26
+
+**Status:** concluída ✅
+
+**Artefatos gerados:**
+- `src/types/index.ts` (modificado — 6 tipos adicionados ao final)
+- `src/data/arquitetura.ts` (criado)
+- `src/components/sections/S4Arquitetura/DiagramaArquitetura.tsx` (criado)
+- `src/components/sections/S4Arquitetura/TabelaComparativa.tsx` (criado)
+- `src/components/sections/S4Arquitetura/index.tsx` (stub substituído)
+- `.agent/specs/spec-5-implement-done.md`
+
+**Desvios do plano:**
+- Nenhum
+
+**Próxima spec:** Spec 6 — S5 Iniciativas
 
 ---
 
