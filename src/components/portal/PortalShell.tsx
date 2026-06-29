@@ -8,6 +8,11 @@ import TelaRescisao from './TelaRescisao'
 import TelaDesenvolvimento from './TelaDesenvolvimento'
 import { Home, FileText, MessageSquare, BookOpen, ClipboardList, TrendingUp } from 'lucide-react'
 import type { ComponentType } from 'react'
+import logoGI from '../../assets/logo-gi-group.png'
+
+interface PortalShellProps {
+  fullscreen?: boolean
+}
 
 // Para adicionar uma tela:
 // 1. Adicione o valor em PortalScreen (src/hooks/usePortalNav.ts)
@@ -37,14 +42,21 @@ const NAV_ITEMS: NavItem[] = [
   { screen: 'desenvolvimento', label: 'Desenvolvimento', icon: TrendingUp },
 ]
 
-function PortalShell() {
+function PortalShell({ fullscreen = false }: PortalShellProps) {
   const { screen, navigate } = usePortalNav()
   const ActiveScreen = SCREENS_MAP[screen]
 
   return (
-    <div className="flex h-[720px] rounded-2xl overflow-hidden border border-gi-border shadow-xl">
+    <div
+      className={
+        fullscreen
+          ? 'flex h-full w-full overflow-hidden'
+          : 'flex h-[720px] rounded-2xl overflow-hidden border border-gi-border shadow-xl'
+      }
+    >
       <aside className="w-[220px] bg-gi-navy flex flex-col shrink-0">
-        <div className="px-5 py-5 border-b border-white/10">
+        <div className="px-5 py-4 border-b border-white/10">
+          <img src={logoGI} alt="GI Group" className="h-6 object-contain mb-2" />
           <div className="text-white font-bold text-sm">GI Worker</div>
           <div className="text-white/50 text-xs mt-0.5">Portal do Colaborador</div>
         </div>
