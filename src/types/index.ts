@@ -102,3 +102,10 @@ export interface ComparativoArq {
   asIs: string
   toBe: string
 }
+
+export interface FasePlano {
+  numero: 1 | 2 | 3
+  titulo: string
+  periodo: string
+  iniciativaIds: string[]
+}
