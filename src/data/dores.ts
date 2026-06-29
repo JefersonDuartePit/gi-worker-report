@@ -100,4 +100,13 @@ export const DORES: Dor[] = [
     severidade: 'alta',
     iniciativaQueResolve: 'I17',
   },
+  {
+    id: 'D12',
+    titulo: 'Sem registro centralizado de feedback e desenvolvimento do worker',
+    descricao: 'Feedbacks, acompanhamentos e advertências formais do worker ficam dispersos entre lideranças de operação e GI, sem canal único de consulta.',
+    personas: ['worker', 'colaborador-gi'],
+    jornada: 'ciclo-ativo',
+    severidade: 'media',
+    iniciativaQueResolve: 'I10',
+  },
 ]

@@ -5,6 +5,8 @@ import TelaDocumentos from './TelaDocumentos'
 import TelaSolicitacoes from './TelaSolicitacoes'
 import TelaTreinamentos from './TelaTreinamentos'
 import TelaRescisao from './TelaRescisao'
+import TelaDesenvolvimento from './TelaDesenvolvimento'
+import { Home, FileText, MessageSquare, BookOpen, ClipboardList, TrendingUp } from 'lucide-react'
 import type { ComponentType } from 'react'
 
 // Para adicionar uma tela:
@@ -12,26 +14,27 @@ import type { ComponentType } from 'react'
 // 2. Crie o arquivo Tela*.tsx nesta pasta
 // 3. Importe acima e adicione no SCREENS_MAP abaixo
 // 4. Adicione o item em NAV_ITEMS abaixo
-const SCREENS_MAP: Record<PortalScreen, ComponentType> = {
-  inicio:       TelaInicio,
-  documentos:   TelaDocumentos,
+const SCREENS_MAP: Partial<Record<PortalScreen, ComponentType>> = {
+  documentos: TelaDocumentos,
   solicitacoes: TelaSolicitacoes,
   treinamentos: TelaTreinamentos,
-  rescisao:     TelaRescisao,
+  rescisao: TelaRescisao,
+  desenvolvimento: TelaDesenvolvimento,
 }
 
 interface NavItem {
   screen: PortalScreen
   label: string
-  icon: string
+  icon: ComponentType<{ className?: string }>
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { screen: 'inicio',       label: 'Início',       icon: '🏠' },
-  { screen: 'documentos',   label: 'Documentos',   icon: '📄' },
-  { screen: 'solicitacoes', label: 'Solicitações', icon: '💬' },
-  { screen: 'treinamentos', label: 'Treinamentos', icon: '📚' },
-  { screen: 'rescisao',     label: 'Rescisão',     icon: '📋' },
+  { screen: 'inicio', label: 'Início', icon: Home },
+  { screen: 'documentos', label: 'Documentos', icon: FileText },
+  { screen: 'solicitacoes', label: 'Solicitações', icon: MessageSquare },
+  { screen: 'treinamentos', label: 'Treinamentos', icon: BookOpen },
+  { screen: 'rescisao', label: 'Rescisão', icon: ClipboardList },
+  { screen: 'desenvolvimento', label: 'Desenvolvimento', icon: TrendingUp },
 ]
 
 function PortalShell() {
@@ -47,20 +50,23 @@ function PortalShell() {
         </div>
 
         <nav className="flex-1 py-4 px-3 space-y-1">
-          {NAV_ITEMS.map(item => (
-            <button
-              key={item.screen}
-              onClick={() => navigate(item.screen)}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all text-left ${
-                screen === item.screen
-                  ? 'bg-white/15 text-white border-l-[3px] border-gi-blue pl-[9px]'
-                  : 'text-white/70 hover:bg-white/10 hover:text-white'
-              }`}
-            >
-              <span className="text-base leading-none">{item.icon}</span>
-              {item.label}
-            </button>
-          ))}
+          {NAV_ITEMS.map(item => {
+            const Icon = item.icon
+            return (
+              <button
+                key={item.screen}
+                onClick={() => navigate(item.screen)}
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all text-left ${
+                  screen === item.screen
+                    ? 'bg-white/15 text-white border-l-[3px] border-gi-blue pl-[9px]'
+                    : 'text-white/70 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                <Icon className="w-4 h-4 shrink-0" />
+                {item.label}
+              </button>
+            )
+          })}
         </nav>
 
         <div className="px-4 py-4 border-t border-white/10">
@@ -87,7 +93,7 @@ function PortalShell() {
           </div>
         </header>
         <main className="flex-1 overflow-y-auto">
-          <ActiveScreen />
+          {screen === 'inicio' ? <TelaInicio onNavigate={navigate} /> : ActiveScreen && <ActiveScreen />}
         </main>
       </div>
     </div>
