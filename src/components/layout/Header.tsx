@@ -1,17 +1,16 @@
 import { useContext } from 'react'
-import { Home } from 'lucide-react'
+import { ChevronLeft } from 'lucide-react'
 import { PresentationContext } from '../../App'
 
 interface HeaderProps {
   activeLabel: string
+  activeNum: number
+  onGalaxyClick: () => void
 }
 
-function Header({ activeLabel }: HeaderProps) {
+function Header({ activeLabel, activeNum, onGalaxyClick }: HeaderProps) {
   const { mode, toggle } = useContext(PresentationContext)
-
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+  const numFormatted = String(activeNum).padStart(2, '0')
 
   return (
     <header className="fixed top-0 left-0 right-0 h-[56px] bg-white border-b border-gi-border flex items-center justify-between px-6 z-50">
@@ -29,7 +28,11 @@ function Header({ activeLabel }: HeaderProps) {
         />
         <span className="hidden text-gi-navy font-bold text-sm">GI Group</span>
         <span className="text-gi-border mx-2">|</span>
-        <span className="text-sm text-gi-charcoal">{activeLabel}</span>
+        <span className="text-sm text-gi-charcoal">
+          <span className="text-gi-steel">{numFormatted}</span>
+          {' · '}
+          {activeLabel}
+        </span>
       </div>
 
       <div className="flex items-center gap-3">
@@ -40,11 +43,11 @@ function Header({ activeLabel }: HeaderProps) {
           {mode === 'exploration' ? 'Apresentação' : 'Exploração'}
         </button>
         <button
-          onClick={scrollToTop}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-gi-blue hover:underline transition-all"
+          onClick={onGalaxyClick}
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-gi-blue text-white rounded-lg hover:bg-gi-navy transition-all"
         >
-          <Home size={12} />
-          Início
+          <ChevronLeft size={12} />
+          Galáxia
         </button>
       </div>
     </header>

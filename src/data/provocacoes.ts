@@ -1,4 +1,4 @@
-import type { Provocacao } from '../types'
+import type { FasePlano, Provocacao } from '../types'
 
 export const PROVOCACOES: Provocacao[] = [
   {
@@ -37,4 +37,32 @@ export const PROVOCACOES: Provocacao[] = [
     contexto: 'O portal pós-desligamento precisa de autenticação e prazo de acesso definidos. Essa é uma questão jurídica antes de técnica — quem define o prazo de retenção de dados do ex-worker?',
     destinatario: 'ambos',
   },
+]
+
+export const FASES: FasePlano[] = [
+  {
+    numero: 1,
+    titulo: 'Centralização imediata',
+    periodo: 'H2 2026',
+    iniciativaIds: ['I01', 'I02', 'I07', 'I10', 'I13', 'I17'],
+  },
+  {
+    numero: 2,
+    titulo: 'Integração e automação',
+    periodo: 'H1 2027',
+    iniciativaIds: ['I03', 'I05', 'I06', 'I08', 'I12', 'I14'],
+  },
+  {
+    numero: 3,
+    titulo: 'Maturidade e escala',
+    periodo: 'H2 2027',
+    iniciativaIds: ['I04', 'I09', 'I11', 'I15', 'I16'],
+  },
+]
+
+export const PROXIMOS_PASSOS: string[] = [
+  'Agenda técnica com squad de TI da Carol para mapeamento de APIs disponíveis',
+  'Acesso à pasta gravada do processo de admissão (prometida pela Carol)',
+  'Alinhamento de holding com BUs sobre controle centralizado do worker',
+  'Definição do escopo do portal do worker dentro do IT Master Plan H2 2026',
 ]

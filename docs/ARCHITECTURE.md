@@ -30,6 +30,8 @@ O artefato final é um único arquivo `index.html` + assets gerados pelo build d
 
 ## 3. Estrutura de Pastas
 
+> **Galaxy Layout (2026-06-23):** estrutura atualizada para refletir o layout galáxia. Arquivos marcados com `†` são novos; marcados com `✕` foram removidos.
+
 ```
 gi-worker-report/
 ├── public/
@@ -38,10 +40,15 @@ gi-worker-report/
 │   ├── assets/                  # Logos, imagens estáticas
 │   ├── components/
 │   │   ├── layout/
-│   │   │   ├── Sidebar.tsx      # Navegação lateral fixa
-│   │   │   ├── Header.tsx       # Topbar com modo apresentação/exploração
-│   │   │   └── Section.tsx      # Wrapper de seção com scroll anchor
+│   │   │   ├── SplashScreen.tsx † # Tela de abertura (estado splash)
+│   │   │   ├── GalaxyMap.tsx    † # Mapa de planetas (estado galaxy)
+│   │   │   ├── GalaxyHeader.tsx † # Header do estado galaxy
+│   │   │   ├── MiniMap.tsx      † # Sidebar mini-mapa orbital (estado module)
+│   │   │   ├── Header.tsx         # Topbar do estado module
+│   │   │   ├── Sidebar.tsx      ✕ # Removido — substituído por GalaxyMap + MiniMap
+│   │   │   └── Section.tsx      ✕ # Removido — módulos renderizados diretamente
 │   │   ├── ui/                  # Componentes atômicos do design system
+│   │   │   ├── Planet.tsx       † # Esfera de planeta reutilizável
 │   │   │   ├── Badge.tsx
 │   │   │   ├── Card.tsx
 │   │   │   ├── Button.tsx
@@ -64,21 +71,22 @@ gi-worker-report/
 │   │       ├── TelaTreinamentos.tsx
 │   │       └── TelaRescisao.tsx
 │   ├── data/                    # Dados estáticos do relatório
+│   │   ├── planets.ts           † # Config dos 7 planetas (id, tamanho, cor, posição)
 │   │   ├── sistemas.ts          # Mapa de sistemas (as-is)
 │   │   ├── dores.ts             # Dores por persona
-│   │   ├── iniciativas.ts       # As 11 iniciativas
+│   │   ├── iniciativas.ts       # As 17 iniciativas
 │   │   └── provocacoes.ts       # Perguntas e próximos passos
 │   ├── hooks/
-│   │   ├── useActiveSection.ts  # Controla seção ativa no scroll
-│   │   ├── usePresentation.ts   # Modo apresentação vs exploração
-│   │   └── usePortalNav.ts      # Navegação interna do portal mockado
+│   │   ├── usePresentation.ts   # Modo apresentação vs exploração + goTo(step)
+│   │   ├── usePortalNav.ts      # Navegação interna do portal mockado
+│   │   └── useActiveSection.ts  ✕ # Removido — seção ativa via planeta clicado
 │   ├── types/
-│   │   └── index.ts             # Interfaces e tipos compartilhados
-│   ├── App.tsx                  # Root — layout principal + roteamento de seções
+│   │   └── index.ts             # Interfaces e tipos (inclui UiState)
+│   ├── App.tsx                  # Root — estados splash/galaxy/module + AnimatePresence
 │   ├── main.tsx                 # Entrypoint React
-│   └── index.css                # Tailwind base + variáveis CSS GI Group
+│   └── index.css                # Tailwind base + .bg-galaxy-sky + .bg-splash-sky
 ├── index.html
-├── tailwind.config.ts
+├── tailwind.config.ts           # Tokens GI Group + galaxy palette (space, stardust…)
 ├── tsconfig.json
 └── vite.config.ts
 ```
@@ -138,17 +146,22 @@ Apenas renderização. Sem fetch, sem lógica de negócio, sem estado além de m
 
 ---
 
-## 5. Navegação e Scroll
+## 5. Navegação — Galaxy Layout
 
-O relatório usa **scroll suave com âncoras** para navegação entre seções. A sidebar é fixa e destaca a seção ativa com base na posição do scroll (Intersection Observer).
+O relatório usa **navegação por estado de UI**, não scroll. A seção ativa é determinada pelo planeta clicado no mapa da galáxia.
 
 ```typescript
-// src/hooks/useActiveSection.ts
-// Usa IntersectionObserver para detectar qual seção está visível
-// e atualiza o estado da sidebar correspondente
+// src/App.tsx — fluxo de navegação
+function handlePlanetClick(sectionId: string) {
+  const index = SECTIONS.findIndex((s) => s.id === sectionId)
+  presentation.goTo(index)   // atualiza currentStep
+  setUiState('module')       // transita para estado module
+}
 ```
 
-No **modo apresentação**, a navegação é linear — apenas botões "anterior" e "próximo" estão visíveis. No **modo exploração**, a sidebar completa está disponível e o usuário pode pular para qualquer seção.
+O `currentStep` em `usePresentation` é a fonte de verdade para a seção ativa. `useActiveSection` (Intersection Observer) foi removido.
+
+No **modo apresentação**, a sidebar MiniMap some e a navegação é feita por botões Anterior/Próximo flutuantes no rodapé. No **modo exploração**, o MiniMap orbital está visível e o usuário pode pular para qualquer planeta.
 
 ---
 
@@ -231,26 +244,29 @@ export interface Provocacao {
 
 ## 8. Modo Apresentação vs Exploração
 
-O toggle de modo é global, controlado pelo `usePresentation` no `App.tsx` e passado via Context para os componentes que precisam.
+O toggle de modo é global, controlado pelo `usePresentation` no `App.tsx` e passado via Context.
 
 ```typescript
-// src/App.tsx
-const PresentationContext = createContext<PresentationContextValue>(...)
-
+// src/App.tsx — estrutura atual (Galaxy Layout)
 export function App() {
   const presentation = usePresentation()
+  const [uiState, setUiState] = useState<UiState>('splash')
+  const activeSection = SECTIONS[presentation.currentStep]
+
   return (
     <PresentationContext.Provider value={presentation}>
-      <Layout>
-        <Sidebar />
-        <main>
-          {SECTIONS.map(section => (
-            <Section key={section.id} id={section.id}>
-              <section.Component />
-            </Section>
-          ))}
-        </main>
-      </Layout>
+      <AnimatePresence mode="wait">
+        {uiState === 'splash' && <SplashScreen onComplete={() => setUiState('galaxy')} />}
+        {uiState === 'galaxy' && <GalaxyMap onPlanetClick={handlePlanetClick} ... />}
+        {uiState === 'module' && (
+          <>
+            <Header ... onGalaxyClick={() => setUiState('galaxy')} />
+            {presentation.mode === 'exploration' && <MiniMap ... />}
+            <main><activeSection.Component /></main>
+            {presentation.mode === 'presentation' && <PresentationNav />}
+          </>
+        )}
+      </AnimatePresence>
     </PresentationContext.Provider>
   )
 }
