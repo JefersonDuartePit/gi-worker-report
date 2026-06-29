@@ -65,3 +65,23 @@ Após o Implement inicial, o usuário pediu 3 ajustes adicionais, tratados na me
 **Verificações repetidas após o merge e os ajustes:** `npx tsc --noEmit` e `npm run build` sem erros.
 
 **Não verificado:** comportamento visual do modo fullscreen em navegador real (sem ferramenta de screenshot disponível neste ambiente) — recomenda-se validação manual antes do PR para `main`.
+
+## 7. Segunda rodada de ajustes (mesma sessão) — refinamento visual e funcional do protótipo
+
+O usuário revisou o resultado e apontou 5 problemas concretos, todos corrigidos:
+
+1. **Tooltips clipados/atrás de outros elementos.** Causa raiz: `DorTooltip` usava `position: absolute` dentro de containers com `overflow-hidden`/`overflow-y-auto` (ex.: `<main>` do `PortalShell`), então o tooltip era cortado pelo ancestral com overflow, independente do `z-index`. Correção: `DorTooltip` agora calcula a posição via `getBoundingClientRect()` no hover e renderiza o tooltip com `createPortal` direto em `document.body`, com `position: fixed` e `z-[9999]` — fica sempre na camada mais alta, sem ser cortado por nenhum ancestral.
+2. **Tooltip nem sempre no elemento certo.** Em várias telas o `DorTooltip` envolvia só o título da seção, não o elemento funcional que de fato resolve a dor. Movido para envolver: a lista de documentos (`TelaDocumentos`), o botão "Nova solicitação" (`TelaSolicitacoes`), o card da trilha de treinamento (`TelaTreinamentos`), e adicionado um segundo tooltip (I14) no botão "Falar com o time GI" (`TelaRescisao`).
+3. **Logo "dentro de um container azul" malfeito.** Removida a logo da GI Group + texto duplicado "GI Worker" / "Portal do Colaborador" empilhados. O usuário forneceu um SVG de logo dedicado ao produto (`logo-worker-portal.svg`, salvo em `src/assets/`); `PortalShell` agora usa só esse SVG (branco, já compatível com o fundo `gi-navy` da sidebar) com um subtítulo único e discreto abaixo.
+4. **Status de admissão não era clicável.** `TelaInicio` agora tem cada etapa da admissão como um item expansível (ícone `ChevronDown` que gira, animação de altura via Framer Motion) revelando data prevista/realizada e responsável — torna a jornada navegável, não apenas decorativa.
+5. **Pouco dado mock.** Conteúdo ilustrativo expandido em todas as telas: `TelaDocumentos` (4→6 documentos com categoria e data), `TelaSolicitacoes` (2→3 tickets com datas), `TelaTreinamentos` (módulos com duração, marcos 30/60/90 com "foco"), `TelaRescisao` (4→5 etapas com datas), `TelaDesenvolvimento` (3→4 registros com "registrado por"), `TelaInicio` (etapas de admissão com data e responsável).
+
+**Arquivo de asset novo:** `src/assets/logo-worker-portal.svg`.
+
+**Arquivos alterados nesta rodada:** `DorTooltip.tsx`, `PortalShell.tsx`, `TelaInicio.tsx`, `TelaDocumentos.tsx`, `TelaSolicitacoes.tsx`, `TelaTreinamentos.tsx`, `TelaRescisao.tsx`, `TelaDesenvolvimento.tsx`.
+
+**Verificações:** `npx tsc --noEmit` e `npm run build` sem erros após cada arquivo alterado.
+
+**Ainda não verificado:** validação visual em navegador real (sem ferramenta de screenshot neste ambiente) — o comportamento de posicionamento do tooltip via `getBoundingClientRect` deveria ser confirmado manualmente, especialmente no modo fullscreen.
+
+**Pendência explícita não resolvida:** o pedido "parece que precisa refazer tudo do zero pra ter concisão" e "não vejo o estilo do site [gigroupholding.com] refletido" foram tratados como uma lista de problemas concretos e corrigidos pontualmente, não como um redesenho completo via novo ciclo Research→Plan. Se o usuário ainda achar a experiência inconsistente após essas correções, uma nova sessão de Research dedicada à revisão visual do protótipo é o caminho recomendado pelo `CLAUDE.md`.

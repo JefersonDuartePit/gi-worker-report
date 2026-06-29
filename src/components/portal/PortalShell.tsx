@@ -8,7 +8,7 @@ import TelaRescisao from './TelaRescisao'
 import TelaDesenvolvimento from './TelaDesenvolvimento'
 import { Home, FileText, MessageSquare, BookOpen, ClipboardList, TrendingUp } from 'lucide-react'
 import type { ComponentType } from 'react'
-import logoGI from '../../assets/logo-gi-group.png'
+import logoWorker from '../../assets/logo-worker-portal.svg'
 
 interface PortalShellProps {
   fullscreen?: boolean
@@ -55,10 +55,9 @@ function PortalShell({ fullscreen = false }: PortalShellProps) {
       }
     >
       <aside className="w-[220px] bg-gi-navy flex flex-col shrink-0">
-        <div className="px-5 py-4 border-b border-white/10">
-          <img src={logoGI} alt="GI Group" className="h-6 object-contain mb-2" />
-          <div className="text-white font-bold text-sm">GI Worker</div>
-          <div className="text-white/50 text-xs mt-0.5">Portal do Colaborador</div>
+        <div className="px-5 py-5 border-b border-white/10">
+          <img src={logoWorker} alt="GI Worker" className="h-[18px] object-contain" />
+          <div className="text-white/50 text-[11px] mt-1.5">Portal do Colaborador</div>
         </div>
 
         <nav className="flex-1 py-4 px-3 space-y-1">

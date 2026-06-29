@@ -8,6 +8,7 @@ import Button from '../ui/Button'
 interface SolicitacaoIlustrativa {
   ticket: string
   tipo: string
+  data: string
   status: 'aberta' | 'em-andamento' | 'concluida'
 }
 
@@ -21,8 +22,9 @@ const TIPOS: { value: TipoSolicitacao; label: string }[] = [
 ]
 
 const SOLICITACOES: SolicitacaoIlustrativa[] = [
-  { ticket: '#3021', tipo: 'Atualização cadastral', status: 'em-andamento' },
-  { ticket: '#3015', tipo: 'Dúvida sobre benefícios', status: 'concluida' },
+  { ticket: '#3021', tipo: 'Atualização cadastral', data: '26/06/2026', status: 'em-andamento' },
+  { ticket: '#3015', tipo: 'Dúvida sobre benefícios', data: '18/06/2026', status: 'concluida' },
+  { ticket: '#3002', tipo: 'Envio de atestado médico', data: '09/06/2026', status: 'concluida' },
 ]
 
 const STATUS_BADGE: Record<SolicitacaoIlustrativa['status'], { variant: 'concluido' | 'andamento'; label: string }> = {
@@ -45,10 +47,13 @@ function TelaSolicitacoes() {
   return (
     <div className="p-6 space-y-4">
       <div className="flex items-center justify-between">
-        <DorTooltip dorId="D05" iniciativaId="I07">
+        <div>
           <h2 className="text-base font-bold text-gi-dark">Solicitações</h2>
+          <p className="text-sm text-gi-charcoal mt-0.5">Acompanhe seus chamados em um único lugar</p>
+        </div>
+        <DorTooltip dorId="D05" iniciativaId="I07">
+          <Button variant="primary" onClick={() => setModalOpen(true)}>+ Nova solicitação</Button>
         </DorTooltip>
-        <Button variant="primary" onClick={() => setModalOpen(true)}>+ Nova solicitação</Button>
       </div>
 
       <div className="space-y-2">
@@ -56,7 +61,7 @@ function TelaSolicitacoes() {
           <Card key={s.ticket} className="flex items-center justify-between p-4">
             <div>
               <div className="text-sm font-bold text-gi-dark">{s.tipo}</div>
-              <div className="text-xs text-gi-charcoal">{s.ticket}</div>
+              <div className="text-xs text-gi-charcoal">{s.ticket} · aberto em {s.data}</div>
             </div>
             <Badge variant={STATUS_BADGE[s.status].variant}>{STATUS_BADGE[s.status].label}</Badge>
           </Card>
