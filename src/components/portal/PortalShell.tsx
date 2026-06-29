@@ -45,19 +45,20 @@ const NAV_ITEMS: NavItem[] = [
 function PortalShell({ fullscreen = false }: PortalShellProps) {
   const { screen, navigate } = usePortalNav()
   const ActiveScreen = SCREENS_MAP[screen]
+  const activeItem = NAV_ITEMS.find(i => i.screen === screen)
+  const ActiveIcon = activeItem?.icon
 
   return (
     <div
       className={
         fullscreen
           ? 'flex h-full w-full overflow-hidden'
-          : 'flex h-[720px] rounded-2xl overflow-hidden border border-gi-border shadow-xl'
+          : 'flex h-[720px] rounded-xl overflow-hidden border border-gi-border shadow-sm'
       }
     >
       <aside className="w-[220px] bg-gi-navy flex flex-col shrink-0">
         <div className="px-5 py-5 border-b border-white/10">
           <img src={logoWorker} alt="GI Worker" className="h-[18px] object-contain" />
-          <div className="text-white/50 text-[11px] mt-1.5">Portal do Colaborador</div>
         </div>
 
         <nav className="flex-1 py-4 px-3 space-y-1">
@@ -67,41 +68,38 @@ function PortalShell({ fullscreen = false }: PortalShellProps) {
               <button
                 key={item.screen}
                 onClick={() => navigate(item.screen)}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all text-left ${
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors text-left ${
                   screen === item.screen
-                    ? 'bg-white/15 text-white border-l-[3px] border-gi-blue pl-[9px]'
-                    : 'text-white/70 hover:bg-white/10 hover:text-white'
+                    ? 'bg-white/10 text-white'
+                    : 'text-white/60 hover:bg-white/5 hover:text-white'
                 }`}
               >
                 <Icon className="w-4 h-4 shrink-0" />
-                {item.label}
+                <span className="font-medium tracking-[-0.01em]">{item.label}</span>
               </button>
             )
           })}
         </nav>
 
-        <div className="px-4 py-4 border-t border-white/10">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-full bg-gi-blue flex items-center justify-center text-white text-xs font-bold shrink-0">
+        <div className="shrink-0 border-t border-white/10 px-4 py-4">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-gi-blue flex items-center justify-center text-white text-xs font-bold shrink-0">
               AS
             </div>
-            <div>
-              <div className="text-white text-xs font-bold leading-tight">Ana Silva</div>
-              <div className="text-white/50 text-[10px]">Operadora · Shopee SP</div>
+            <div className="min-w-0">
+              <p className="text-white text-[13px] font-medium leading-tight truncate">Ana Silva</p>
+              <p className="text-white/50 text-[11px] leading-tight">Operadora · Shopee SP</p>
             </div>
           </div>
         </div>
       </aside>
 
-      <div className="flex-1 flex flex-col bg-[#F8F9FA] overflow-hidden">
-        <header className="h-[52px] bg-white border-b border-gi-border flex items-center px-5 shrink-0">
-          <span className="text-sm font-bold text-gi-dark">
-            {NAV_ITEMS.find(i => i.screen === screen)?.label}
-          </span>
-          <div className="ml-auto flex items-center gap-1.5">
-            <span className="text-[11px] text-gi-charcoal">Dados ilustrativos</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-gi-amber inline-block" />
-          </div>
+      <div className="flex-1 flex flex-col bg-gi-light overflow-hidden">
+        <header className="h-12 bg-white border-b border-gi-border flex items-center px-5 shrink-0 gap-3">
+          {ActiveIcon && <ActiveIcon className="w-4 h-4 text-gi-charcoal" />}
+          <span className="text-[14px] font-semibold text-gi-navy">{activeItem?.label}</span>
+          <span className="text-gi-border">|</span>
+          <span className="text-xs text-gi-charcoal">dados ilustrativos para fins de demonstração</span>
         </header>
         <main className="flex-1 overflow-y-auto">
           {screen === 'inicio' ? <TelaInicio onNavigate={navigate} /> : ActiveScreen && <ActiveScreen />}

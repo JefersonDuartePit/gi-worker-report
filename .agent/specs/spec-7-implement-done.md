@@ -85,3 +85,30 @@ O usuário revisou o resultado e apontou 5 problemas concretos, todos corrigidos
 **Ainda não verificado:** validação visual em navegador real (sem ferramenta de screenshot neste ambiente) — o comportamento de posicionamento do tooltip via `getBoundingClientRect` deveria ser confirmado manualmente, especialmente no modo fullscreen.
 
 **Pendência explícita não resolvida:** o pedido "parece que precisa refazer tudo do zero pra ter concisão" e "não vejo o estilo do site [gigroupholding.com] refletido" foram tratados como uma lista de problemas concretos e corrigidos pontualmente, não como um redesenho completo via novo ciclo Research→Plan. Se o usuário ainda achar a experiência inconsistente após essas correções, uma nova sessão de Research dedicada à revisão visual do protótipo é o caminho recomendado pelo `CLAUDE.md`.
+
+## 8. Terceira rodada — refatoração visual e de arquitetura de informação completa
+
+A correção pontual da rodada 2 não foi suficiente. O usuário apontou que o problema era estrutural: arquitetura de informação genérica (telas organizadas por funcionalidade, não por jornada), hierarquia visual rasa (tudo `text-xs`/`text-sm` sem escala real), e uso de padrões visuais inventados (borda lateral no item ativo do menu) que não existem nem na referência nem no site real. O usuário forneceu uma referência adicional (`src/ref/Portal da GI/`, um export Figma Make) e pediu para usá-la como base de execução visual — mas deixou claro que a persona/funcionalidade dela (painel interno de analista CARE para acompanhar admissão) **não** deve ser migrada; só os padrões de UI.
+
+**Pesquisa feita antes de redesenhar:**
+- `curl` direto em `gigroupholding.com` (não só `WebFetch`, que não enxerga CSS) → confirmou `#00145A` e `#1D57FB` como as cores reais mais usadas (já corretas no projeto), fonte Lato/Roboto (já correta), mas revelou `border-radius` real de ~8px e `box-shadow` suave e difuso (`0 2px 45px rgba(169,169,169,.5)`) — bem mais discreto que o `shadow-xl`/`rounded-2xl` que estávamos usando.
+- `WebFetch` em `gigroupholding.com/our-company/` → confirmou narrativa story-first, hierarquia tipográfica forte (títulos grandes vs. corpo pequeno), espaçamento generoso entre seções, uso de timeline cronológica como dispositivo narrativo.
+- Explorado `src/ref/Portal da GI/` (agente dedicado) → extraído o padrão real de componentes: `StatCard` (fundo branco, `shadow-sm`, acento de borda **superior** colorido, não preenchimento), `StatusBadge` (pílula com ponto colorido), sidebar com estado ativo = **só troca de fundo** (`bg-[#1d293d]`, sem borda/contorno), topbar com ícone + título + separador + meta.
+
+**Mudanças estruturais:**
+1. **`docs/DESIGN-SYSTEM.md` §8 reescrita** com: princípio de IA (jornada > funcionalidades), paleta/sombra corrigidas (`shadow-sm`, nunca `shadow-xl`/`2xl`), escala tipográfica real do portal, especificação dos componentes `StatCard`/`StatusPill`/sidebar/topbar, proibição explícita de acento de borda lateral em item ativo.
+2. **Novos componentes isolados em `src/components/portal/`:** `StatusPill.tsx` (pílula + ponto, substitui o uso de `ui/Badge` no portal), `StatCard.tsx` (métrica com acento de borda superior), `JornadaOverview.tsx` (**novo** — stepper de 3 estágios Admissão → Ciclo Ativo → Offboarding, clicável, com atalhos diretos para Documentos/Solicitações/Treinamentos/Desenvolvimento). Este último resolve diretamente "não está claro as jornadas aqui" / "maior visão 360 dos fluxos".
+3. **`PortalShell.tsx` reescrito:** removida a borda lateral azul do item ativo do menu (agora só `bg-white/10`, igual à referência); logo do portal sem mais nenhum texto redundante embaixo; topbar interna no padrão ícone+título+separador+meta; sombra do shell trocada de `shadow-xl`/`rounded-2xl` para `shadow-sm`/`rounded-xl`.
+4. **Todas as 6 telas reescritas** usando `StatusPill`/`StatCard`, hierarquia tipográfica real (`text-xl font-bold text-gi-navy` para título de tela, `text-[10px] uppercase tracking-widest` para labels, `text-3xl font-bold` para métricas), cards `shadow-sm` em vez de bordas planas sem elevação.
+5. **`TelaInicio.tsx`** agora abre com `JornadaOverview` antes de qualquer métrica — a admissão (antes a única coisa visível) passou a ser um card secundário colapsável ("Histórico da admissão"), porque ela é só uma etapa já concluída, não o centro da experiência do ciclo ativo.
+
+**Problema de infraestrutura encontrado e corrigido:** `src/ref/Portal da GI/` é um app standalone completo (com suas próprias dependências shadcn/radix) que estava sendo capturado pelo `tsc`/Tailwind do projeto principal (`tsconfig.json` incluía `src` sem exclusão), quebrando o type-check com dezenas de erros de módulo não encontrado. Corrigido com `"exclude": ["src/ref"]` em `tsconfig.json` e um glob negativo (`'!./src/ref/**'`) em `tailwind.config.ts`.
+
+**Arquivos novos:** `src/components/portal/StatusPill.tsx`, `StatCard.tsx`, `JornadaOverview.tsx`.
+**Arquivos reescritos:** `PortalShell.tsx` e as 6 `Tela*.tsx`.
+**Arquivos de config corrigidos:** `tsconfig.json`, `tailwind.config.ts`.
+**Documentação atualizada:** `docs/DESIGN-SYSTEM.md` §8.
+
+**Verificação:** `npx tsc --noEmit` e `npm run build` sem erros (1920 módulos, bundle 370KB/114KB gzip).
+
+**Ainda não verificado:** renderização real em navegador. O `JornadaOverview` e os novos cards não foram visualmente confirmados — esta é a maior lacuna de verificação até agora, dado que toda a sessão foi sobre qualidade visual.

@@ -1,8 +1,5 @@
 import DorTooltip from './DorTooltip'
-import ProgressBar from '../ui/ProgressBar'
-import Badge from '../ui/Badge'
-import Card from '../ui/Card'
-import Button from '../ui/Button'
+import StatusPill from './StatusPill'
 
 interface EtapaRescisao {
   label: string
@@ -21,45 +18,51 @@ const ETAPAS: EtapaRescisao[] = [
   { label: 'Documentos disponibilizados', data: 'previsto p/ 04/07/2026', status: 'futura' },
 ]
 
-const STATUS_BADGE: Record<EtapaRescisao['status'], { variant: 'concluido' | 'andamento' | 'bloqueado'; label: string }> = {
+const STATUS_PILL: Record<EtapaRescisao['status'], { variant: 'concluido' | 'andamento' | 'bloqueado'; label: string }> = {
   concluida: { variant: 'concluido', label: 'Concluída' },
   'em-andamento': { variant: 'andamento', label: 'Em andamento' },
   futura: { variant: 'bloqueado', label: 'Futura' },
 }
 
 function TelaRescisao() {
+  const progresso = Math.round((DIA_ATUAL / DIAS_TOTAL) * 100)
+
   return (
-    <div className="p-6 space-y-4">
+    <div className="p-6 space-y-5">
       <div>
-        <h2 className="text-base font-bold text-gi-dark">Rescisão</h2>
-        <p className="text-sm text-gi-charcoal mt-0.5">Acompanhe o seu processo de desligamento</p>
+        <h2 className="text-xl font-bold text-gi-navy">Rescisão</h2>
+        <p className="text-sm text-gi-text mt-1">Acompanhe o seu processo de desligamento</p>
       </div>
 
       <DorTooltip dorId="D09" iniciativaId="I13">
-        <Card>
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-bold text-gi-dark">Processo de rescisão</span>
-            <span className="text-xs text-gi-charcoal">Dia {DIA_ATUAL} de {DIAS_TOTAL}</span>
+        <div className="bg-white rounded-xl border border-gi-border shadow-sm p-4">
+          <div className="flex justify-between items-center mb-1">
+            <p className="text-[10px] font-bold text-gi-charcoal uppercase tracking-widest">Processo de rescisão</p>
+            <span className="text-xs text-gi-charcoal font-medium">Dia {DIA_ATUAL} de {DIAS_TOTAL}</span>
           </div>
-          <ProgressBar value={DIA_ATUAL} max={DIAS_TOTAL} />
-          <p className="text-xs text-gi-charcoal mt-2">Previsão de disponibilização dos documentos: 04/07/2026</p>
-        </Card>
+          <div className="h-1.5 bg-gi-border rounded-full overflow-hidden">
+            <div className="h-full bg-gi-blue rounded-full" style={{ width: `${progresso}%` }} />
+          </div>
+          <p className="text-xs text-gi-text mt-3">Previsão de disponibilização dos documentos: 04/07/2026</p>
+        </div>
       </DorTooltip>
 
-      <div className="space-y-2">
+      <div className="bg-white rounded-xl border border-gi-border shadow-sm divide-y divide-gi-border">
         {ETAPAS.map(etapa => (
-          <Card key={etapa.label} className="flex items-center justify-between p-4">
+          <div key={etapa.label} className="flex items-center justify-between p-4">
             <div>
               <div className="text-sm font-bold text-gi-dark">{etapa.label}</div>
               <div className="text-[11px] text-gi-charcoal mt-0.5">{etapa.data}</div>
             </div>
-            <Badge variant={STATUS_BADGE[etapa.status].variant}>{STATUS_BADGE[etapa.status].label}</Badge>
-          </Card>
+            <StatusPill variant={STATUS_PILL[etapa.status].variant}>{STATUS_PILL[etapa.status].label}</StatusPill>
+          </div>
         ))}
       </div>
 
       <DorTooltip dorId="D09" iniciativaId="I14">
-        <Button variant="secondary">Falar com o time GI</Button>
+        <button className="flex items-center gap-1.5 text-xs font-medium text-gi-charcoal border border-gi-border bg-white px-3 py-1.5 rounded-lg hover:bg-gi-light transition-colors">
+          Falar com o time GI
+        </button>
       </DorTooltip>
     </div>
   )
