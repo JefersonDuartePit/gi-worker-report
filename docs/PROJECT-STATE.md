@@ -1,10 +1,10 @@
 # PROJECT-STATE.md — GI Group · Portal do Worker
 
-**Atualizado em:** 23 de junho de 2026
-**Status do projeto:** Spec 1 concluída · Galaxy Layout redesign em implementação
-**Specs concluídas:** Spec 1 — Setup e Shell
-**Spec em andamento:** Galaxy Layout (plano pronto, subagentes em execução)
-**Próxima spec após galaxy:** Spec 2 — S1 Hero
+**Atualizado em:** 29 de junho de 2026
+**Status do projeto:** Specs 1–8 concluídas · Todas as seções de conteúdo implementadas
+**Specs concluídas:** Specs 1–8 (Setup, S1 Hero, S2 Diagnóstico, S3 Dores, S4 Arquitetura, S5 Iniciativas, S6 Portal, S7 Provocações)
+**Spec em andamento:** —
+**Próxima etapa:** merge de `spec/07-portal-do-worker` → main · revisão de links pendentes (Spec 6)
 
 ---
 
