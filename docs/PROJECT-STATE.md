@@ -61,7 +61,7 @@ O relatório será apresentado primeiro ao service designer interno da Perform I
 | 5    | S4 — Arquitetura As-is/To-be  | ✅ Concluída         | `spec-5-implement-done.md`                         |
 | 6    | S5 — Iniciativas              | ✅ Concluída         | `spec-6-implement-done.md`                         |
 | 7    | S6 — Portal do Worker         | 🔀 Em paralelo       | `spec-7-research-done.md`, `spec-7-plan-done.md`   |
-| 8    | S7 — Provocações e Próximos Passos | ⬜ Pendente   | —                                                  |
+| 8    | S7 — Provocações e Próximos Passos | ✅ Concluída  | `spec-8-implement-done.md`                         |
 
 ---
 
@@ -140,6 +140,25 @@ gi-worker-report/
 ---
 
 ## 6. Histórico de Atualizações
+
+### Atualização — Spec 8 — S7 Provocações e Próximos Passos — 2026-06-29
+
+**Status:** concluída ✅
+
+**Artefatos gerados:**
+- `src/types/index.ts` (modificado — `FasePlano` adicionada ao final)
+- `src/data/provocacoes.ts` (modificado — `FASES` e `PROXIMOS_PASSOS` adicionados)
+- `src/components/sections/S7Provocacoes/ProvocacaoCard.tsx` (criado)
+- `src/components/sections/S7Provocacoes/PlanoFaseado.tsx` (criado)
+- `src/components/sections/S7Provocacoes/index.tsx` (stub substituído)
+- `.agent/specs/spec-8-implement-done.md`
+
+**Desvios do plano:**
+- Nenhum
+
+**Próxima spec:** — (S7 é a última seção de conteúdo do relatório)
+
+---
 
 ### Atualização — Galaxy Layout Redesign — 2026-06-23
 
