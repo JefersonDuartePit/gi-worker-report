@@ -3,3 +3,4 @@ dist/
 .agent/scratch/
 .superpowers/
 .playwright-mcp/
+.DS_Store
