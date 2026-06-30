@@ -56,7 +56,8 @@ function PortalShell({ fullscreen = false }: PortalShellProps) {
           : 'flex h-[720px] rounded-xl overflow-hidden border border-gi-border shadow-sm'
       }
     >
-      <aside className="w-[220px] bg-gi-navy flex flex-col shrink-0">
+      {/* ── Sidebar (desktop only) ── */}
+      <aside className="hidden md:flex w-[220px] bg-gi-navy flex-col shrink-0">
         <div className="px-5 py-5 border-b border-white/10">
           <img src={logoWorker} alt="GI Worker" className="h-[18px] object-contain" />
         </div>
@@ -94,16 +95,43 @@ function PortalShell({ fullscreen = false }: PortalShellProps) {
         </div>
       </aside>
 
+      {/* ── Content area ── */}
       <div className="flex-1 flex flex-col bg-gi-light overflow-hidden">
-        <header className="h-12 bg-white border-b border-gi-border flex items-center px-5 shrink-0 gap-3">
-          {ActiveIcon && <ActiveIcon className="w-4 h-4 text-gi-charcoal" />}
-          <span className="text-[14px] font-semibold text-gi-navy">{activeItem?.label}</span>
-          <span className="text-gi-border">|</span>
-          <span className="text-xs text-gi-charcoal">dados ilustrativos para fins de demonstração</span>
+        {/* Topbar */}
+        <header className="h-12 bg-white border-b border-gi-border flex items-center px-4 md:px-5 shrink-0 gap-3">
+          {/* Mobile: logo instead of breadcrumb */}
+          <img src={logoWorker} alt="GI Worker" className="h-[14px] object-contain md:hidden" />
+          {/* Desktop: icon + tela label */}
+          {ActiveIcon && <ActiveIcon className="w-4 h-4 text-gi-charcoal hidden md:block" />}
+          <span className="text-[14px] font-semibold text-gi-navy hidden md:block">{activeItem?.label}</span>
+          <span className="text-gi-border hidden md:block">|</span>
+          <span className="text-xs text-gi-charcoal ml-auto md:ml-0">dados ilustrativos</span>
         </header>
+
+        {/* Scrollable content */}
         <main className="flex-1 overflow-y-auto">
           {screen === 'inicio' ? <TelaInicio onNavigate={navigate} /> : ActiveScreen && <ActiveScreen />}
         </main>
+
+        {/* ── Bottom nav (mobile only, in-flow) ── */}
+        <nav className="md:hidden shrink-0 h-16 bg-white border-t border-gi-border flex items-center justify-around px-2">
+          {NAV_ITEMS.map(item => {
+            const Icon = item.icon
+            const isActive = screen === item.screen
+            return (
+              <button
+                key={item.screen}
+                onClick={() => navigate(item.screen)}
+                className={`flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-lg transition-colors min-w-0 ${
+                  isActive ? 'text-gi-blue' : 'text-gi-charcoal'
+                }`}
+              >
+                <Icon className="w-5 h-5 shrink-0" />
+                <span className="text-[9px] font-medium leading-tight truncate max-w-[48px]">{item.label}</span>
+              </button>
+            )
+          })}
+        </nav>
       </div>
     </div>
   )

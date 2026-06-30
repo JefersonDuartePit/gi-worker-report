@@ -50,7 +50,7 @@ function JornadaOverview({ onNavigate }: JornadaOverviewProps) {
       <p className="text-xs text-gi-text mt-4">
         Você está no <span className="font-bold text-gi-navy">ciclo ativo</span> do seu contrato com a Shopee SP. Acesse rapidamente:
       </p>
-      <div className="grid grid-cols-4 gap-2 mt-3">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-3">
         {CICLO_ATIVO_ATALHOS.map(atalho => (
           <button
             key={atalho.screen}

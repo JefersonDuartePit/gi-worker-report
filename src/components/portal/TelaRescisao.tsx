@@ -28,7 +28,7 @@ function TelaRescisao() {
   const progresso = Math.round((DIA_ATUAL / DIAS_TOTAL) * 100)
 
   return (
-    <div className="p-6 space-y-5">
+    <div className="p-4 md:p-6 space-y-5">
       <div>
         <h2 className="text-xl font-bold text-gi-navy">Rescisão</h2>
         <p className="text-sm text-gi-text mt-1">Acompanhe o seu processo de desligamento</p>

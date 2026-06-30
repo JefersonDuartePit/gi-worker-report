@@ -41,7 +41,7 @@ function TelaInicio({ onNavigate }: TelaInicioProps) {
   }
 
   return (
-    <div className="p-6 space-y-5">
+    <div className="p-4 md:p-6 space-y-5">
       <div>
         <h2 className="text-xl font-bold text-gi-navy">Olá, Ana Silva</h2>
         <p className="text-sm text-gi-text mt-1">Acompanhe sua jornada na GI Group</p>

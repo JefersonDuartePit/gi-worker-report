@@ -51,7 +51,7 @@ function TelaTreinamentos() {
   const progresso = Math.round((concluidos / MODULOS.length) * 100)
 
   return (
-    <div className="p-6 space-y-5">
+    <div className="p-4 md:p-6 space-y-5">
       <div>
         <h2 className="text-xl font-bold text-gi-navy">Treinamentos</h2>
         <p className="text-sm text-gi-text mt-1">Sua trilha de integração na GI Group</p>

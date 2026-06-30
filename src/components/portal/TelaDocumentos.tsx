@@ -26,7 +26,7 @@ const STATUS_PILL: Record<DocumentoIlustrativo['status'], { variant: 'concluido'
 
 function TelaDocumentos() {
   return (
-    <div className="p-6 space-y-5">
+    <div className="p-4 md:p-6 space-y-5">
       <div>
         <h2 className="text-xl font-bold text-gi-navy">Meus Documentos</h2>
         <p className="text-sm text-gi-text mt-1">Acesse e baixe seus documentos</p>

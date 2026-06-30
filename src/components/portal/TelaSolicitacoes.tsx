@@ -44,14 +44,16 @@ function TelaSolicitacoes() {
   }
 
   return (
-    <div className="p-6 space-y-5">
-      <div className="flex items-center justify-between">
+    <div className="p-4 md:p-6 space-y-5">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="text-xl font-bold text-gi-navy">Solicitações</h2>
           <p className="text-sm text-gi-text mt-1">Acompanhe seus chamados em um único lugar</p>
         </div>
         <DorTooltip dorId="D05" iniciativaId="I07">
-          <Button variant="primary" onClick={() => setModalOpen(true)}>+ Nova solicitação</Button>
+          <Button variant="primary" className="self-start sm:self-auto" onClick={() => setModalOpen(true)}>
+            + Nova solicitação
+          </Button>
         </DorTooltip>
       </div>
 
@@ -95,7 +97,7 @@ function TelaSolicitacoes() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="bg-white rounded-xl p-6 w-80 shadow-lg border border-gi-border"
+              className="bg-white rounded-xl p-6 w-[calc(100vw-2rem)] max-w-sm shadow-lg border border-gi-border"
             >
               <h3 className="font-bold text-gi-navy mb-4">Nova solicitação</h3>
               <div className="space-y-1.5 mb-4">
