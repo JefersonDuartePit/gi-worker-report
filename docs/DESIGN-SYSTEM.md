@@ -321,22 +321,53 @@ Cada seção ocupa pelo menos 100vh e tem seu próprio esquema visual.
 
 ## 8. Portal do Worker — Design Interno
 
-O portal mockado usa uma identidade visual limpa e moderna, derivada da GI Group mas adaptada para um produto digital de uso do worker.
+O portal mockado usa uma identidade visual limpa e moderna, derivada da GI Group mas adaptada para um produto digital de uso do worker. A referência de execução é **dupla**: a paleta e o tom vêm do site institucional (gigroupholding.com — navy `#00145A`, azul `#1D57FB`, Lato, espaçamento generoso, baixo ruído visual); a linguagem de componentes de produto (cards, badges, sidebar, topbar) vem do protótipo de referência em `src/ref/` ("Portal GI Conecta"), que é **clean e baseado em sombra suave**, nunca em bordas/contornos coloridos para indicar estado.
 
-### Paleta interna do portal
+### 8.1 Princípio de arquitetura de informação — jornada, não funcionalidades
 
-- Background app: `#F8F9FA` (quase branco)
-- Sidebar do portal: `#00145A` (navy)
-- Topbar: branco com sombra sutil
-- Cards: branco com borda `#E0E4E8`
-- Destaque de progresso: `#1D57FB`
-- Status "concluído": `#49B100`
-- Status "pendente": `#FFC300`
-- Status "bloqueado": `#DBDBDB`
+O erro mais comum a evitar: organizar o portal como uma lista de funcionalidades soltas (uma tela por feature). A tela de Início **deve** abrir com uma visão da jornada macro do worker — Admissão (referência) → Ciclo Ativo → Offboarding — como um componente de progresso/timeline clicável, e só então mostrar métricas e atalhos. Cada tela secundária (Documentos, Solicitações, Treinamentos, Rescisão, Desenvolvimento) é uma sub-jornada dentro do Ciclo Ativo ou Offboarding, não um destino isolado.
 
-### Fonte do portal
+### 8.2 Paleta interna do portal
 
-Mesma família Lato, mas em tamanhos menores (12-14px) para simular uma interface real de produto.
+| Uso | Token / valor |
+|---|---|
+| Background do app | `bg-gi-light` (`#EFEFEF`) ou `#F8F9FA` — nunca branco puro, para destacar os cards |
+| Sidebar do portal | `bg-gi-navy` (`#00145A`) |
+| Topbar interna | branco, `border-b border-gi-border`, sem sombra forte |
+| Cards | branco, `border border-gi-border`, `rounded-xl`, **`shadow-sm`** (nunca `shadow-lg`/`shadow-xl`/`shadow-2xl` — o site real usa sombra difusa e suave, não projetada) |
+| Destaque de progresso | `gi-blue` |
+| Status "concluído" | `gi-green` |
+| Status "pendente/atenção" | `gi-amber` |
+| Status "bloqueado/neutro" | `gi-border` / `gi-charcoal` |
+
+### 8.3 Hierarquia tipográfica do portal
+
+Diferente do relatório (que é uma apresentação), o portal simula um produto real — por isso a hierarquia precisa ser mais rica que "tudo `text-sm`/`text-xs`":
+
+| Elemento | Classe |
+|---|---|
+| Título de tela | `text-xl font-bold text-gi-navy` |
+| Subtítulo de tela | `text-sm text-gi-text mt-1` |
+| Label de métrica/seção (uppercase) | `text-[10px] font-bold text-gi-charcoal uppercase tracking-widest` |
+| Valor de métrica em destaque | `text-3xl font-bold text-gi-navy` |
+| Corpo de card | `text-sm text-gi-text` |
+| Metadado/legenda | `text-[11px] text-gi-charcoal` |
+
+### 8.4 Componentes de produto do portal
+
+**Stat card (métrica em destaque):** fundo branco, `rounded-xl border border-gi-border shadow-sm p-4`, com **acento de borda superior** (`border-t-2 border-t-{cor-semântica}`) quando a métrica tiver conotação (atenção, sucesso, etc.) — nunca preencher o card inteiro com cor. Label pequena uppercase + valor grande + legenda pequena (ver 8.3).
+
+**Status pill:** badge em formato pílula com um ponto colorido à esquerda do texto (`<span className="w-1.5 h-1.5 rounded-full" />` + texto), nunca um bloco sólido grande de cor saturada. Reservado para status de fluxo (documento, solicitação, etapa).
+
+**Sidebar — estado ativo:** apenas troca de fundo (`bg-white/10 text-white`), **proibido** usar borda lateral, outline ou qualquer acento decorativo extra no item ativo — o protótipo de referência não usa isso, e adicionar quebra a limpeza do padrão.
+
+**Topbar interna do portal:** ícone pequeno + título da tela + separador (`|`) + metadado à direita (ex.: "Dados ilustrativos"), espelhando o padrão do protótipo de referência (`ClipboardList` + título + data, no canto direito ações/indicadores).
+
+**Banner de alerta contextual:** quando houver algo que demande atenção imediata (ex.: documento pendente, prazo curto), usar banner `bg-red-50 border border-red-200 rounded-xl px-4 py-3` com ícone — não apenas um badge.
+
+### 8.5 Fonte do portal
+
+Mesma família Lato, mas em tamanhos menores (11–14px no corpo) para simular uma interface real de produto — exceto títulos de tela e valores de métrica, que usam escala maior (ver 8.3) para criar hierarquia real.
 
 ---
 
