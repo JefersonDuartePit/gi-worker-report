@@ -32,7 +32,7 @@ function TelaDocumentos() {
       </div>
 
       {/* Contrato pendente de assinatura — D02 */}
-      <DorTooltip dorId="D02" iniciativaId="I05">
+      <DorTooltip dorId="D02" iniciativaId="I05" className="block">
         <div className="bg-white rounded-xl border-2 border-gi-blue shadow-sm p-4">
           <div className="flex items-start justify-between gap-3">
             <div>
@@ -55,7 +55,7 @@ function TelaDocumentos() {
       </DorTooltip>
 
       {/* Demais documentos — D11 */}
-      <DorTooltip dorId="D11" iniciativaId="I17">
+      <DorTooltip dorId="D11" iniciativaId="I17" className="block">
         <div className="bg-white rounded-xl border border-gi-border shadow-sm divide-y divide-gi-border">
           {DOCUMENTOS.map(doc => (
             <div key={doc.nome} className="flex items-center justify-between p-4">
