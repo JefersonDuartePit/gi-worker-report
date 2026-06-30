@@ -109,11 +109,11 @@ export const INICIATIVAS: Iniciativa[] = [
     descricao: 'Criar portal de autoatendimento para o worker acessar documentos, holerites, benefícios, férias e acompanhar seu contrato sem depender de chamados.',
     jornada: 'ciclo-ativo',
     personas: ['worker', 'colaborador-gi'],
-    doresResolvidas: ['D06', 'D07'],
+    doresResolvidas: ['D06', 'D07', 'D12'],
     sistemaSubstituido: 'Volume de chamados repetitivos — acesso via WhatsApp e e-mail',
     esforco: 'alto',
     impacto: 'alto',
-    telasRelacionadas: ['inicio', 'documentos', 'treinamentos'],
+    telasRelacionadas: ['inicio', 'documentos', 'treinamentos', 'desenvolvimento'],
   },
   {
     id: 'I11',
