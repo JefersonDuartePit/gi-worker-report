@@ -59,7 +59,7 @@ function PortalShell({ fullscreen = false }: PortalShellProps) {
       {/* ── Sidebar (desktop only) ── */}
       <aside className="hidden md:flex w-[220px] bg-gi-navy flex-col shrink-0">
         <div className="px-5 py-5 border-b border-white/10">
-          <img src={logoWorker} alt="GI Worker" className="h-[18px] object-contain" />
+          <img src={logoWorker} alt="GI Worker" className="h-[36px] object-contain" />
         </div>
 
         <nav className="flex-1 py-4 px-3 space-y-1">
