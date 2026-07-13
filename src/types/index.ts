@@ -8,6 +8,11 @@ export type Impacto = 'baixo' | 'medio' | 'alto'
 
 export type StatusSistema = 'usa' | 'integra' | 'substitui' | 'nao-toca'
 
+// 'confirmado': decisão ou classificação dita literalmente pela Carol/GI em reunião ou documento oficial
+// 'documentado': derivado do workshop ou de documentos internos da GI, sem citação direta da Carol
+// 'inferido': leitura/hipótese da Perform IT sem decisão da GI por trás — sujeito a validação
+export type ConfiancaClassificacao = 'confirmado' | 'documentado' | 'inferido'
+
 export interface Iniciativa {
   id: string
   titulo: string
@@ -40,6 +45,8 @@ export interface Sistema {
   restricao?: string
   problema: string
   decisaoProposta: string
+  confianca: ConfiancaClassificacao
+  fonte: string
 }
 
 export interface Provocacao {

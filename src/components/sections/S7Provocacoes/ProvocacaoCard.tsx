@@ -10,8 +10,8 @@ interface DestinatarioStyle {
 }
 
 const DESTINATARIO_STYLES: Record<Provocacao['destinatario'], DestinatarioStyle> = {
-  carol:  { label: 'Para: Carol · TI',     className: 'bg-gi-blue/20 text-gi-comet border border-gi-blue/30' },
-  jansen: { label: 'Para: Jansen · CEO',   className: 'bg-gi-amber/20 text-gi-amber border border-gi-amber/30' },
+  carol:  { label: 'Para: Carol',     className: 'bg-gi-blue/20 text-gi-comet border border-gi-blue/30' },
+  jansen: { label: 'Para: Jansen',   className: 'bg-gi-amber/20 text-gi-amber border border-gi-amber/30' },
   ambos:  { label: 'Para: Carol + Jansen', className: 'bg-gi-green/20 text-gi-green border border-gi-green/30' },
 }
 

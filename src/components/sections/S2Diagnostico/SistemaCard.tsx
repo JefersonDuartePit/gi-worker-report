@@ -29,6 +29,7 @@ function SistemaCard({ sistema }: SistemaCardProps) {
             <span className="font-bold">Decisão: </span>
             {sistema.decisaoProposta}
           </p>
+          {/* sistema.confianca / sistema.fonte existem para rastreabilidade interna (auditoria de fontes) — não exibir no relatório. */}
         </div>
         <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-4 border-transparent border-t-gi-dark" />
       </div>

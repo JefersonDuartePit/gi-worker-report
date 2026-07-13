@@ -84,7 +84,7 @@
 | Não toca      | Sistemas globais — intocáveis sem aprovação da matriz  | `gi-red`      |
 
 **Sistemas mapeados:**
-- IM (Usa/Integra)
+- IM (Integra)
 - GINFOR/Plataforma de Folha (Substitui — mudança prevista)
 - Spinner (Não toca — RP global)
 - Fusion (Substitui — duplicidade com IM, não é intocável)
@@ -110,6 +110,7 @@
 
 - [ ] Quatro quadrantes visualmente distintos
 - [ ] Todos os 15 sistemas mapeados com dados corretos (12 do mapeamento original + Zeev e DocSign, via cruzamento com o Toolkit de Admissão + Fusion, separado do Spinner via cruzamento com a transcrição de Alinhamento TI)
+- [ ] Cada sistema tem campos `confianca` ('confirmado' | 'documentado' | 'inferido') e `fonte` (citação da origem da classificação) — uso interno/debug, não exibidos no relatório; rastreabilidade adicionada após auditoria de fontes; corrigiu status do IM de "usa" para "integra" (contradição com CONTEXT.md §2.2, que já registrava a migração da admissão para OutSystems)
 - [ ] Tooltip funcional ao hover com função + problema + decisão
 - [ ] Filtro por quadrante funcional
 - [ ] Animação de entrada por quadrante (stagger)
