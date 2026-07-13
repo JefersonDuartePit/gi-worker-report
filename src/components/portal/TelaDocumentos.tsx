@@ -1,4 +1,4 @@
-import { Download, Clock } from 'lucide-react'
+import { Download, Clock, ExternalLink } from 'lucide-react'
 import DorTooltip from './DorTooltip'
 import StatusPill from './StatusPill'
 
@@ -47,7 +47,7 @@ function TelaDocumentos() {
               </div>
             </div>
             <button className="flex items-center gap-1.5 text-xs font-medium text-gi-navy border border-gi-blue bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors shrink-0">
-              <Download className="w-3.5 h-3.5" />
+              <ExternalLink className="w-3.5 h-3.5" />
               Ler e assinar
             </button>
           </div>
