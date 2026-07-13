@@ -27,11 +27,11 @@ export const INICIATIVAS: Iniciativa[] = [
   {
     id: 'I03',
     titulo: 'Integração IM → plataforma de folha: migração automática sem redigitação (triple data entry)',
-    descricao: 'Criar camada de integração iPaaS para migrar dados do IEM para a plataforma de folha automaticamente, eliminando a redigitação manual.',
+    descricao: 'Criar camada de integração iPaaS para migrar dados do IM para a plataforma de folha automaticamente, eliminando a redigitação manual.',
     jornada: 'admissao',
     personas: ['colaborador-gi'],
     doresResolvidas: ['D03'],
-    sistemaSubstituido: 'Redigitação manual entre IEM e plataforma de folha',
+    sistemaSubstituido: 'Redigitação manual entre IM e plataforma de folha',
     esforco: 'alto',
     impacto: 'alto',
   },

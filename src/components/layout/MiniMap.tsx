@@ -16,7 +16,7 @@ function MiniMap({ activeSectionId, onPlanetClick, mode, onToggleMode }: MiniMap
   return (
     <aside className="fixed top-[56px] left-0 w-[200px] h-[calc(100vh-56px)] bg-gi-navy flex flex-col z-40">
       <div className="px-4 py-3 border-b border-white/5">
-        <span className="text-[9px] text-gi-orbit uppercase tracking-[2px]">Galáxia</span>
+        <span className="text-[9px] text-gi-orbit uppercase tracking-[2px]">Ecossistema</span>
       </div>
 
       <div className="flex-1 flex items-center justify-center p-3">

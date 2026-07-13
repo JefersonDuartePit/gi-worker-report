@@ -1,7 +1,10 @@
 # SPECS.md — GI Group · Portal do Worker
 
-**Versão:** 1.0
-**Total de specs:** 8
+**Versão:** 1.1
+**Atualizado em:** 13 de julho de 2026
+**Total de specs:** 10 (Specs 1–8 de conteúdo do relatório · Spec 9 — Navegação Iniciativas → Tela do Portal · Spec 10 — Testes e Ajustes Finais)
+
+> Specs 9 e 10 não têm entrada dedicada neste documento — foram trabalhos de integração/QA sobre o conteúdo já especificado abaixo, não novas seções de relatório. Detalhes em `PROJECT-STATE.md` §2 e §6.
 
 ---
 
@@ -81,9 +84,10 @@
 | Não toca      | Sistemas globais — intocáveis sem aprovação da matriz  | `gi-red`      |
 
 **Sistemas mapeados:**
-- IEM (Usa/Integra)
+- IM (Integra)
 - GINFOR/Plataforma de Folha (Substitui — mudança prevista)
-- Spinner/Fusion (Não toca)
+- Spinner (Não toca — RP global)
+- Fusion (Substitui — duplicidade com IM, não é intocável)
 - Portal do Candidato Global (Não toca)
 - Blip/WhatsApp (Substitui — centralizar no portal)
 - TomTicket (Substitui)
@@ -93,6 +97,10 @@
 - SOC/Medicina do trabalho (Integra)
 - Ponto Mais (Integra)
 - OutSystems (Usa — plataforma de admissão em construção)
+- Zeev (Integra — workflow do SST para agendamento de exames)
+- DocSign (Substitui — duplica D4Sign, candidato a consolidação)
+
+> Zeev e DocSign adicionados após cruzamento com o "Toolkit de Mapeamento do Processo de Admissão" (documento interno da GI, junho 2026). Não faziam parte do mapeamento original do workshop.
 
 **Comportamento interativo:**
 - Hover em cada sistema abre tooltip com: função atual, problema associado, decisão proposta
@@ -101,7 +109,8 @@
 ### Critérios de aceite
 
 - [ ] Quatro quadrantes visualmente distintos
-- [ ] Todos os 12 sistemas mapeados com dados corretos
+- [ ] Todos os 15 sistemas mapeados com dados corretos (12 do mapeamento original + Zeev e DocSign, via cruzamento com o Toolkit de Admissão + Fusion, separado do Spinner via cruzamento com a transcrição de Alinhamento TI)
+- [ ] Cada sistema tem campos `confianca` ('confirmado' | 'documentado' | 'inferido') e `fonte` (citação da origem da classificação) — uso interno/debug, não exibidos no relatório; rastreabilidade adicionada após auditoria de fontes; corrigiu status do IM de "usa" para "integra" (contradição com CONTEXT.md §2.2, que já registrava a migração da admissão para OutSystems)
 - [ ] Tooltip funcional ao hover com função + problema + decisão
 - [ ] Filtro por quadrante funcional
 - [ ] Animação de entrada por quadrante (stagger)
@@ -127,7 +136,7 @@
 | --- | ------------------------------------------------- | ---------------- | ------------- | ---------- |
 | D01 | Sem visibilidade do status admissional            | Worker           | Admissão      | Crítica    |
 | D02 | Contrato para assinar sem tempo hábil             | Worker           | Admissão      | Alta       |
-| D03 | Redigitação de dados entre IEM e GINFOR           | Colaborador GI   | Admissão      | Crítica    |
+| D03 | Redigitação de dados entre IM e GINFOR           | Colaborador GI   | Admissão      | Crítica    |
 | D04 | WhatsApp pessoal bloqueado por volume             | Colaborador GI   | Admissão      | Crítica    |
 | D05 | Sem canal único de comunicação com o worker       | Worker + Col. GI | Ciclo Ativo   | Crítica    |
 | D06 | Sem acompanhamento de onboarding 30/60/90 dias    | Worker + Cliente | Ciclo Ativo   | Alta       |
@@ -136,6 +145,9 @@
 | D09 | 10 dias sem informação no desligamento            | Worker           | Offboarding   | Crítica    |
 | D10 | Baixa de documentos D4Sign feita uma a uma        | Colaborador GI   | Offboarding   | Alta       |
 | D11 | Sem canal de comunicação pós-desligamento         | Worker           | Offboarding   | Alta       |
+| D12 | Sem registro centralizado de feedback e desenvolvimento do worker | Worker + Col. GI | Ciclo Ativo | Média |
+
+> D12 pedida pela Carol na reunião de Alinhamento TI (16/06/2026) como ponto funcional do portal ("gestão de desenvolvimento: feedbacks, acompanhamentos e advertências formais"), mas só formalizada como dor D12 na Spec 7 (S6 Portal do Worker), durante o design da `TelaDesenvolvimento`. Fora do conjunto de dores votadas no workshop. Resolvida pela Iniciativa I10.
 
 **Comportamento interativo:**
 - Cards clicáveis — ao clicar, expande para mostrar qual iniciativa resolve a dor
@@ -297,6 +309,14 @@
 
 *Dor resolvida: D09 — 10 dias sem informação no desligamento*
 
+**6. Desenvolvimento**
+- Timeline de feedbacks, acompanhamentos e advertências formais do worker
+- Registro centralizado, consultável pelo worker
+
+*Dor resolvida: D12 — sem registro centralizado de feedback e desenvolvimento*
+
+> Tela adicionada durante a Spec 7 (Research), fora do escopo original de 5 telas — aprovada em sessão com base nas transcrições da reunião com Carol. Ver `PROJECT-STATE.md` §6 (changelog Spec 7).
+
 **Tooltips de dor:**
 - Cada elemento relevante tem um tooltip (hover) que mostra:
   - Qual dor aquele elemento resolve (ex: "Resolve D01 — sem visibilidade do status")
@@ -305,7 +325,7 @@
 ### Critérios de aceite
 
 - [ ] Shell do portal com sidebar e topbar fiéis ao design do esboço
-- [ ] 5 telas implementadas com dados ilustrativos realistas
+- [ ] 6 telas implementadas com dados ilustrativos realistas (5 do escopo original + Desenvolvimento)
 - [ ] Navegação entre telas funcional via sidebar do portal
 - [ ] Tooltips de dor funcionais ao hover nos elementos-chave
 - [ ] Modal de nova solicitação funcional
@@ -324,14 +344,14 @@
 
 Exemplos:
 - "O novo ERP substitui o GINFOR integralmente ou é complementar? Isso define o que faz sentido construir agora."
-- "A integração IEM → GINFOR hoje — quem é o dono técnico? É possível estender sem aprovação global?"
+- "A integração IM → GINFOR hoje — quem é o dono técnico? É possível estender sem aprovação global?"
 - "O squad de desenvolvimento da TI tem capacidade para o portal do worker em paralelo com a admissão em OutSystems?"
 - "Quais BUs precisam alinhar antes de centralizar o controle do worker como holding?"
 
 **Bloco 2 — Plano faseado recomendado**
 
 ```
-Fase 1 (H2 2026) — Centralização imediata
+Fase 1 (Q3 2026) — Centralização imediata
 ├── 01 — Portal digital de admissão com rastreio em tempo real
 ├── 02 — Automação de envio e reenvio de link de documentação
 ├── 07 — Central de atendimento unificada CARE + SMS com SLA único
@@ -339,7 +359,7 @@ Fase 1 (H2 2026) — Centralização imediata
 ├── 13 — Fluxo digital de desligamento com acionamento automático
 └── 17 — Portal do ex-colaborador para autoatendimento pós-desligamento
 
-Fase 2 (H1 2027) — Integração e automação
+Fase 2 (Q4 2026) — Integração e automação
 ├── 03 — Integração IM → GInfor sem redigitação (triple data entry)
 ├── 05 — Assinatura eletrônica padronizada de contrato (Sign Único)
 ├── 06 — Automação de comunicado de admissões concluídas à Operação
@@ -347,29 +367,5 @@ Fase 2 (H1 2027) — Integração e automação
 ├── 12 — Gestão de afastamentos com acionamento automatizado
 └── 14 — Assinatura eletrônica padronizada de TRCT e rescisão
 
-Fase 3 (H2 2027) — Governança e controle
-├── 04 — Dashboard em tempo real de admissões para a Operação
-├── 09 — Gestão de ponto integrada (parametrização + tratamento + alertas)
-├── 11 — Governança embutida: bloqueio de ações fora de SLA trabalhista
-├── 15 — GED para arquivamento automatizado pós-rescisão
-└── 16 — Automação de agendamento e controle de exame demissional
-```
-
-**Bloco 3 — Próximos passos imediatos**
-
-1. Agenda técnica com squad de TI da Carol para mapeamento de APIs disponíveis
-2. Acesso à pasta gravada do processo de admissão (prometida pela Carol)
-3. Alinhamento de holding com BUs sobre controle centralizado do worker
-4. Definição do escopo do portal do worker dentro do IT Master Plan H2 2026
-
-**Bloco 4 — CTA final**
-
-Fundo `gi-navy`, texto branco. Mensagem de encerramento da Perform IT e convite para próxima etapa.
-
-### Critérios de aceite
-
-- [ ] Fundo `gi-navy`, identidade visual de encerramento
-- [ ] 5–7 provocações com destinatário (Carol, Jansen ou ambos) e contexto
-- [ ] Plano faseado visual com as 3 fases e iniciativas de cada uma
-- [ ] Próximos passos em formato de checklist visual
-- [ ] CTA de encerramento com identidade Perform IT + GI Group
+Fase 3 (Q1 2027) — Governança e controle
+├── 04 — Dashboard em tempo real de admissões p

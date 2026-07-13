@@ -40,8 +40,8 @@ const NAV_ITEMS: NavItem[] = [
   { screen: 'documentos', label: 'Documentos', icon: FileText },
   { screen: 'solicitacoes', label: 'Solicitações', icon: MessageSquare },
   { screen: 'treinamentos', label: 'Treinamentos', icon: BookOpen },
-  { screen: 'rescisao', label: 'Rescisão', icon: ClipboardList },
   { screen: 'desenvolvimento', label: 'Desenvolvimento', icon: TrendingUp },
+  { screen: 'rescisao', label: 'Rescisão', icon: ClipboardList },
 ]
 
 function PortalShell({ fullscreen = false }: PortalShellProps) {

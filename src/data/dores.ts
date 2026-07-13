@@ -21,8 +21,8 @@ export const DORES: Dor[] = [
   },
   {
     id: 'D03',
-    titulo: 'Redigitação de dados entre IEM e plataforma de folha',
-    descricao: 'Analistas do CARE inserem manualmente na plataforma de folha os dados já digitados no IEM — triple data entry.',
+    titulo: 'Redigitação de dados entre IM e plataforma de folha',
+    descricao: 'Analistas do CARE inserem manualmente na plataforma de folha os dados já digitados no IM — triple data entry.',
     personas: ['colaborador-gi'],
     jornada: 'admissao',
     severidade: 'critica',

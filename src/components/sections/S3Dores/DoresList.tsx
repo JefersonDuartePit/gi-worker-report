@@ -81,7 +81,7 @@ function DoresList() {
       </div>
 
       <motion.div
-        className="grid grid-cols-1 gap-4 max-w-3xl"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl items-start"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

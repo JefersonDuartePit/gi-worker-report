@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roteiro de Apresentação — GI Group · Portal do Worker</title>
+<style>
+  :root {
+    --navy: #00145A;
+    --space: #000820;
+    --blue: #1D57FB;
+    --amber: #FFC300;
+    --red: #C10731;
+    --green: #49B100;
+    --stardust: #8899cc;
+    --comet: #aaccff;
+    --orbit: #3355aa;
+    --crater: #445566;
+    --white: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Lato', 'Segoe UI', Arial, sans-serif;
+    background: var(--space);
+    color: var(--white);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Sidebar */
+  #sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: var(--navy);
+    border-right: 1px solid var(--orbit);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    overflow-y: auto;
+  }
+  #sidebar .brand {
+    padding: 0 20px 20px 20px;
+    border-bottom: 1px solid var(--orbit);
+    margin-bottom: 12px;
+  }
+  #sidebar .brand h1 {
+    font-size: 15px;
+    margin: 0 0 4px 0;
+    color: var(--white);
+  }
+  #sidebar .brand p {
+    font-size: 11px;
+    color: var(--stardust);
+    margin: 0;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    color: var(--comet);
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.15s;
+  }
+  .nav-item:hover {
+    background: rgba(255,255,255,0.05);
+  }
+  .nav-item.active {
+    background: rgba(29,87,251,0.2);
+    border-left-color: var(--blue);
+    color: var(--white);
+  }
+  .nav-item .tag {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--stardust);
+    display: block;
+    margin-top: 2px;
+  }
+  .nav-item .num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+  .nav-item.active .num {
+    background: var(--blue);
+  }
+  .nav-footer {
+    margin-top: auto;
+    padding: 16px 20px;
+    font-size: 11px;
+    color: var(--crater);
+    border-top: 1px solid var(--orbit);
+  }
+
+  /* Main */
+  #main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 48px 64px 100px 64px;
+    max-width: 900px;
+  }
+  .section { display: none; animation: fadeIn 0.25s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .meta-bar {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: var(--stardust);
+  }
+  .meta-bar b { color: var(--comet); }
+
+  h2.section-title {
+    font-size: 32px;
+    margin: 4px 0 24px 0;
+    color: var(--white);
+    border-bottom: 2px solid var(--orbit);
+    padding-bottom: 16px;
+  }
+
+  h3.block-title {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--amber);
+    margin: 36px 0 12px 0;
+    font-weight: 700;
+  }
+
+  h4.sub-title {
+    font-size: 17px;
+    color: var(--white);
+    margin: 22px 0 8px 0;
+    font-weight: 700;
+  }
+
+  p.body-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--comet);
+    margin: 0 0 12px 0;
+  }
+
+  blockquote.speak {
+    margin: 10px 0 16px 0;
+    padding: 14px 18px;
+    border-left: 4px solid var(--blue);
+    background: rgba(29,87,251,0.08);
+    border-radius: 0 8px 8px 0;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--white);
+    font-style: italic;
+  }
+
+  .callout {
+    margin: 10px 0 16px 0;
+    padding: 12px 16px;
+    border-left: 4px solid var(--amber);
+    background: rgba(255,195,0,0.08);
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: var(--white);
+  }
+  .callout b { color: var(--amber); }
+
+  .note {
+    font-size: 12.5px;
+    color: var(--stardust);
+    margin: 6px 0 16px 0;
+  }
+  .note.warn { color: var(--amber); }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--orbit);
+    margin: 28px 0;
+  }
+
+  ul.checklist { list-style: none; padding: 0; margin: 8px 0; }
+  ul.checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 13.5px;
+    color: var(--comet);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+  }
+  ul.checklist li input { margin-top: 3px; accent-color: var(--green); cursor: pointer; }
+  ul.checklist li.checked span { text-decoration: line-through; color: var(--crater); }
+
+  .qa {
+    margin: 8px 0 18px 0;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+  }
+  .qa .q { font-size: 13.5px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .qa .a { font-size: 13px; color: var(--comet); }
+
+  .footer-nav {
+    position: fixed;
+    bottom: 0;
+    left: 260px;
+    right: 0;
+    background: linear-gradient(to top, var(--space) 60%, transparent);
+    padding: 20px 64px 24px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-btn {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-btn:hover { background: #3f6dff; }
+  .nav-btn:disabled { background: var(--crater); cursor: not-allowed; opacity: 0.5; }
+  .progress-label { font-size: 11px; color: var(--stardust); }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--orbit); border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <div class="brand">
+    <h1>Roteiro de Apresentação</h1>
+    <p>GI Group · Portal do Worker — Perform IT</p>
+  </div>
+  <div id="nav-list"></div>
+  <div class="nav-footer">
+    Atalhos: setas ← → ou teclas 1–6<br>
+    S6 (Portal) conduzida pelo designer — sem roteiro aqui.
+  </div>
+</div>
+
+<div id="main"></div>
+
+<div class="footer-nav">
+  <button class="nav-btn" id="btnPrev" onclick="go(-1)">← Anterior</button>
+  <span class="progress-label" id="progressLabel"></span>
+  <button class="nav-btn" id="btnNext" onclick="go(1)">Próxima →</button>
+</div>
+
+<script>
+const SECTIONS = [
+{
+  id: 'S1', tela: 'Capa — logos, título, 3 métricas, CTA "Iniciar a leitura"', duracao: '1 minuto',
+  titulo: 'S1 · Contexto / Abertura',
+  blocks: [
+    { type: 'sub', text: 'Abertura' },
+    { type: 'quote', text: 'Esse é o relatório da centralização CARE & SMS, jornada do worker — parceria GI Group e Perform IT. Antes de entrar no conteúdo, três números do que foi feito até aqui: 5 dias de design sprint, 3 jornadas mapeadas ponta a ponta, 17 iniciativas estruturadas e priorizadas por vocês.' },
+    { type: 'note', text: 'Deixe os contadores animarem antes de falar — é rápido (menos de 1 segundo), mas dá impacto visual.' },
+    { type: 'sub', text: 'Frase de contexto (se a plateia não acompanhou o processo de perto)' },
+    { type: 'quote', text: 'Esses números não são nossos — são o resultado direto do trabalho que vocês fizeram com CARE e SMS ao longo do workshop. O que vem a seguir é a leitura que fizemos em cima disso.' },
+    { type: 'sub', text: 'Transição' },
+    { type: 'quote', text: 'Bora começar pelo diagnóstico — onde a fragmentação mora hoje.' },
+  ]
+},
+{
+  id: 'S2', tela: 'Mapa de Sistemas (4 quadrantes: Usa / Integra / Substitui / Não Toca)', duracao: '4–6 minutos',
+  titulo: 'S2 · Diagnóstico Sistêmico',
+  blocks: [
+    { type: 'block-title', text: 'Objetivo da tela' },
+    { type: 'body', text: 'Provar que vocês entenderam a bagunça antes de propor qualquer solução. Ainda não é hora de mostrar o Portal — é hora de mostrar rigor. Não abra falando de solução, abra falando do estado atual.' },
+    { type: 'block-title', text: 'Abertura' },
+    { type: 'quote', text: 'Antes de mostrar o que propomos, queremos mostrar o que mapeamos. Esse é o retrato de todos os sistemas que hoje tocam a jornada do worker — 15 no total — organizados em quatro grupos: os que continuam como estão, os que vão ganhar integração, os que devem ser substituídos, e os que são intocáveis por decisão do Global.' },
+    { type: 'note', text: 'Deixe a tela parada 2–3 segundos antes de continuar — dá tempo da Carol reconhecer os próprios sistemas na tela.' },
+    { type: 'block-title', text: 'Como navegar ao vivo' },
+    { type: 'list-plain', items: [
+      'Comece com "Todos" selecionado, pra dar a visão geral de fragmentação.',
+      'Clique no filtro de cada quadrante conforme for falando dele.',
+      'Passe o mouse em 1–2 sistemas por quadrante — não leia o tooltip em voz alta, use como apoio visual.',
+    ]},
+    { type: 'block-title', text: 'Quadrante por quadrante' },
+    { type: 'sub', text: 'Não Toca (2: Spinner, Portal do Candidato Global)' },
+    { type: 'quote', text: 'Esses dois estão aqui porque a própria Carol nos disse, na nossa reunião de alinhamento, que são sistemas globais — controlados pela matriz italiana, fora do nosso escopo de mexer sem aprovação. Não é suposição nossa: foi você, Carol, que definiu essa fronteira.' },
+    { type: 'sub', text: 'Substitui (7: Plataforma de Folha, Fusion, Blip/WhatsApp, TomTicket, GLPI, VIP, DocSign)' },
+    { type: 'quote', text: 'Esse é o quadrante mais carregado, e não por acaso — é onde mora a fragmentação de comunicação: quatro canais diferentes pro worker falar com a GI, dois sistemas fazendo a mesma assinatura eletrônica, um ERP de folha com prazo de troca já confirmado.' },
+    { type: 'sub', text: 'Integra (5: IM, D4Sign, SOC, Ponto Mais, Zeev)' },
+    { type: 'quote', text: 'Esses cinco não desaparecem — continuam existindo, só que hoje operam isolados, e a proposta é conectá-los via API numa camada única.' },
+    { type: 'callout', label: 'Cuidado', text: 'O IM mudou de classificação recentemente (era "sem mudança prevista", agora é "integra") porque o toolkit de admissão mostra que o OutSystems orquestra por cima dele, não o substitui.' },
+    { type: 'sub', text: 'Usa (1: OutSystems)' },
+    { type: 'quote', text: 'É o único sistema classificado como "sem mudança de rota" — a decisão já está tomada e em andamento por vocês. Tratamos como referência de contexto, não como algo pra redesenhar.' },
+    { type: 'block-title', text: 'Sistemas que pedem cuidado extra (não expor na tela)' },
+    { type: 'qa', q: 'Por que Fusion não está mais junto do Spinner como "intocável"?', a: 'Na reunião a Carol nomeou só "RP global" como restrito, sem citar o Fusion; o toolkit aponta duplicidade dele com o IM. Fechar com pergunta aberta: "faz sentido tratarmos o Fusion como candidato à consolidação?"' },
+    { type: 'qa', q: 'O que é o Zeev?', a: 'Veio do toolkit de admissão, usado pra agendar exames. A proposta de integração ainda é hipótese nossa, não validada.' },
+    { type: 'block-title', text: 'Perguntas prováveis' },
+    { type: 'qa', q: 'Por que 15 sistemas e não os 12 do workshop?', a: 'Cruzamos o workshop com o toolkit de admissão e a reunião de alinhamento. Zeev, DocSign e Fusion (separado do Spinner) apareceram nessa checagem.' },
+    { type: 'qa', q: 'O GINFOR vai sumir ou continuar de outro jeito?', a: 'Ponte pra Provocação P01 — sabemos que muda em blocos no próximo ano, mas não se substitui tudo ou convive com o atual.' },
+    { type: 'block-title', text: 'Transição' },
+    { type: 'quote', text: 'Esse mapa mostra o onde. Agora vamos mostrar o pra quem — quem sente essa fragmentação no dia a dia.' },
+    { type: 'block-title', text: 'Checklist' },
+    { type: 'checklist', items: [
+      'Testar o filtro dos 4 quadrantes ao vivo antes da reunião',
+      'Decorar os 2 sistemas "Não Toca" e a frase da Carol de origem',
+      'Ter a resposta do IM pronta (mudou de "usa" pra "integra")',
+      'Ter a resposta de Fusion e Zeev pronta, só se perguntarem',
+      'Não ler os tooltips em voz alta',
+    ]},
+  ]
+},
+{
+  id: 'S3', tela: '12 dores, filtro por persona (Todos / Worker / Colaborador GI / Cliente)', duracao: '2–3 minutos',
+  titulo: 'S3 · Dores por Persona',
+  blocks: [
+    { type: 'block-title', text: 'Abertura' },
+    { type: 'quote', text: 'Se a tela anterior mostrou onde a fragmentação mora nos sistemas, essa mostra quem sente isso no dia a dia — 12 dores, mapeadas com vocês no workshop, mais uma que a própria Carol trouxe na nossa reunião de alinhamento.' },
+    { type: 'note', text: 'Navegação: clique nos filtros na ordem Worker → Colaborador GI → Cliente. Abra 1 card por persona.' },
+    { type: 'sub', text: 'Worker (8 dores)' },
+    { type: 'quote', text: 'É quem mais sofre com a fragmentação — sem saber em que etapa está na admissão, sem contato claro durante o contrato, até 10 dias no escuro no desligamento.' },
+    { type: 'note', text: 'Abrir: D01 (status admissional) ou D09 (10 dias sem informação).' },
+    { type: 'sub', text: 'Colaborador GI (6 dores)' },
+    { type: 'quote', text: 'Do outro lado, é quem carrega o retrabalho — redigitação manual, WhatsApp pessoal bloqueado por volume, planilha pra controlar afastamento.' },
+    { type: 'note', text: 'Abrir: D04 (WhatsApp bloqueado).' },
+    { type: 'sub', text: 'Cliente (1 dor)' },
+    { type: 'quote', text: 'Só uma dor mapeada diretamente pro cliente — falta de visibilidade do funil de admissão. É onde mora a Provocação P05, sobre dar ou não acesso ao portal pro cliente.' },
+    { type: 'block-title', text: 'Pergunta provável' },
+    { type: 'qa', q: 'Por que só 1 dor de cliente?', a: 'O workshop focou nas dores internas. A dor de cliente é a que sobrou porque impacta indiretamente vocês.' },
+    { type: 'block-title', text: 'Transição' },
+    { type: 'quote', text: 'Pra cada uma dessas dores já existe uma iniciativa amarrada — é isso que a próxima tela mostra: a arquitetura que resolve tudo isso de uma vez.' },
+  ]
+},
+{
+  id: 'S4', tela: 'Diagrama comparativo (toggle As-is / To-be) + tabela por jornada', duracao: '3–4 minutos',
+  titulo: 'S4 · Arquitetura As-is / To-be',
+  blocks: [
+    { type: 'block-title', text: 'Abertura — enquadrar como desenho macro' },
+    { type: 'quote', text: 'Esse diagrama é um desenho macro, não uma especificação técnica. Ele existe pra alinhar direção, não pra travar decisão de integração — os detalhes de cada conexão a gente resolve junto com o time técnico de vocês depois.' },
+    { type: 'note warn', text: 'Diga isso ANTES de abrir o To-be. Evita que a Carol leia como compromisso fechado.' },
+    { type: 'sub', text: 'As-is — 15 segundos, só contextualizar' },
+    { type: 'quote', text: 'Isso aqui é só pra lembrar o ponto de partida: Colaborador GI no meio de tudo, sistemas isolados, canais duplicados. Já mostramos isso na tela anterior — bora pro To-be.' },
+    { type: 'block-title', text: 'To-be — três grupos, bem separados' },
+    { type: 'sub', text: '1. O que é construído do zero' },
+    { type: 'quote', text: 'O Portal do Worker e a Central de Atendimento Unificada são construção nova — interface, autoatendimento, roteamento de solicitação. Isso não existe hoje em lugar nenhum.' },
+    { type: 'sub', text: '2. O que depende de checagem de viabilidade técnica' },
+    { type: 'quote', text: 'A Camada de API que conecta o Portal à plataforma de folha, ao D4Sign, ao SOC — isso é intenção de arquitetura, não integração fechada. Cada conexão precisa passar pelo time técnico de vocês.' },
+    { type: 'sub', text: '3. Onde o OutSystems entra' },
+    { type: 'quote', text: 'O OutSystems não é algo que a gente vai construir — já é decisão de vocês, em andamento, pro fluxo de admissão. O Portal não reconstrói isso, ele referencia e, idealmente, consome o que o OutSystems entrega. Essa fronteira é uma das perguntas em aberto pra vocês.' },
+    { type: 'callout', label: 'Ponto mais importante da tela', text: 'Se a Carol ou o Jansen não perguntarem, pergunte você: "faz sentido essa divisão pra vocês?"' },
+    { type: 'block-title', text: 'Pergunta provável' },
+    { type: 'qa', q: 'Vocês vão construir a integração com a folha agora?', a: 'Não. O diagrama mostra a intenção — a viabilidade real depende da resposta de vocês sobre o novo ERP, uma das nossas provocações.' },
+    { type: 'block-title', text: 'Transição' },
+    { type: 'quote', text: 'Esse era o desenho de destino. Agora vamos mostrar as 17 iniciativas que preenchem esse caminho, e em que ordem recomendamos implementar.' },
+  ]
+},
+{
+  id: 'S5', tela: '17 iniciativas, filtro por jornada e por persona', duracao: '2 minutos',
+  titulo: 'S5 · Iniciativas',
+  blocks: [
+    { type: 'block-title', text: 'Abertura' },
+    { type: 'quote', text: 'Essas são as 17 iniciativas exatamente como saíram da votação de vocês no workshop — não adicionamos nem tiramos nada aqui, só organizamos pra navegar.' },
+    { type: 'note', text: 'Reforce: aqui não tem opinião da Perform IT, é o resultado direto da priorização de vocês.' },
+    { type: 'block-title', text: 'Como navegar' },
+    { type: 'list-plain', items: [
+      'Filtro por jornada (Admissão / Ciclo Ativo / Offboarding) e por persona — clique em um de cada pra mostrar que cruza.',
+      'Abra 1 card pra mostrar impacto/esforço e a dor que ela resolve.',
+      'Clique em "Ver tela" de alguma iniciativa (I01, I05, I07, I10, I13 ou I17) — pula direto pra tela do Portal, bom gancho.',
+    ]},
+    { type: 'block-title', text: 'Fechamento do bloco' },
+    { type: 'quote', text: 'Cada uma dessas 17 já está amarrada a uma dor específica e, quando aplicável, a uma tela do Portal — é essa rastreabilidade que sustenta o plano faseado que mostramos mais adiante.' },
+    { type: 'block-title', text: 'Transição' },
+    { type: 'quote', text: 'Seis dessas iniciativas já ganharam tela dentro do Portal do Worker — é isso que mostramos agora.' },
+  ]
+},
+{
+  id: 'S7', tela: 'Provocações (6) → Plano Faseado (3 fases) → CTA final', duracao: '8–10 minutos',
+  titulo: 'S7 · Provocações Técnicas (fechamento)',
+  blocks: [
+    { type: 'block-title', text: 'Por que essa tela é a mais importante' },
+    { type: 'body', text: 'Todas as telas anteriores mostraram o que vocês descobriram. Essa mostra o que vocês NÃO sabem ainda — de propósito. É o momento de virar a mesa: em vez de só entregar recomendação, vocês estão pedindo decisão.' },
+    { type: 'callout', label: 'Regra de ouro', text: 'Não peça desculpa por ter perguntas em aberto. Enquadre como rigor, não como lacuna.' },
+    { type: 'block-title', text: 'Abertura da tela' },
+    { type: 'quote', text: 'Fechamos o diagnóstico e a proposta. Antes de qualquer coisa avançar, existem 6 perguntas que não podíamos responder sozinhos — porque a resposta está com vocês, não com a gente.' },
+    { type: 'note warn', text: 'Nota: a pergunta de capacidade do squad de TI (antiga P03) foi retirada — fica pro comercial alinhar direto com o cliente, fora do escopo desse relatório.' },
+
+    { type: 'block-title', text: 'Bloco técnico' },
+    { type: 'sub', text: 'P01 — O novo ERP substitui a plataforma de folha integralmente ou é complementar?' },
+    { type: 'callout', label: 'Desambiguar antes de ler a pergunta', text: 'Quando falamos em "novo ERP" aqui, não é o OutSystems e não é o Portal do Worker. É o sistema que vai substituir a plataforma de folha (GINFOR), que a Carol confirmou que muda ano que vem. OutSystems é outra frente, já decidida, pra admissão. Portal do Worker é o que estamos propondo. Os três são coisas diferentes.' },
+    { type: 'quote', text: 'Essa trava a Iniciativa I03 e a Camada de API que mostra holerite e benefícios no Portal. Sabemos que a mudança vem em blocos — o que não sabemos é se construímos pensando em ponte temporária ou em integração definitiva.' },
+    { type: 'callout', label: 'Esperado', text: 'Decisão binária (substitui / complementa) — não precisa de detalhe técnico agora, só a direção.' },
+
+    { type: 'sub', text: 'P02 — A integração IM → plataforma de folha: quem é o dono técnico?' },
+    { type: 'quote', text: 'Vocês já sinalizaram que a integração de candidato passa por uma solução intermediária com o Global. Queremos saber se essa mesma rota serve pra folha, ou se é outro caminho.' },
+    { type: 'callout', label: 'Esperado', text: 'Nome de responsável técnico + confirmação se a solução intermediária cobre os dois casos.' },
+
+    { type: 'sub', text: 'P07 — O rastreio de status do candidato vem via API do OutSystems ou o Portal constrói separado?' },
+    { type: 'quote', text: 'Nasceu de um cruzamento com o toolkit de admissão de vocês — ele já lista "controle de status" como funcionalidade nativa do OutSystems. Se reconstruirmos isso no Portal, duplica esforço numa frente que vocês pediram pra não retrabalhar.' },
+    { type: 'callout', label: 'Esperado', text: 'Confirmação técnica — API disponível ou não. Muda a estimativa de esforço da Iniciativa I01 na prática.' },
+
+    { type: 'note', text: 'Pausa curta aqui — sinalize a virada: "As próximas três não são sobre sistema — são sobre decisão de negócio e jurídica."' },
+
+    { type: 'block-title', text: 'Bloco governança / jurídico' },
+    { type: 'sub', text: 'P04 — Quais BUs precisam alinhar antes de centralizar o controle do worker como holding?' },
+    { type: 'quote', text: 'É pro Jansen. A diretriz de "visão de holding, não de BU" já está dada — falta saber quem mais precisa sentar na mesa antes da gente travar arquitetura.' },
+    { type: 'callout', label: 'Esperado', text: 'Lista de stakeholders/BUs e se isso bloqueia cronograma ou roda em paralelo.' },
+
+    { type: 'sub', text: 'P05 — O cliente vai ter acesso ao portal pra acompanhar status?' },
+    { type: 'quote', text: 'O workshop já registrou essa necessidade. Mas isso muda contrato de serviço, não só tela — por isso é pergunta pros dois.' },
+    { type: 'callout', label: 'Esperado', text: 'Sim/não, e se sim, quem no comercial aprova o que aparece pro cliente.' },
+
+    { type: 'sub', text: 'P06 — Como lidar com acesso do ex-worker sem criar vínculo trabalhista?' },
+    { type: 'quote', text: 'É jurídica antes de técnica. A gente só desenha o prazo de expiração de conta depois que o jurídico de vocês definir o prazo de retenção.' },
+    { type: 'callout', label: 'Esperado', text: 'Um número — prazo definido de acesso pós-desligamento.' },
+
+    { type: 'block-title', text: 'Plano Faseado' },
+    { type: 'quote', text: 'Enquanto essas perguntas não são respondidas, já sabemos a ordem de prioridade: primeiro damos visibilidade pro worker, depois automatizamos o que está por trás, e só no fim tratamos governança e maturidade.' },
+    { type: 'callout', label: 'Desambiguar antes de mostrar os trimestres', text: 'Os trimestres aqui são ilustrativos, não é compromisso fechado de cronograma. A ordem de prioridade é o que importa — o encaixe exato no calendário é conversa comercial com vocês, e pode se adaptar conforme necessário.' },
+    { type: 'list-plain', items: [
+      'Fase 1 · Q3 2026 (ilustrativo) — Centralização imediata: o esqueleto do Portal, ponta a ponta.',
+      'Fase 2 · Q4 2026 (ilustrativo) — Integração e automação: o que fica por trás do que a Fase 1 expôs — P01, P02 e P07 pesam mais aqui.',
+      'Fase 3 · Q1 2027 (ilustrativo) — Governança e controle: maturidade, só depois que a base está de pé.',
+    ]},
+    { type: 'note', text: 'Esse cronograma pressupõe resposta rápida nas provocações técnicas — sem isso, a Fase 2 é a que mais sofre atraso. Mas de novo: a data exata é conversa comercial, não trava técnica.' },
+
+    { type: 'block-title', text: 'Fechamento' },
+    { type: 'quote', text: 'Obrigado pela parceria até aqui. O que a gente leva dessa reunião são as respostas dessas 6 perguntas — é isso que destrava o próximo passo.' },
+    { type: 'callout', label: 'Termine com pergunta direta, não afirmação', text: '"Dá pra fechar hoje quais dessas 6 vocês respondem agora, e quais precisam de mais tempo?"' },
+
+    { type: 'block-title', text: 'Checklist' },
+    { type: 'checklist', items: [
+      'Ter as 6 provocações na ordem certa decoradas (técnicas primeiro, governança depois)',
+      'Saber de cor o "esperado" de cada uma',
+      'Não deixar a reunião terminar sem sair com pelo menos uma resposta concreta de cada bloco',
+      'Fechar com a pergunta direta — não deixar a decisão "pra depois" sem compromisso de data',
+    ]},
+  ]
+},
+];
+
+let current = 0;
+
+function renderBlock(b) {
+  switch (b.type) {
+    case 'block-title': return `<h3 class="block-title">${b.text}</h3>`;
+    case 'sub': return `<h4 class="sub-title">${b.text}</h4>`;
+    case 'body': return `<p class="body-text">${b.text}</p>`;
+    case 'quote': return `<blockquote class="speak">&ldquo;${b.text}&rdquo;</blockquote>`;
+    case 'note': return `<p class="note">${b.text}</p>`;
+    case 'note warn': return `<p class="note warn">⚠ ${b.text}</p>`;
+    case 'callout': return `<div class="callout"><b>${b.label}:</b> ${b.text}</div>`;
+    case 'list-plain': return `<ul style="padding-left:18px; margin:8px 0;">${b.items.map(i => `<li class="body-text" style="margin-bottom:6px;">${i}</li>`).join('')}</ul>`;
+    case 'qa': return `<div class="qa"><div class="q">${b.q}</div><div class="a">${b.a}</div></div>`;
+    case 'checklist': return `<ul class="checklist">${b.items.map((i, idx) => `<li onclick="toggleCheck(this)"><input type="checkbox" onclick="event.stopPropagation(); this.parentNode.classList.toggle('checked')"><span>${i}</span></li>`).join('')}</ul>`;
+    default: return '';
+  }
+}
+
+function toggleCheck(li) {
+  li.classList.toggle('checked');
+  const cb = li.querySelector('input');
+  cb.checked = li.classList.contains('checked');
+}
+
+function renderNav() {
+  const nav = document.getElementById('nav-list');
+  nav.innerHTML = SECTIONS.map((s, i) => `
+    <div class="nav-item ${i === current ? 'active' : ''}" onclick="goTo(${i})">
+      <div class="num">${i + 1}</div>
+      <div>
+        ${s.titulo.split('·')[1] ? s.titulo.split('·')[1].trim() : s.titulo}
+        <span class="tag">${s.duracao}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderMain() {
+  const s = SECTIONS[current];
+  const main = document.getElementById('main');
+  main.innerHTML = `
+    <div class="section active">
+      <div class="meta-bar">
+        <span><b>Tela:</b> ${s.tela}</span>
+        <span><b>Duração sugerida:</b> ${s.duracao}</span>
+      </div>
+      <h2 class="section-title">${s.titulo}</h2>
+      ${s.blocks.map(renderBlock).join('')}
+    </div>
+  `;
+  main.scrollTop = 0;
+}
+
+function updateNavButtons() {
+  document.getElementById('btnPrev').disabled = current === 0;
+  document.getElementById('btnNext').disabled = current === SECTIONS.length - 1;
+  document.getElementById('progressLabel').textContent = `${current + 1} / ${SECTIONS.length}`;
+}
+
+function goTo(i) {
+  current = Math.max(0, Math.min(SECTIONS.length - 1, i));
+  renderNav();
+  renderMain();
+  updateNavButtons();
+}
+
+function go(delta) { goTo(current + delta); }
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight') go(1);
+  if (e.key === 'ArrowLeft') go(-1);
+  const n = parseInt(e.key);
+  if (n >= 1 && n <= SECTIONS.length) goTo(n - 1);
+});
+
+renderNav();
+renderMain();
+updateNavButtons();
+</script>
+</body>
+</html>

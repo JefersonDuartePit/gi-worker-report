@@ -96,7 +96,7 @@ export function App() {
           >
             <div className="h-6 shrink-0 bg-gi-navy flex items-center justify-between px-3">
               <button
-                onClick={handleGalaxyClick}
+                onClick={() => handlePlanetClick('iniciativas')}
                 className="flex items-center gap-1 text-[11px] text-white/80 hover:text-white transition-colors"
               >
                 <ChevronLeft size={11} />

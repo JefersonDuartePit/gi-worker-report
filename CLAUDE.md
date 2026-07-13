@@ -108,3 +108,18 @@ O agente não deve assumir nada além do que está no prompt de entrada e nos do
 | Research  | CLAUDE.md, CONTEXT.md, ARCHITECTURE.md, DESIGN-SYSTEM.md, CODING-GUIDELINES.md, PROJECT-STATE.md, SPECS.md |
 | Plan      | CLAUDE.md, ARCHITECTURE.md, DESIGN-SYSTEM.md, CODING-GUIDELINES.md, PROJECT-STATE.md, `.agent/specs/spec-[N]-research-done.md` |
 | Implement | CLAUDE.md, `.agent/specs/spec-[N]-plan-done.md`, PROJECT-STATE.md                               |
+
+---
+
+## 8. Validação Visual — Nunca Usar o Claude Browser (in-app)
+
+O navegador embutido do agente (ferramenta "Claude Browser" / `mcp__Claude_Browser__*`) **não deve ser usado para validar nada neste projeto** — nem screenshots, nem `computer`, nem qualquer tentativa de interação.
+
+**Causa raiz confirmada:** o ambiente de automação mantém a aba sempre com `document.hidden = true` (backgrounded), independente de qual aba está "selecionada". Isso suspende o pipeline de pintura e as animações do Chromium (inclusive `requestAnimationFrame`, usado pelo Framer Motion e pelo `AnimatePresence` da splash screen). Na prática, a navegação trava na tela de abertura (splash) antes mesmo de chegar às seções do relatório, e `computer{action:"screenshot"}` trava/expira (timeout). Isso já foi confirmado e registrado durante a Spec 9 (`PROJECT-STATE.md`) e reconfirmado na Spec 10.
+
+**O que fazer em vez disso:**
+
+- Rodar `npx tsc --noEmit` e `npm run build` como verificação automática.
+- Revisão de código linha a linha conferindo a lógica/dados contra o que é esperado.
+- Se precisar confirmar algo que só é visível em runtime (layout, cores, animação, comportamento de clique), **pedir para o humano validar no navegador real dele** e relatar o resultado — não tentar reproduzir com o Claude Browser.
+- Não gastar múltiplas tentativas tentando contornar a limitação (recarregar aba, criar nova aba, fixar a aba, inspecionar fibers do React etc.) — a causa é do ambiente, não do código, e não há workaround confiável.

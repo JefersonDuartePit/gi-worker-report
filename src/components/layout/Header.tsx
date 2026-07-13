@@ -47,7 +47,7 @@ function Header({ activeLabel, activeNum, onGalaxyClick }: HeaderProps) {
           className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-gi-blue text-white rounded-lg hover:bg-gi-navy transition-all"
         >
           <ChevronLeft size={12} />
-          Galáxia
+          Ecossistema
         </button>
       </div>
     </header>

@@ -30,7 +30,7 @@ O artefato final é um único arquivo `index.html` + assets gerados pelo build d
 
 ## 3. Estrutura de Pastas
 
-> **Galaxy Layout (2026-06-23):** estrutura atualizada para refletir o layout galáxia. Arquivos marcados com `†` são novos; marcados com `✕` foram removidos.
+> **Galaxy Layout (2026-06-23):** estrutura atualizada para refletir o layout ecossistema. Arquivos marcados com `†` são novos; marcados com `✕` foram removidos.
 
 ```
 gi-worker-report/
@@ -148,7 +148,7 @@ Apenas renderização. Sem fetch, sem lógica de negócio, sem estado além de m
 
 ## 5. Navegação — Galaxy Layout
 
-O relatório usa **navegação por estado de UI**, não scroll. A seção ativa é determinada pelo planeta clicado no mapa da galáxia.
+O relatório usa **navegação por estado de UI**, não scroll. A seção ativa é determinada pelo planeta clicado no mapa da ecossistema.
 
 ```typescript
 // src/App.tsx — fluxo de navegação

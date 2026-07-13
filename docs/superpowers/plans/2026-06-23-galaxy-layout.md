@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Substituir o layout sidebar/scroll do Portal do Worker por uma experiência de galáxia — mapa de planetas como navegação, mini-mapa orbital na sidebar, splash screen e transições suaves com Framer Motion.
+**Goal:** Substituir o layout sidebar/scroll do Portal do Worker por uma experiência de ecossistema — mapa de planetas como navegação, mini-mapa orbital na sidebar, splash screen e transições suaves com Framer Motion.
 
 **Architecture:** O app passa a ter 3 estados de UI (`splash | galaxy | module`) controlados em `App.tsx`. O estado ativo e a seção atual derivam de `PresentationContext.currentStep`. Os 7 módulos do relatório são planetas configurados em `src/data/planets.ts`; cada componente de layout consome essa config.
 
@@ -773,7 +773,7 @@ function MiniMap({ activeSectionId, onPlanetClick }: MiniMapProps) {
   return (
     <aside className="fixed top-[56px] left-0 w-[200px] h-[calc(100vh-56px)] bg-gi-navy flex flex-col z-40">
       <div className="px-4 py-3 border-b border-white/5">
-        <span className="text-[9px] text-gi-orbit uppercase tracking-[2px]">Galáxia</span>
+        <span className="text-[9px] text-gi-orbit uppercase tracking-[2px]">Ecossistema</span>
       </div>
 
       <div className="flex-1 flex items-center justify-center p-3">
@@ -975,7 +975,7 @@ function Header({ activeLabel, activeNum, onGalaxyClick }: HeaderProps) {
           className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-gi-blue text-white rounded-lg hover:bg-gi-navy transition-all"
         >
           <ChevronLeft size={12} />
-          Galáxia
+          Ecossistema
         </button>
       </div>
     </header>
@@ -997,7 +997,7 @@ Esperado: sem erros (App.tsx ainda usa a assinatura antiga — o erro vai aparec
 
 ```bash
 git add src/components/layout/Header.tsx
-git commit -m "feat: update Header with module number, remove Home button, add Galáxia button"
+git commit -m "feat: update Header with module number, remove Home button, add Ecossistema button"
 ```
 
 ---
@@ -1179,11 +1179,11 @@ npm run dev
 
 Verificar:
 1. Abre em `http://localhost:5173` — splash screen aparece com fundo espacial, logo GI, título, anel pulsante
-2. Após 2.5s (ou click): dissolve para o mapa da galáxia com 7 planetas e linhas tracejadas
+2. Após 2.5s (ou click): dissolve para o mapa da ecossistema com 7 planetas e linhas tracejadas
 3. Hover em qualquer planeta: escala para 1.1x suavemente
 4. Click em um planeta: fade para o estado do módulo com header + mini-mapa orbital + conteúdo
 5. Mini-mapa: mostra todos os planetas com labels visíveis; planeta ativo tem glow + anel extra
-6. Botão "← Galáxia" no header: volta para o mapa completo com fade
+6. Botão "← Ecossistema" no header: volta para o mapa completo com fade
 7. Botão "Apresentação": oculta mini-mapa, expande conteúdo, mostra nav Anterior/Próximo no rodapé
 8. Nav Anterior/Próximo: navega entre módulos, atualiza mini-mapa ao voltar para Exploração
 
@@ -1215,7 +1215,7 @@ git commit -m "feat: wire galaxy layout — splash, galaxy map and module states
 | `src/index.css` | Classes `.bg-galaxy-sky` e `.bg-splash-sky` |
 | `src/types/index.ts` | `UiState` type + `goTo` em `PresentationContextValue` |
 | `src/hooks/usePresentation.ts` | Função `goTo` |
-| `src/components/layout/Header.tsx` | Novo prop `activeNum`, prop `onGalaxyClick`, botão "← Galáxia" |
+| `src/components/layout/Header.tsx` | Novo prop `activeNum`, prop `onGalaxyClick`, botão "← Ecossistema" |
 | `src/App.tsx` | Estados `uiState`, `AnimatePresence`, sem `useActiveSection` |
 
 ## Arquivos Deletados
