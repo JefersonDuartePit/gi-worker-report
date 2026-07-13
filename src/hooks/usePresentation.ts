@@ -6,6 +6,7 @@ const TOTAL_STEPS = 7
 export function usePresentation(): PresentationContextValue {
   const [mode, setMode] = useState<'presentation' | 'exploration'>('exploration')
   const [currentStep, setCurrentStep] = useState(0)
+  const [portalTargetScreen, setPortalTargetScreen] = useState<string | null>(null)
 
   function next() {
     setCurrentStep((s) => Math.min(s + 1, TOTAL_STEPS - 1))
@@ -24,5 +25,5 @@ export function usePresentation(): PresentationContextValue {
     setCurrentStep(Math.min(Math.max(step, 0), TOTAL_STEPS - 1))
   }
 
-  return { mode, currentStep, next, prev, toggle, goTo }
+  return { mode, currentStep, next, prev, toggle, goTo, portalTargetScreen, setPortalTargetScreen }
 }

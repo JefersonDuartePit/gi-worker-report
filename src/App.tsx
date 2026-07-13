@@ -26,6 +26,8 @@ export const PresentationContext = createContext<PresentationContextValue>({
   prev: () => undefined,
   toggle: () => undefined,
   goTo: () => undefined,
+  portalTargetScreen: null,
+  setPortalTargetScreen: () => undefined,
 })
 
 // Ordem das specs: S1→S2→S3→S4→S5→S6→S7

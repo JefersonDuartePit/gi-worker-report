@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import { PresentationContext } from '../../../App'
 import { INICIATIVAS } from '../../../data/iniciativas'
-import type { Jornada, Persona } from '../../../types'
+import type { Iniciativa, Jornada, Persona } from '../../../types'
 import IniciativaCard from './IniciativaCard'
 
 type FilterJornada = 'todos' | Jornada
@@ -31,7 +31,7 @@ function IniciativasList() {
   const [filterJornada, setFilterJornada] = useState<FilterJornada>('todos')
   const [filterPersona, setFilterPersona] = useState<FilterPersona>('todos')
   const [expandedId, setExpandedId] = useState<string | null>(null)
-  const { goTo } = useContext(PresentationContext)
+  const { goTo, setPortalTargetScreen } = useContext(PresentationContext)
 
   const filtered = INICIATIVAS.filter(i => {
     const jornadaOk = filterJornada === 'todos' || i.jornada === filterJornada
@@ -51,6 +51,14 @@ function IniciativasList() {
 
   function handleToggle(id: string) {
     setExpandedId(prev => prev === id ? null : id)
+  }
+
+  function handleVerTela(iniciativa: Iniciativa) {
+    const targetScreen = iniciativa.telasRelacionadas?.[0]
+    if (targetScreen) {
+      setPortalTargetScreen(targetScreen)
+    }
+    goTo(5)
   }
 
   return (
@@ -85,7 +93,7 @@ function IniciativasList() {
               iniciativa={i}
               isExpanded={expandedId === i.id}
               onToggle={handleToggle}
-              onVerTela={() => goTo(5)}
+              onVerTela={() => handleVerTela(i)}
             />
           ))}
         </div>

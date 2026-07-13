@@ -58,6 +58,8 @@ export interface PresentationContextValue {
   prev: () => void
   toggle: () => void
   goTo: (step: number) => void
+  portalTargetScreen: string | null
+  setPortalTargetScreen: (screen: string | null) => void
 }
 
 export interface SectionMeta {

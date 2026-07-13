@@ -1,10 +1,10 @@
 # PROJECT-STATE.md — GI Group · Portal do Worker
 
-**Atualizado em:** 30 de junho de 2026
-**Status do projeto:** Specs 1–8 concluídas · Branch `spec/07-portal-do-worker` pronta para merge
-**Specs concluídas:** Specs 1–8 (Setup, S1 Hero, S2 Diagnóstico, S3 Dores, S4 Arquitetura, S5 Iniciativas, S6 Portal, S7 Provocações)
+**Atualizado em:** 13 de julho de 2026
+**Status do projeto:** Specs 1–9 concluídas · Branch `spec/09-portal-navegacao-iniciativas` pronta para validação manual e merge
+**Specs concluídas:** Specs 1–9 (Setup, S1 Hero, S2 Diagnóstico, S3 Dores, S4 Arquitetura, S5 Iniciativas, S6 Portal, S7 Provocações, Navegação Iniciativas → Tela do Portal)
 **Spec em andamento:** —
-**Próxima etapa:** merge de `spec/07-portal-do-worker` → main · revisão de links pendentes (Spec 6 — substituir `goTo(5)` fixo por `usePortalNav` com `telasRelacionadas[0]`)
+**Próxima etapa:** validação manual em navegador real de `spec/09-portal-navegacao-iniciativas` (pintura bloqueada no ambiente de automação — ver `spec-9-implement-done.md`) · merge → main
 
 ***
 
@@ -82,6 +82,7 @@ O relatório será apresentado primeiro ao service designer interno da Perform I
 | 6    | S5 — Iniciativas                   | ✅ Concluída    | `spec-6-implement-done.md`                       |
 | 7    | S6 — Portal do Worker              | ✅ Concluída    | `spec-7-research-done.md`, `spec-7-plan-done.md`, `spec-7-implement-done.md` |
 | 8    | S7 — Provocações e Próximos Passos | ✅ Concluída    | `spec-8-implement-done.md`                       |
+| 9    | Navegação Iniciativas → Tela do Portal | ✅ Concluída (validação manual pendente) | `spec-9-research-done.md`, `spec-9-plan-done.md`, `spec-9-implement-done.md` |
 
 ***
 
@@ -148,6 +149,36 @@ gi-worker-report/
 ***
 
 ## 6. Histórico de Atualizações
+
+### Atualização — Spec 9 — Navegação Iniciativas → Tela do Portal — 2026-07-13
+
+**Status:** concluída ✅ (código) · validação manual em navegador **pendente**
+
+**Artefatos gerados:**
+
+* `src/hooks/usePortalNav.ts` (modificado — `PORTAL_SCREENS` + type guard `isPortalScreen`)
+
+* `src/hooks/usePresentation.ts` (modificado — estado `portalTargetScreen`/setter)
+
+* `src/types/index.ts` (modificado — `PresentationContextValue` estendida)
+
+* `src/App.tsx` (modificado — valor default do Context atualizado)
+
+* `src/components/sections/S5Iniciativas/IniciativasList.tsx` (modificado — `handleVerTela` seta `portalTargetScreen` a partir de `telasRelacionadas[0]`)
+
+* `src/components/portal/PortalShell.tsx` (modificado — `useEffect` de mount consome `portalTargetScreen` e navega)
+
+* `.agent/specs/spec-9-research-done.md`, `spec-9-plan-done.md`, `spec-9-implement-done.md`
+
+**Desvios do plano:** nenhum.
+
+**Pendência resolvida:** fecha a pendência pós-merge registrada nas Specs 6 e 7 — `IniciativasList.tsx` não usa mais `goTo(5)` fixo; agora navega para a tela específica de cada iniciativa (`telasRelacionadas[0]`) ao abrir o Portal.
+
+**Verificação de build:** `npx tsc --noEmit` e `npm run build` sem erros (bundle 374.20 kB / 115.03 kB gzip). **Validação visual em navegador não foi possível nesta sessão** — o Browser pane do ambiente de automação manteve a aba como `document.hidden = true` (backgrounded), suspendendo o pipeline de pintura do Chromium e travando a transição `AnimatePresence` da splash screen antes mesmo de chegar à seção Iniciativas (limitação de ambiente, não do código — o estado React interno avançou corretamente, confirmado via inspeção da fiber). Verificação alternativa: revisão de código linha a linha + conferência de `telasRelacionadas[0]` de cada iniciativa nos dados-fonte, ambas batendo com os casos esperados. Detalhes em `spec-9-implement-done.md`.
+
+**Próxima etapa:** validação manual em navegador real (fora do ambiente de automação) dos 8 casos listados em `spec-9-plan-done.md` antes do merge para `main`.
+
+***
 
 ### Atualização — Spec 7 — S6 Portal do Worker — 2026-06-30
 
