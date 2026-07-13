@@ -350,7 +350,7 @@ Exemplos:
 **Bloco 2 — Plano faseado recomendado**
 
 ```
-Fase 1 (H2 2026) — Centralização imediata
+Fase 1 (Q3 2026) — Centralização imediata
 ├── 01 — Portal digital de admissão com rastreio em tempo real
 ├── 02 — Automação de envio e reenvio de link de documentação
 ├── 07 — Central de atendimento unificada CARE + SMS com SLA único
@@ -358,7 +358,7 @@ Fase 1 (H2 2026) — Centralização imediata
 ├── 13 — Fluxo digital de desligamento com acionamento automático
 └── 17 — Portal do ex-colaborador para autoatendimento pós-desligamento
 
-Fase 2 (H1 2027) — Integração e automação
+Fase 2 (Q4 2026) — Integração e automação
 ├── 03 — Integração IM → GInfor sem redigitação (triple data entry)
 ├── 05 — Assinatura eletrônica padronizada de contrato (Sign Único)
 ├── 06 — Automação de comunicado de admissões concluídas à Operação
@@ -366,5 +366,5 @@ Fase 2 (H1 2027) — Integração e automação
 ├── 12 — Gestão de afastamentos com acionamento automatizado
 └── 14 — Assinatura eletrônica padronizada de TRCT e rescisão
 
-Fase 3 (H2 2027) — Governança e controle
+Fase 3 (Q1 2027) — Governança e controle
 ├── 04 — Dashboard em tempo real de admissões p

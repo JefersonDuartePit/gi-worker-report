@@ -43,20 +43,6 @@ function S7Provocacoes() {
           <PlanoFaseado />
         </div>
 
-        {/* Bloco 3 — Próximos passos */}
-        <div className="mb-20">
-          <h3 className="text-2xl font-bold text-white mb-2">Próximos passos imediatos</h3>
-          <p className="text-gi-stardust mb-8">4 ações para iniciar ainda neste mês</p>
-          <ul className="space-y-4">
-            {PROXIMOS_PASSOS.map((passo, idx) => (
-              <li key={idx} className="flex items-start gap-4">
-                <Square size={20} className="text-gi-blue flex-shrink-0 mt-0.5" />
-                <span className="text-white text-base">{passo}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
         {/* Bloco 4 — CTA final */}
         <div className="text-center border-t border-gi-orbit pt-16">
           <div className="flex items-center justify-center gap-6 mb-8">
@@ -65,10 +51,7 @@ function S7Provocacoes() {
             <img src={logoPerformIT} alt="Perform IT" className="h-6 object-contain" />
           </div>
           <h3 className="text-3xl font-bold text-white mb-4">Obrigado pela parceria</h3>
-          <p className="text-gi-comet text-lg mb-10 max-w-xl mx-auto">
-            Próximo passo: agendar workshop técnico com o squad de TI para validar as integrações
-            e definir o MVP do portal do worker.
-          </p>
+
           <Button
             variant="ghost"
             className="text-white hover:text-gi-comet hover:no-underline border border-gi-orbit hover:border-gi-blue"

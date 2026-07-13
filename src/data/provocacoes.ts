@@ -49,19 +49,19 @@ export const FASES: FasePlano[] = [
   {
     numero: 1,
     titulo: 'Centralização imediata',
-    periodo: 'H2 2026',
+    periodo: 'Q3 2026',
     iniciativaIds: ['I01', 'I02', 'I07', 'I10', 'I13', 'I17'],
   },
   {
     numero: 2,
     titulo: 'Integração e automação',
-    periodo: 'H1 2027',
+    periodo: 'Q4 2026',
     iniciativaIds: ['I03', 'I05', 'I06', 'I08', 'I12', 'I14'],
   },
   {
     numero: 3,
     titulo: 'Governança e controle',
-    periodo: 'H2 2027',
+    periodo: 'Q1 2027',
     iniciativaIds: ['I04', 'I09', 'I11', 'I15', 'I16'],
   },
 ]
