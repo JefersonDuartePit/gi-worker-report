@@ -37,6 +37,12 @@ export const PROVOCACOES: Provocacao[] = [
     contexto: 'O portal pós-desligamento precisa de autenticação e prazo de acesso definidos. Essa é uma questão jurídica antes de técnica — quem define o prazo de retenção de dados do ex-worker?',
     destinatario: 'ambos',
   },
+  {
+    id: 'P07',
+    pergunta: 'O rastreio de status do candidato (Iniciativa I01) deve vir via API do OutSystems, ou o Portal do Worker precisa construir essa visibilidade de forma independente?',
+    contexto: 'O Toolkit de Mapeamento do Processo de Admissão já lista "envio automático de link" e "controle de status" como funcionalidades nativas do novo fluxo em OutSystems, com responsabilidade "Local (IM e Outsystems)". Se o Portal do Worker reconstruir essa visibilidade do zero, corremos o risco de duplicar um esforço que a própria diretriz de "admissão sem retrabalho" (reunião de 16/06/2026) deveria evitar. Precisamos saber se o Portal apenas consome essa informação via API do OutSystems (esforço baixo) ou se precisa de solução própria — o que muda a estimativa de esforço de I01, hoje classificada como "médio".',
+    destinatario: 'carol',
+  },
 ]
 
 export const FASES: FasePlano[] = [

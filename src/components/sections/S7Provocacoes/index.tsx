@@ -29,7 +29,7 @@ function S7Provocacoes() {
         <div className="mb-20">
           <h2 className="text-4xl font-bold text-white mb-2">Provocações técnicas</h2>
           <p className="text-xl text-gi-stardust mb-12">
-            6 perguntas que precisam de resposta antes de começar
+            {PROVOCACOES.length} perguntas que precisam de resposta antes de começar
           </p>
           <div className="grid grid-cols-2 gap-6">
             {PROVOCACOES.map((p) => (
