@@ -65,3 +65,47 @@ export interface SectionMeta {
   label: string
   Component: React.ComponentType
 }
+
+export type VistaArquitetura = 'as-is' | 'to-be'
+
+export type TipoNoArq =
+  | 'hub-worker'
+  | 'hub-portal'
+  | 'canal'
+  | 'sistema'
+  | 'automacao'
+  | 'cliente'
+  | 'intermediario'
+
+export interface NoArq {
+  id: string
+  label: string
+  tipo: TipoNoArq
+  descricao: string
+  x: number  // posição em % do container (0–100), centro do nó
+  y: number  // posição em % do container (0–100), centro do nó
+}
+
+export interface ArestaArq {
+  from: string
+  to: string
+  estilo?: 'solida' | 'tracejada'
+}
+
+export interface DiagramaArq {
+  nos: NoArq[]
+  arestas: ArestaArq[]
+}
+
+export interface ComparativoArq {
+  jornada: Jornada
+  asIs: string
+  toBe: string
+}
+
+export interface FasePlano {
+  numero: 1 | 2 | 3
+  titulo: string
+  periodo: string
+  iniciativaIds: string[]
+}

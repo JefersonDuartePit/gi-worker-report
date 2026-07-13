@@ -6,6 +6,7 @@ import Header from './components/layout/Header'
 import MiniMap from './components/layout/MiniMap'
 import SplashScreen from './components/layout/SplashScreen'
 import GalaxyMap from './components/layout/GalaxyMap'
+import PortalShell from './components/portal/PortalShell'
 import S1Hero from './components/sections/S1Hero'
 import S2Diagnostico from './components/sections/S2Diagnostico'
 import S3Dores from './components/sections/S3Dores'
@@ -14,6 +15,9 @@ import S5Iniciativas from './components/sections/S5Iniciativas'
 import S6Portal from './components/sections/S6Portal'
 import S7Provocacoes from './components/sections/S7Provocacoes'
 import type { PresentationContextValue, SectionMeta, UiState } from './types'
+
+const PORTAL_SECTION_ID = 'portal'
+const PROXIMOS_PASSOS_SECTION_ID = 'provocacoes'
 
 export const PresentationContext = createContext<PresentationContextValue>({
   mode: 'exploration',
@@ -58,6 +62,12 @@ export function App() {
     setUiState('galaxy')
   }
 
+  function handleProximosPassos() {
+    handlePlanetClick(PROXIMOS_PASSOS_SECTION_ID)
+  }
+
+  const isPortalFullscreen = uiState === 'module' && activeSection.id === PORTAL_SECTION_ID
+
   return (
     <PresentationContext.Provider value={presentation}>
       <AnimatePresence mode="wait">
@@ -73,7 +83,38 @@ export function App() {
           />
         )}
 
-        {uiState === 'module' && (
+        {isPortalFullscreen && (
+          <motion.div
+            key="portal-fullscreen"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 flex flex-col bg-white"
+          >
+            <div className="h-6 shrink-0 bg-gi-navy flex items-center justify-between px-3">
+              <button
+                onClick={handleGalaxyClick}
+                className="flex items-center gap-1 text-[11px] text-white/80 hover:text-white transition-colors"
+              >
+                <ChevronLeft size={11} />
+                Voltar
+              </button>
+              <button
+                onClick={handleProximosPassos}
+                className="flex items-center gap-1 text-[11px] text-white/80 hover:text-white transition-colors"
+              >
+                Próximos passos
+                <ChevronRight size={11} />
+              </button>
+            </div>
+            <div className="flex-1 overflow-hidden">
+              <PortalShell fullscreen />
+            </div>
+          </motion.div>
+        )}
+
+        {uiState === 'module' && !isPortalFullscreen && (
           <motion.div
             key="module"
             initial={{ opacity: 0 }}
