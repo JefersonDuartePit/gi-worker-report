@@ -35,7 +35,26 @@ export default defineConfig({
 
 ## Passo 2 — Escolher o método de deploy
 
-Há dois caminhos. Escolha um.
+Há três caminhos. Escolha um.
+
+> **Sobre controle de acesso:** GitHub Pages não restringe quem acessa — mesmo com repositório privado, a URL publicada é pública pra qualquer um que a tenha (restringir de verdade exige GitHub Enterprise). Se o requisito é compartilhar só com um grupo específico (time + cliente), use a **Opção C** abaixo, ou hospede em Cloudflare Pages + Cloudflare Access (free, restrição por lista de e-mails).
+
+---
+
+### Opção C — Arquivo HTML único (recomendado para compartilhamento pontual e controlado)
+
+Gera um único `dist/index.html` com todo o JS, CSS e imagens embutidos (imagens em base64) — sem necessidade de hospedagem. Distribua por e-mail, Drive ou WeTransfer diretamente para o time e o cliente. Como não existe URL pública, o acesso é automaticamente restrito a quem recebe o arquivo.
+
+**Pré-requisito:** `npm install` (já inclui `vite-plugin-singlefile` e `cross-env` como devDependencies).
+
+```bash
+npm install
+npm run build:single
+```
+
+O arquivo final fica em `dist/index.html`. Ele funciona offline (a única dependência externa é a fonte Lato via Google Fonts — sem internet, cai para uma fonte padrão do sistema, sem quebrar o layout).
+
+**Atualizar depois de mudanças:** rodar `npm run build:single` de novo e reenviar o arquivo.
 
 ---
 

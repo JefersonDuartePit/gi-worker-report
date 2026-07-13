@@ -93,14 +93,13 @@
 - TomTicket (Substitui)
 - GLPI (Substitui)
 - VIP (Substitui)
-- D4Sign/Assinatura eletrônica (Integra)
+- D4Sign + DocSign/Assinatura eletrônica (Integra — unificados numa única entrada)
 - SOC/Medicina do trabalho (Integra)
 - Ponto Mais (Integra)
 - OutSystems (Usa — plataforma de admissão em construção)
 - Zeev (Integra — workflow do SST para agendamento de exames)
-- DocSign (Substitui — duplica D4Sign, candidato a consolidação)
 
-> Zeev e DocSign adicionados após cruzamento com o "Toolkit de Mapeamento do Processo de Admissão" (documento interno da GI, junho 2026). Não faziam parte do mapeamento original do workshop.
+> Zeev e DocSign adicionados após cruzamento com o "Toolkit de Mapeamento do Processo de Admissão" (documento interno da GI, junho 2026). Não faziam parte do mapeamento original do workshop. D4Sign e DocSign foram unificados numa única entrada após confirmação do Dimitri (service designer) na call de Alinhamento Pré-Apresentação de 13/07/2026 — função análoga, devem aparecer juntos.
 
 **Comportamento interativo:**
 - Hover em cada sistema abre tooltip com: função atual, problema associado, decisão proposta
@@ -109,7 +108,7 @@
 ### Critérios de aceite
 
 - [ ] Quatro quadrantes visualmente distintos
-- [ ] Todos os 15 sistemas mapeados com dados corretos (12 do mapeamento original + Zeev e DocSign, via cruzamento com o Toolkit de Admissão + Fusion, separado do Spinner via cruzamento com a transcrição de Alinhamento TI)
+- [ ] Todos os 14 sistemas mapeados com dados corretos (12 do mapeamento original + Zeev e DocSign, via cruzamento com o Toolkit de Admissão + Fusion, separado do Spinner via cruzamento com a transcrição de Alinhamento TI — DocSign posteriormente unificado com D4Sign numa única entrada)
 - [ ] Cada sistema tem campos `confianca` ('confirmado' | 'documentado' | 'inferido') e `fonte` (citação da origem da classificação) — uso interno/debug, não exibidos no relatório; rastreabilidade adicionada após auditoria de fontes; corrigiu status do IM de "usa" para "integra" (contradição com CONTEXT.md §2.2, que já registrava a migração da admissão para OutSystems)
 - [ ] Tooltip funcional ao hover com função + problema + decisão
 - [ ] Filtro por quadrante funcional

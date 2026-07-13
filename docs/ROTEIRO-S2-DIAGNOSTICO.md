@@ -16,7 +16,7 @@ Não abra falando de solução. Abra falando do estado atual.
 
 ## 2. Frase de abertura (ao entrar na tela)
 
-> "Antes de mostrar o que propomos, queremos mostrar o que mapeamos. Esse é o retrato de todos os sistemas que hoje tocam a jornada do worker — 15 no total — organizados em quatro grupos: os que continuam como estão, os que vão ganhar integração, os que devem ser substituídos, e os que são intocáveis por decisão do Global."
+> "Antes de mostrar o que propomos, queremos mostrar o que mapeamos. Esse é o retrato de todos os sistemas que hoje tocam a jornada do worker — 14 no total — organizados em quatro grupos: os que continuam como estão, os que vão ganhar integração, os que devem ser substituídos, e os que são intocáveis por decisão do Global."
 
 Deixe a tela parada 2-3 segundos antes de continuar — dá tempo da Carol reconhecer os próprios sistemas na tela.
 
@@ -38,15 +38,17 @@ Deixe a tela parada 2-3 segundos antes de continuar — dá tempo da Carol recon
 
 Ponto forte: citar que a restrição veio da própria Carol reforça que vocês ouviram, não estão flexibilizando escopo por conta própria.
 
-### Substitui (7 sistemas: Plataforma de Folha, Fusion, Blip/WhatsApp, TomTicket, GLPI, VIP, DocSign)
+### Substitui (6 sistemas: Plataforma de Folha, Fusion, Blip/WhatsApp, TomTicket, GLPI, VIP)
 
-> "Esse é o quadrante mais carregado, e não por acaso — é onde mora a fragmentação de comunicação que vocês descreveram: quatro canais diferentes pro worker falar com a GI, dois sistemas fazendo a mesma assinatura eletrônica, um ERP de folha com prazo de troca já confirmado."
+> "Esse é o quadrante mais carregado, e não por acaso — é onde mora a fragmentação de comunicação que vocês descreveram: quatro canais diferentes pro worker falar com a GI, um ERP de folha com prazo de troca já confirmado."
 
 Se pausar em um sistema, pause no **Blip/WhatsApp/TomTicket/GLPI/VIP** — é o grupo que mais conecta com a dor que a Carol trouxe pessoalmente na reunião ("fragmentação na comunicação com o worker, múltiplos canais e sistemas"). Cite a frase dela se quiser reforçar.
 
-### Integra (5 sistemas: IM, D4Sign, SOC, Ponto Mais, Zeev)
+### Integra (5 sistemas: IM, D4Sign + DocSign, SOC, Ponto Mais, Zeev)
 
 > "Esses cinco não desaparecem — continuam existindo, só que hoje operam isolados, e a proposta é conectá-los via API numa camada única, em vez de cada um seguir sendo alimentado manualmente."
+
+Sobre **D4Sign + DocSign**: os dois hoje rodam em paralelo pra assinatura eletrônica — mesma função, ferramentas diferentes. Em vez de tratá-los como sistemas separados (um a substituir, outro a integrar), unificamos numa única entrada porque a decisão prática é a mesma: consolidar num único fluxo de assinatura em lote.
 
 Cuidado ao falar do **IM**: ele mudou de classificação recentemente (era "sem mudança prevista", agora é "integra"), porque o toolkit de admissão mostra que o OutSystems vai orquestrar por cima dele, não substituí-lo. Se a Carol perguntar por que o IM não está em "substitui", essa é a resposta.
 
@@ -71,8 +73,8 @@ Não precisa levantar isso proativamente — só tenha a resposta pronta se vier
 
 ## 6. Perguntas prováveis e como responder
 
-**"Por que 15 sistemas e não os 12 que a gente mapeou no workshop?"**
-→ "Cruzamos o mapeamento do workshop com o toolkit de admissão que vocês compartilharam e com a nossa conversa de alinhamento. Três sistemas apareceram nessa checagem — Zeev, DocSign e o Fusion como entrada separada do Spinner — e achamos importante deixar isso rastreável em vez de simplificar."
+**"Por que 14 sistemas e não os 12 que a gente mapeou no workshop?"**
+→ "Cruzamos o mapeamento do workshop com o toolkit de admissão que vocês compartilharam e com a nossa conversa de alinhamento. Três sistemas apareceram nessa checagem — Zeev, DocSign (hoje unificado com o D4Sign, por terem função análoga) e o Fusion como entrada separada do Spinner — e achamos importante deixar isso rastreável em vez de simplificar."
 
 **"O GINFOR vai sumir ou continuar existindo de outro jeito?"**
 → Ponte direta pra Provocação P01: "Essa é exatamente uma das perguntas que trouxemos pra vocês — sabemos que a plataforma de folha vai mudar em blocos no próximo ano, mas não sabemos se o novo sistema substitui tudo ou convive com o atual. Queremos fechar isso com vocês antes de desenhar a integração."

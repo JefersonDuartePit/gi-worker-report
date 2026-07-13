@@ -7,7 +7,6 @@ import Button from '../../ui/Button'
 import logoGI from '../../../assets/logo-gi-group.png'
 import logoPerformIT from '../../../assets/logo-perform-it.svg'
 import ProvocacaoCard from './ProvocacaoCard'
-import PlanoFaseado from './PlanoFaseado'
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -38,10 +37,12 @@ function S7Provocacoes() {
           </div>
         </div>
 
-        {/* Bloco 2 — Plano faseado */}
-        <div className="mb-20">
-          <PlanoFaseado />
-        </div>
+        {/* Bloco 2 — Plano faseado removido a pedido do Dimitri (service designer),
+            call de Alinhamento Pré-Apresentação de 13/07/2026: ele conduz um plano
+            faseado próprio com o cliente (baseado em risco/capacity/workload), que
+            fecha em reunião separada na sexta-feira — os dois planos não devem
+            concorrer na mesma apresentação. Componente PlanoFaseado mantido no
+            projeto, apenas não renderizado aqui. */}
 
         {/* Bloco 4 — CTA final */}
         <div className="text-center border-t border-gi-orbit pt-16">
