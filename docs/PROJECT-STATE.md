@@ -1,10 +1,10 @@
 # PROJECT-STATE.md — GI Group · Portal do Worker
 
 **Atualizado em:** 13 de julho de 2026
-**Status do projeto:** Specs 1–9 concluídas · Branch `spec/09-portal-navegacao-iniciativas` pronta para validação manual e merge
+**Status do projeto:** Specs 1–9 concluídas e mergeadas em `main` · Spec 10 (Testes e Ajustes) em andamento
 **Specs concluídas:** Specs 1–9 (Setup, S1 Hero, S2 Diagnóstico, S3 Dores, S4 Arquitetura, S5 Iniciativas, S6 Portal, S7 Provocações, Navegação Iniciativas → Tela do Portal)
-**Spec em andamento:** —
-**Próxima etapa:** validação manual em navegador real de `spec/09-portal-navegacao-iniciativas` (pintura bloqueada no ambiente de automação — ver `spec-9-implement-done.md`) · merge → main
+**Spec em andamento:** Spec 10 — Testes e Ajustes Finais (branch `spec/10-testes-e-ajustes`)
+**Próxima etapa:** validação manual em navegador real de todo o relatório e coleta de ajustes pontuais com o humano (Jeff), item a item
 
 ***
 
@@ -82,7 +82,8 @@ O relatório será apresentado primeiro ao service designer interno da Perform I
 | 6    | S5 — Iniciativas                   | ✅ Concluída    | `spec-6-implement-done.md`                       |
 | 7    | S6 — Portal do Worker              | ✅ Concluída    | `spec-7-research-done.md`, `spec-7-plan-done.md`, `spec-7-implement-done.md` |
 | 8    | S7 — Provocações e Próximos Passos | ✅ Concluída    | `spec-8-implement-done.md`                       |
-| 9    | Navegação Iniciativas → Tela do Portal | ✅ Concluída (validação manual pendente) | `spec-9-research-done.md`, `spec-9-plan-done.md`, `spec-9-implement-done.md` |
+| 9    | Navegação Iniciativas → Tela do Portal | ✅ Concluída · mergeada em `main` | `spec-9-research-done.md`, `spec-9-plan-done.md`, `spec-9-implement-done.md` |
+| 10   | Testes e Ajustes Finais             | 🔄 Em andamento | — |
 
 ***
 
@@ -150,9 +151,25 @@ gi-worker-report/
 
 ## 6. Histórico de Atualizações
 
+### Atualização — Spec 10 — Testes e Ajustes Finais — 2026-07-13
+
+**Status:** 🔄 em andamento
+
+**Contexto:** última spec do relatório antes da apresentação a Carol/Jansen. Branch
+`spec/10-testes-e-ajustes` criada a partir de `main` (que já contém as Specs 1–9
+mergeadas). Objetivo: percorrer o relatório completo em navegador real, validar os 8
+casos de navegação pendentes da Spec 9 (ver changelog abaixo) e coletar ajustes pontuais
+diretamente do humano (Jeff), item a item, aplicando-os de forma incremental.
+
+**Artefatos gerados até o momento:** nenhum (spec recém-iniciada).
+
+**Próxima etapa:** aguardando pontos de ajuste do humano.
+
+***
+
 ### Atualização — Spec 9 — Navegação Iniciativas → Tela do Portal — 2026-07-13
 
-**Status:** concluída ✅ (código) · validação manual em navegador **pendente**
+**Status:** concluída ✅ · mergeada em `main` (PR #12) · validação manual em navegador **pendente** — a ser feita na Spec 10
 
 **Artefatos gerados:**
 
