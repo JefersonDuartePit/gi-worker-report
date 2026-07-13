@@ -68,7 +68,7 @@ export const DIAGRAMA_AS_IS: DiagramaArq = {
     },
     {
       id: 'iem',
-      label: 'IEM',
+      label: 'IM',
       tipo: 'sistema',
       descricao: 'Sistema de gestão de contratação temporária',
       x: 12,
@@ -108,11 +108,19 @@ export const DIAGRAMA_AS_IS: DiagramaArq = {
     },
     {
       id: 'spinner',
-      label: 'Spinner / Fusion',
+      label: 'Spinner',
       tipo: 'sistema',
-      descricao: 'ERP global — intocável, sem integração local',
+      descricao: 'ATS global (RP global) — intocável, sem integração local',
       x: 84,
       y: 42,
+    },
+    {
+      id: 'fusion',
+      label: 'Fusion',
+      tipo: 'sistema',
+      descricao: 'GED jurídico — duplicidade manual com o IM, não é intocável',
+      x: 74,
+      y: 58,
     },
     {
       id: 'portal-global',
@@ -136,6 +144,7 @@ export const DIAGRAMA_AS_IS: DiagramaArq = {
     { from: 'colab-gi', to: 'd4sign', estilo: 'tracejada' },
     { from: 'colab-gi', to: 'soc', estilo: 'tracejada' },
     { from: 'colab-gi', to: 'ponto-mais', estilo: 'tracejada' },
+    { from: 'colab-gi', to: 'fusion', estilo: 'tracejada' },
   ],
 }
 
@@ -215,7 +224,7 @@ export const DIAGRAMA_TO_BE: DiagramaArq = {
     },
     {
       id: 'ats-iem',
-      label: 'ATS / IEM',
+      label: 'ATS / IM',
       tipo: 'sistema',
       descricao: 'Sistema de contratação temporária integrado',
       x: 50,
@@ -256,8 +265,8 @@ export const DIAGRAMA_TO_BE: DiagramaArq = {
 export const COMPARATIVO_ARQ: ComparativoArq[] = [
   {
     jornada: 'admissao',
-    asIs: 'Documentos enviados por WhatsApp pessoal. Status invisível para o worker. Redigitação manual entre sistemas. Prazos perdidos sem notificação.',
-    toBe: 'Fluxo digital centralizado no Portal. Rastreio em tempo real. Integração automática IEM → Folha. Alertas proativos de pendências.',
+    asIs: 'Documentos enviados por WhatsApp pessoal. Status invisível para o worker. Redigitação manual entre sistemas. Prazos perdidos sem notificação. Diagnóstico real (Toolkit de Admissão, jun/2026): 89% das etapas manuais, 11 sistemas envolvidos, SLA de até 15 dias por causa do exame admissional, ~400 admissões/mês.',
+    toBe: 'Fluxo digital centralizado no Portal. Rastreio em tempo real. Integração automática IM → Folha. Alertas proativos de pendências. Projeção do Toolkit: etapas manuais caem para 22%, sistemas envolvidos caem de 11 para 6 com OutSystems como hub.',
   },
   {
     jornada: 'ciclo-ativo',

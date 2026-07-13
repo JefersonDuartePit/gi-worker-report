@@ -84,9 +84,10 @@
 | Não toca      | Sistemas globais — intocáveis sem aprovação da matriz  | `gi-red`      |
 
 **Sistemas mapeados:**
-- IEM (Usa/Integra)
+- IM (Usa/Integra)
 - GINFOR/Plataforma de Folha (Substitui — mudança prevista)
-- Spinner/Fusion (Não toca)
+- Spinner (Não toca — RP global)
+- Fusion (Substitui — duplicidade com IM, não é intocável)
 - Portal do Candidato Global (Não toca)
 - Blip/WhatsApp (Substitui — centralizar no portal)
 - TomTicket (Substitui)
@@ -96,6 +97,10 @@
 - SOC/Medicina do trabalho (Integra)
 - Ponto Mais (Integra)
 - OutSystems (Usa — plataforma de admissão em construção)
+- Zeev (Integra — workflow do SST para agendamento de exames)
+- DocSign (Substitui — duplica D4Sign, candidato a consolidação)
+
+> Zeev e DocSign adicionados após cruzamento com o "Toolkit de Mapeamento do Processo de Admissão" (documento interno da GI, junho 2026). Não faziam parte do mapeamento original do workshop.
 
 **Comportamento interativo:**
 - Hover em cada sistema abre tooltip com: função atual, problema associado, decisão proposta
@@ -104,7 +109,7 @@
 ### Critérios de aceite
 
 - [ ] Quatro quadrantes visualmente distintos
-- [ ] Todos os 12 sistemas mapeados com dados corretos
+- [ ] Todos os 15 sistemas mapeados com dados corretos (12 do mapeamento original + Zeev e DocSign, via cruzamento com o Toolkit de Admissão + Fusion, separado do Spinner via cruzamento com a transcrição de Alinhamento TI)
 - [ ] Tooltip funcional ao hover com função + problema + decisão
 - [ ] Filtro por quadrante funcional
 - [ ] Animação de entrada por quadrante (stagger)
@@ -130,7 +135,7 @@
 | --- | ------------------------------------------------- | ---------------- | ------------- | ---------- |
 | D01 | Sem visibilidade do status admissional            | Worker           | Admissão      | Crítica    |
 | D02 | Contrato para assinar sem tempo hábil             | Worker           | Admissão      | Alta       |
-| D03 | Redigitação de dados entre IEM e GINFOR           | Colaborador GI   | Admissão      | Crítica    |
+| D03 | Redigitação de dados entre IM e GINFOR           | Colaborador GI   | Admissão      | Crítica    |
 | D04 | WhatsApp pessoal bloqueado por volume             | Colaborador GI   | Admissão      | Crítica    |
 | D05 | Sem canal único de comunicação com o worker       | Worker + Col. GI | Ciclo Ativo   | Crítica    |
 | D06 | Sem acompanhamento de onboarding 30/60/90 dias    | Worker + Cliente | Ciclo Ativo   | Alta       |
@@ -141,7 +146,7 @@
 | D11 | Sem canal de comunicação pós-desligamento         | Worker           | Offboarding   | Alta       |
 | D12 | Sem registro centralizado de feedback e desenvolvimento do worker | Worker + Col. GI | Ciclo Ativo | Média |
 
-> D12 adicionada na Spec 7 (S6 Portal do Worker), fora do conjunto original mapeado no workshop — emergiu durante o design da `TelaDesenvolvimento`. Resolvida pela Iniciativa I10.
+> D12 pedida pela Carol na reunião de Alinhamento TI (16/06/2026) como ponto funcional do portal ("gestão de desenvolvimento: feedbacks, acompanhamentos e advertências formais"), mas só formalizada como dor D12 na Spec 7 (S6 Portal do Worker), durante o design da `TelaDesenvolvimento`. Fora do conjunto de dores votadas no workshop. Resolvida pela Iniciativa I10.
 
 **Comportamento interativo:**
 - Cards clicáveis — ao clicar, expande para mostrar qual iniciativa resolve a dor
@@ -338,7 +343,7 @@
 
 Exemplos:
 - "O novo ERP substitui o GINFOR integralmente ou é complementar? Isso define o que faz sentido construir agora."
-- "A integração IEM → GINFOR hoje — quem é o dono técnico? É possível estender sem aprovação global?"
+- "A integração IM → GINFOR hoje — quem é o dono técnico? É possível estender sem aprovação global?"
 - "O squad de desenvolvimento da TI tem capacidade para o portal do worker em paralelo com a admissão em OutSystems?"
 - "Quais BUs precisam alinhar antes de centralizar o controle do worker como holding?"
 
@@ -362,28 +367,4 @@ Fase 2 (H1 2027) — Integração e automação
 └── 14 — Assinatura eletrônica padronizada de TRCT e rescisão
 
 Fase 3 (H2 2027) — Governança e controle
-├── 04 — Dashboard em tempo real de admissões para a Operação
-├── 09 — Gestão de ponto integrada (parametrização + tratamento + alertas)
-├── 11 — Governança embutida: bloqueio de ações fora de SLA trabalhista
-├── 15 — GED para arquivamento automatizado pós-rescisão
-└── 16 — Automação de agendamento e controle de exame demissional
-```
-
-**Bloco 3 — Próximos passos imediatos**
-
-1. Agenda técnica com squad de TI da Carol para mapeamento de APIs disponíveis
-2. Acesso à pasta gravada do processo de admissão (prometida pela Carol)
-3. Alinhamento de holding com BUs sobre controle centralizado do worker
-4. Definição do escopo do portal do worker dentro do IT Master Plan H2 2026
-
-**Bloco 4 — CTA final**
-
-Fundo `gi-navy`, texto branco. Mensagem de encerramento da Perform IT e convite para próxima etapa.
-
-### Critérios de aceite
-
-- [ ] Fundo `gi-navy`, identidade visual de encerramento
-- [ ] 5–7 provocações com destinatário (Carol, Jansen ou ambos) e contexto
-- [ ] Plano faseado visual com as 3 fases e iniciativas de cada uma
-- [ ] Próximos passos em formato de checklist visual
-- [ ] CTA de encerramento com identidade Perform IT + GI Group
+├── 04 — Dashboard em tempo real de admissões p

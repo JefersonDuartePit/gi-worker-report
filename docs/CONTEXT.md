@@ -27,9 +27,10 @@ A GI Group opera com alta fragmentação sistêmica e de comunicação ao longo 
 
 | Sistema      | Função atual                             | Problema                                              |
 | ------------ | ---------------------------------------- | ----------------------------------------------------- |
-| IEM          | ATS / admissão digital                   | Integração unidirecional com GINFOR, sem retorno      |
+| IM          | ATS / admissão digital                   | Integração unidirecional com GINFOR, sem retorno      |
 | GINFOR       | ERP de folha e cadastro de colaboradores | Sem API robusta, sem escalabilidade, migração prevista|
-| Spinner      | ATS global (candidatos)                  | Controlado pelo Global — intocável sem aprovação      |
+| Spinner      | ATS global (candidatos) — RP global       | Controlado pelo Global — intocável sem aprovação      |
+| Fusion       | GED jurídico                             | Duplicidade manual com o IM (upload duplo) — não é intocável |
 | Blip/WhatsApp| Comunicação com workers                  | Canais pessoais bloqueados por volume (>100 msg/dia)  |
 | TomTicket    | Helpdesk de solicitações                 | Usado para tudo, inclusive processos que deveriam ser workflow |
 | GLPI         | Helpdesk de TI                           | Separado do TomTicket, mesmo problema de fragmentação |
@@ -37,17 +38,23 @@ A GI Group opera com alta fragmentação sistêmica e de comunicação ao longo 
 | D4Sign       | Assinatura eletrônica                    | Baixa de documentos feita um a um, manualmente        |
 | SOC          | Medicina do trabalho / ASO               | Completamente isolado, sem integração                 |
 | Ponto Mais   | Controle de ponto                        | Integração com GINFOR incompleta                      |
+| Zeev         | Workflow do SST para agendamento de exames | Consolidação manual entre IM, Zeev, e-mail e Teams — sem visão única |
+| DocSign      | Assinatura eletrônica                    | Duplica função do D4Sign — dois sistemas para o mesmo fim |
+
+> Zeev e DocSign identificados no "Toolkit de Mapeamento do Processo de Admissão" (documento interno da GI, junho 2026), fora do mapeamento original do Workshop CARE & SMS Dia 5.
 
 ### 2.2 Restrições sistêmicas definidas pela Carol (TI)
 
 Sistemas **intocáveis** sem aprovação do Global:
 - Portal do candidato global
 - CRM comercial global
-- RP global (Spinner/Fusion)
+- RP global (Spinner)
+
+> Fonte: transcrição da reunião de Alinhamento TI (16/06/2026). Carol cita nominalmente apenas "portal do candidato global, CRM comercial global e RP global" como os três sistemas intocáveis — Fusion não foi mencionado nessa lista e foi removido do agrupamento com o Spinner.
 
 Sistemas com **previsão de substituição**:
 - GINFOR — plataforma de folha será substituída no próximo ano
-- Admissão no IEM será migrada para workflow em **OutSystems**
+- Admissão no IM será migrada para workflow em **OutSystems**
 
 Restrição de **IA**: uso de inteligência artificial requer aprovação de segurança da informação e alinhamento com a matriz italiana.
 
@@ -69,13 +76,13 @@ Trabalhador temporário alocado em clientes da GI Group. Perfil majoritariamente
 - Fica 10 dias sem informação no processo de desligamento
 - Não sabe quem é seu contato na GI durante o contrato ativo
 - Acessa holerites e documentos por canais diferentes e desconexos
-- Não tem acesso a um registro centralizado dos próprios feedbacks e advertências formais (dor D12, identificada na Spec 7 — fora do mapeamento original do workshop)
+- Não tem acesso a um registro centralizado dos próprios feedbacks e advertências formais (dor D12 — pedida pela Carol na reunião de Alinhamento TI de 16/06/2026: "registrar feedbacks, acompanhamentos e eventuais advertências formais dentro da jornada do worker"; formalizada como D12 durante a Spec 7)
 
 ### Colaborador GI (CARE/SMS)
 Analista interno responsável por operar os processos de admissão, acompanhamento e desligamento do worker. Altamente sobrecarregado por retrabalho manual, redigitação de dados entre sistemas e comunicação por WhatsApp pessoal.
 
 **Dores principais:**
-- Redigita dados do Spinner/IEM no GINFOR manualmente
+- Redigita dados do Spinner/IM no GINFOR manualmente
 - Dispara links de documentação por WhatsApp pessoal (bloqueado por volume)
 - Controla desligamentos e limitadores de benefício por planilha
 - Não tem visibilidade unificada do status de cada worker
@@ -115,7 +122,7 @@ Do aviso de desligamento à disponibilização dos documentos rescisórios. Incl
 Fonte: documento de tratamento do Workshop CARE & SMS, Dia 5 (18/06/2026).
 Organizadas por jornada. IDs numéricos conforme numeração original do workshop.
 
-> Nota: a dor **D12** (sem registro centralizado de feedback e desenvolvimento do worker) foi identificada depois do workshop, durante a Spec 7 (S6 Portal do Worker), e é resolvida pela Iniciativa I10 (Portal do Worker). Não faz parte das 17 iniciativas originais — é um refinamento de escopo da mesma iniciativa. Ver `PROJECT-STATE.md` §6 (changelog Spec 7) e `SPECS.md` (Spec 4 e Spec 7).
+> Nota: a dor **D12** (sem registro centralizado de feedback e desenvolvimento do worker) foi pedida pela Carol na reunião de Alinhamento TI (16/06/2026) como um dos pontos funcionais do portal ("gestão de desenvolvimento: registrar feedbacks, acompanhamentos e eventuais advertências formais"), mas só foi formalizada como dor D12 durante a Spec 7 (S6 Portal do Worker). É resolvida pela Iniciativa I10 (Portal do Worker). Não faz parte das 17 iniciativas votadas no workshop — é um refinamento de escopo da mesma iniciativa, com origem anterior ao workshop. Ver `PROJECT-STATE.md` §6 (changelog Spec 7) e `SPECS.md` (Spec 4 e Spec 7).
 
 ### Admissão
 
@@ -162,11 +169,11 @@ Organizadas por jornada. IDs numéricos conforme numeração original do worksho
 ### O que não pode ser tocado sem aprovação Global
 - Portal do candidato global
 - CRM comercial global
-- RP global (Spinner/Fusion)
+- RP global (Spinner)
 
 ### O que tem previsão de mudança (não amarrar arquitetura)
 - GINFOR — será substituído (plataforma de folha nova prevista para 2027)
-- Admissão no IEM — migrando para OutSystems
+- Admissão no IM — migrando para OutSystems
 - Integração com Global — solução intermediária em construção
 
 ### Restrições adicionais
@@ -180,11 +187,4 @@ Organizadas por jornada. IDs numéricos conforme numeração original do worksho
 
 Conforme acordado com Jansen e Carol na reunião de 16/06/2026:
 
-1. **Fluxo to-be realista** — processo centralizado viável no curto prazo (H2 2026), sem depender de grandes aprovações globais
-2. **Fluxo to-be ideal** — visão de futuro de longo prazo como norte estratégico
-3. **Riscos e requisitos mínimos** — o que precisa estar garantido antes de cada etapa
-4. **Plano de transição faseado** — ordem de implantação por blocos
-5. **Recomendação de capacity** — estrutura de equipe por senioridade para o novo modelo
-6. **Especificação do portal do worker** — o que entra em cada etapa da jornada
-
-Este relatório interativo é o artefato que materializa os itens 1, 2, 3 e 6 de forma navegável e executiva.
+1. **Fluxo to-be realista** — processo centralizado viável no curto prazo (H2 2026), sem d

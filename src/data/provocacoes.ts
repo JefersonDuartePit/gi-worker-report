@@ -4,13 +4,13 @@ export const PROVOCACOES: Provocacao[] = [
   {
     id: 'P01',
     pergunta: 'O novo ERP substitui a plataforma de folha integralmente ou é complementar?',
-    contexto: 'Isso define o que faz sentido construir agora versus o que vai ser refeito com a nova plataforma em 2027. Construir integrações sobre um sistema que vai ser descontinuado é risco alto.',
+    contexto: 'Isso define o que faz sentido construir agora versus o que vai ser refeito com a nova plataforma em 2027. Construir integrações sobre um sistema que vai ser descontinuado é risco alto. Na reunião de Alinhamento TI (16/06/2026), Carol confirmou que a mudança da plataforma de folha está prevista para o próximo ano e que a migração ocorrerá "em blocos" (incremental, não big-bang) — mas não especificou se é substituição total ou complementar. Isso ainda é a lacuna real da pergunta.',
     destinatario: 'carol',
   },
   {
     id: 'P02',
-    pergunta: 'A integração IEM → plataforma de folha hoje — quem é o dono técnico? É possível estender sem aprovação global?',
-    contexto: 'A iniciativa I03 (eliminar triple data entry) depende de uma camada de integração. Antes de começar, precisamos saber quem controla esse fluxo e qual o nível de autonomia do Brasil.',
+    pergunta: 'A integração IM → plataforma de folha hoje — quem é o dono técnico? É possível estender sem aprovação global?',
+    contexto: 'A iniciativa I03 (eliminar triple data entry) depende de uma camada de integração. Antes de começar, precisamos saber quem controla esse fluxo e qual o nível de autonomia do Brasil. Na reunião de 16/06/2026, Carol adiantou que a integração de dados de candidato "talvez não venha diretamente do Spinner" — a GI está construindo uma solução intermediária com o Global para ganhar mais autonomia local. Vale confirmar se essa solução intermediária também cobre a integração com a plataforma de folha.',
     destinatario: 'carol',
   },
   {
