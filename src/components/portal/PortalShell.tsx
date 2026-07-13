@@ -1,4 +1,6 @@
-import { usePortalNav } from '../../hooks/usePortalNav'
+import { useContext, useEffect } from 'react'
+import { PresentationContext } from '../../App'
+import { usePortalNav, isPortalScreen } from '../../hooks/usePortalNav'
 import type { PortalScreen } from '../../hooks/usePortalNav'
 import TelaInicio from './TelaInicio'
 import TelaDocumentos from './TelaDocumentos'
@@ -44,6 +46,18 @@ const NAV_ITEMS: NavItem[] = [
 
 function PortalShell({ fullscreen = false }: PortalShellProps) {
   const { screen, navigate } = usePortalNav()
+  const { portalTargetScreen, setPortalTargetScreen } = useContext(PresentationContext)
+
+  useEffect(() => {
+    if (portalTargetScreen && isPortalScreen(portalTargetScreen)) {
+      navigate(portalTargetScreen)
+    }
+    if (portalTargetScreen !== null) {
+      setPortalTargetScreen(null)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [portalTargetScreen])
+
   const ActiveScreen = SCREENS_MAP[screen]
   const activeItem = NAV_ITEMS.find(i => i.screen === screen)
   const ActiveIcon = activeItem?.icon
