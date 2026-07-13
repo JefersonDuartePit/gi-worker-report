@@ -35,13 +35,12 @@ A GI Group opera com alta fragmentação sistêmica e de comunicação ao longo 
 | TomTicket    | Helpdesk de solicitações                 | Usado para tudo, inclusive processos que deveriam ser workflow |
 | GLPI         | Helpdesk de TI                           | Separado do TomTicket, mesmo problema de fragmentação |
 | VIP          | Canal de comunicação alternativo         | Mais um canal sem integração                          |
-| D4Sign       | Assinatura eletrônica                    | Baixa de documentos feita um a um, manualmente        |
+| D4Sign + DocSign | Assinatura eletrônica                | Duas ferramentas paralelas para o mesmo fim, sem envio em lote |
 | SOC          | Medicina do trabalho / ASO               | Completamente isolado, sem integração                 |
 | Ponto Mais   | Controle de ponto                        | Integração com GINFOR incompleta                      |
 | Zeev         | Workflow do SST para agendamento de exames | Consolidação manual entre IM, Zeev, e-mail e Teams — sem visão única |
-| DocSign      | Assinatura eletrônica                    | Duplica função do D4Sign — dois sistemas para o mesmo fim |
 
-> Zeev e DocSign identificados no "Toolkit de Mapeamento do Processo de Admissão" (documento interno da GI, junho 2026), fora do mapeamento original do Workshop CARE & SMS Dia 5.
+> Zeev e DocSign identificados no "Toolkit de Mapeamento do Processo de Admissão" (documento interno da GI, junho 2026), fora do mapeamento original do Workshop CARE & SMS Dia 5. D4Sign e DocSign foram unificados numa única linha após confirmação do Dimitri (service designer) na call de Alinhamento Pré-Apresentação de 13/07/2026, por terem função análoga.
 
 ### 2.2 Restrições sistêmicas definidas pela Carol (TI)
 

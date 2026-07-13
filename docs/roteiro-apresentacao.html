@@ -292,7 +292,7 @@ const SECTIONS = [
     { type: 'block-title', text: 'Objetivo da tela' },
     { type: 'body', text: 'Provar que vocês entenderam a bagunça antes de propor qualquer solução. Ainda não é hora de mostrar o Portal — é hora de mostrar rigor. Não abra falando de solução, abra falando do estado atual.' },
     { type: 'block-title', text: 'Abertura' },
-    { type: 'quote', text: 'Antes de mostrar o que propomos, queremos mostrar o que mapeamos. Esse é o retrato de todos os sistemas que hoje tocam a jornada do worker — 15 no total — organizados em quatro grupos: os que continuam como estão, os que vão ganhar integração, os que devem ser substituídos, e os que são intocáveis por decisão do Global.' },
+    { type: 'quote', text: 'Antes de mostrar o que propomos, queremos mostrar o que mapeamos. Esse é o retrato de todos os sistemas que hoje tocam a jornada do worker — 14 no total — organizados em quatro grupos: os que continuam como estão, os que vão ganhar integração, os que devem ser substituídos, e os que são intocáveis por decisão do Global.' },
     { type: 'note', text: 'Deixe a tela parada 2–3 segundos antes de continuar — dá tempo da Carol reconhecer os próprios sistemas na tela.' },
     { type: 'block-title', text: 'Como navegar ao vivo' },
     { type: 'list-plain', items: [
@@ -303,9 +303,9 @@ const SECTIONS = [
     { type: 'block-title', text: 'Quadrante por quadrante' },
     { type: 'sub', text: 'Não Toca (2: Spinner, Portal do Candidato Global)' },
     { type: 'quote', text: 'Esses dois estão aqui porque a própria Carol nos disse, na nossa reunião de alinhamento, que são sistemas globais — controlados pela matriz italiana, fora do nosso escopo de mexer sem aprovação. Não é suposição nossa: foi você, Carol, que definiu essa fronteira.' },
-    { type: 'sub', text: 'Substitui (7: Plataforma de Folha, Fusion, Blip/WhatsApp, TomTicket, GLPI, VIP, DocSign)' },
-    { type: 'quote', text: 'Esse é o quadrante mais carregado, e não por acaso — é onde mora a fragmentação de comunicação: quatro canais diferentes pro worker falar com a GI, dois sistemas fazendo a mesma assinatura eletrônica, um ERP de folha com prazo de troca já confirmado.' },
-    { type: 'sub', text: 'Integra (5: IM, D4Sign, SOC, Ponto Mais, Zeev)' },
+    { type: 'sub', text: 'Substitui (6: Plataforma de Folha, Fusion, Blip/WhatsApp, TomTicket, GLPI, VIP)' },
+    { type: 'quote', text: 'Esse é o quadrante mais carregado, e não por acaso — é onde mora a fragmentação de comunicação: quatro canais diferentes pro worker falar com a GI, um ERP de folha com prazo de troca já confirmado.' },
+    { type: 'sub', text: 'Integra (5: IM, D4Sign + DocSign, SOC, Ponto Mais, Zeev)' },
     { type: 'quote', text: 'Esses cinco não desaparecem — continuam existindo, só que hoje operam isolados, e a proposta é conectá-los via API numa camada única.' },
     { type: 'callout', label: 'Cuidado', text: 'O IM mudou de classificação recentemente (era "sem mudança prevista", agora é "integra") porque o toolkit de admissão mostra que o OutSystems orquestra por cima dele, não o substitui.' },
     { type: 'sub', text: 'Usa (1: OutSystems)' },
@@ -314,7 +314,7 @@ const SECTIONS = [
     { type: 'qa', q: 'Por que Fusion não está mais junto do Spinner como "intocável"?', a: 'Na reunião a Carol nomeou só "RP global" como restrito, sem citar o Fusion; o toolkit aponta duplicidade dele com o IM. Fechar com pergunta aberta: "faz sentido tratarmos o Fusion como candidato à consolidação?"' },
     { type: 'qa', q: 'O que é o Zeev?', a: 'Veio do toolkit de admissão, usado pra agendar exames. A proposta de integração ainda é hipótese nossa, não validada.' },
     { type: 'block-title', text: 'Perguntas prováveis' },
-    { type: 'qa', q: 'Por que 15 sistemas e não os 12 do workshop?', a: 'Cruzamos o workshop com o toolkit de admissão e a reunião de alinhamento. Zeev, DocSign e Fusion (separado do Spinner) apareceram nessa checagem.' },
+    { type: 'qa', q: 'Por que 14 sistemas e não os 12 do workshop?', a: 'Cruzamos o workshop com o toolkit de admissão e a reunião de alinhamento. Zeev, DocSign (hoje unificado com o D4Sign) e Fusion (separado do Spinner) apareceram nessa checagem.' },
     { type: 'qa', q: 'O GINFOR vai sumir ou continuar de outro jeito?', a: 'Ponte pra Provocação P01 — sabemos que muda em blocos no próximo ano, mas não se substitui tudo ou convive com o atual.' },
     { type: 'block-title', text: 'Transição' },
     { type: 'quote', text: 'Esse mapa mostra o onde. Agora vamos mostrar o pra quem — quem sente essa fragmentação no dia a dia.' },
@@ -392,9 +392,10 @@ const SECTIONS = [
   ]
 },
 {
-  id: 'S7', tela: 'Provocações (6) → Plano Faseado (3 fases) → CTA final', duracao: '8–10 minutos',
+  id: 'S7', tela: 'Provocações (6) → CTA final', duracao: '6–8 minutos',
   titulo: 'S7 · Provocações Técnicas (fechamento)',
   blocks: [
+    { type: 'note warn', text: 'Nota (13/07/2026): o bloco de Plano Faseado foi retirado desta tela a pedido do Dimitri (service designer) — ele conduz um plano faseado próprio com o cliente (risco/capacity/workload), que fecha em reunião separada na sexta-feira. Não mencionar trimestres/fases nesta reunião.' },
     { type: 'block-title', text: 'Por que essa tela é a mais importante' },
     { type: 'body', text: 'Todas as telas anteriores mostraram o que vocês descobriram. Essa mostra o que vocês NÃO sabem ainda — de propósito. É o momento de virar a mesa: em vez de só entregar recomendação, vocês estão pedindo decisão.' },
     { type: 'callout', label: 'Regra de ouro', text: 'Não peça desculpa por ter perguntas em aberto. Enquadre como rigor, não como lacuna.' },
@@ -431,16 +432,6 @@ const SECTIONS = [
     { type: 'quote', text: 'É jurídica antes de técnica. A gente só desenha o prazo de expiração de conta depois que o jurídico de vocês definir o prazo de retenção.' },
     { type: 'callout', label: 'Esperado', text: 'Um número — prazo definido de acesso pós-desligamento.' },
 
-    { type: 'block-title', text: 'Plano Faseado' },
-    { type: 'quote', text: 'Enquanto essas perguntas não são respondidas, já sabemos a ordem de prioridade: primeiro damos visibilidade pro worker, depois automatizamos o que está por trás, e só no fim tratamos governança e maturidade.' },
-    { type: 'callout', label: 'Desambiguar antes de mostrar os trimestres', text: 'Os trimestres aqui são ilustrativos, não é compromisso fechado de cronograma. A ordem de prioridade é o que importa — o encaixe exato no calendário é conversa comercial com vocês, e pode se adaptar conforme necessário.' },
-    { type: 'list-plain', items: [
-      'Fase 1 · Q3 2026 (ilustrativo) — Centralização imediata: o esqueleto do Portal, ponta a ponta.',
-      'Fase 2 · Q4 2026 (ilustrativo) — Integração e automação: o que fica por trás do que a Fase 1 expôs — P01, P02 e P07 pesam mais aqui.',
-      'Fase 3 · Q1 2027 (ilustrativo) — Governança e controle: maturidade, só depois que a base está de pé.',
-    ]},
-    { type: 'note', text: 'Esse cronograma pressupõe resposta rápida nas provocações técnicas — sem isso, a Fase 2 é a que mais sofre atraso. Mas de novo: a data exata é conversa comercial, não trava técnica.' },
-
     { type: 'block-title', text: 'Fechamento' },
     { type: 'quote', text: 'Obrigado pela parceria até aqui. O que a gente leva dessa reunião são as respostas dessas 6 perguntas — é isso que destrava o próximo passo.' },
     { type: 'callout', label: 'Termine com pergunta direta, não afirmação', text: '"Dá pra fechar hoje quais dessas 6 vocês respondem agora, e quais precisam de mais tempo?"' },
@@ -451,6 +442,7 @@ const SECTIONS = [
       'Saber de cor o "esperado" de cada uma',
       'Não deixar a reunião terminar sem sair com pelo menos uma resposta concreta de cada bloco',
       'Fechar com a pergunta direta — não deixar a decisão "pra depois" sem compromisso de data',
+      'Não mencionar plano faseado/trimestres nesta reunião — conduzido pelo Dimitri, fecha na sexta-feira',
     ]},
   ]
 },

@@ -1,8 +1,10 @@
 # Roteiro de Apresentação — S7 Provocações Técnicas
 
-**Tela:** Provocações (6) → Plano Faseado (3 fases) → CTA final
+**Tela:** Provocações (6) → CTA final
 **Audiência:** Carol (TI) e Jansen (CEO operacional)
-**Duração sugerida:** 8–10 minutos — é a tela de fechamento, pode respirar mais que as outras
+**Duração sugerida:** 6–8 minutos — é a tela de fechamento, pode respirar mais que as outras
+
+> Nota (13/07/2026): o bloco de Plano Faseado foi retirado desta tela a pedido do Dimitri (service designer) — ele conduz um plano faseado próprio com o cliente (baseado em risco/capacity/workload), que fecha em reunião separada na sexta-feira. Os dois planos não devem concorrer na mesma apresentação.
 
 ---
 
@@ -59,24 +61,7 @@ Pausa curta aqui — sinalize a virada de técnico pra governança/jurídico:
 
 ---
 
-## Bloco 2 — Plano Faseado
-
-> "Enquanto essas perguntas não são respondidas, já sabemos a ordem de prioridade: primeiro damos visibilidade pro worker, depois automatizamos o que está por trás, e só no fim tratamos governança e maturidade."
-
-**Antes de mostrar os trimestres, desambiguar:**
-> "Os trimestres aqui são ilustrativos, não é compromisso fechado de cronograma. A ordem de prioridade é o que importa — o encaixe exato no calendário é algo que o comercial alinha com vocês, e pode se adaptar conforme capacidade e prioridade do lado de vocês."
-
-Passe rápido pelas 3 fases — **não repita as iniciativas uma a uma**, isso já foi mostrado na tela anterior:
-
-- **Fase 1 · Q3 2026 (ilustrativo) — Centralização imediata:** "o esqueleto do Portal, ponta a ponta."
-- **Fase 2 · Q4 2026 (ilustrativo) — Integração e automação:** "o que fica por trás do que a Fase 1 expôs — e é aqui que P01, P02 e P07 pesam mais."
-- **Fase 3 · Q1 2027 (ilustrativo) — Governança e controle:** "maturidade, só depois que a base está de pé."
-
-> "Esse cronograma pressupõe resposta rápida nas provocações técnicas — sem isso, a Fase 2 é a que mais sofre atraso. Mas de novo: a data exata é conversa comercial, não trava técnica."
-
----
-
-## Bloco 3 — Fechamento
+## Bloco 2 — Fechamento
 
 > "Obrigado pela parceria até aqui. O que a gente leva dessa reunião são as respostas dessas 6 perguntas — é isso que destrava o próximo passo."
 
@@ -91,4 +76,5 @@ Termine com pergunta direta, não com afirmação — força decisão na sala:
 - [ ] Ter as 6 provocações na ordem certa decoradas (técnicas primeiro, governança depois)
 - [ ] Saber de cor o "esperado" de cada uma — não ler a pergunta e ficar em silêncio esperando resposta
 - [ ] Não deixar a reunião terminar sem sair com pelo menos uma resposta concreta de cada bloco (técnico e jurídico/governança)
-- [ ] Fechar com a pergunta direta do bloco 3 — não deixar a decisão "pra depois" sem compromisso de data
+- [ ] Fechar com a pergunta direta do bloco 2 — não deixar a decisão "pra depois" sem compromisso de data
+- [ ] Não mencionar plano faseado/trimestres nesta reunião — isso é conduzido pelo Dimitri, fecha na sexta-feira
