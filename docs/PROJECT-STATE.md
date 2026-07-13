@@ -1,10 +1,10 @@
 # PROJECT-STATE.md — GI Group · Portal do Worker
 
-**Atualizado em:** 29 de junho de 2026
-**Status do projeto:** Specs 1–8 concluídas · Todas as seções de conteúdo implementadas
+**Atualizado em:** 30 de junho de 2026
+**Status do projeto:** Specs 1–8 concluídas · Branch `spec/07-portal-do-worker` pronta para merge
 **Specs concluídas:** Specs 1–8 (Setup, S1 Hero, S2 Diagnóstico, S3 Dores, S4 Arquitetura, S5 Iniciativas, S6 Portal, S7 Provocações)
 **Spec em andamento:** —
-**Próxima etapa:** merge de `spec/07-portal-do-worker` → main · revisão de links pendentes (Spec 6)
+**Próxima etapa:** merge de `spec/07-portal-do-worker` → main · revisão de links pendentes (Spec 6 — substituir `goTo(5)` fixo por `usePortalNav` com `telasRelacionadas[0]`)
 
 ***
 
@@ -80,20 +80,8 @@ O relatório será apresentado primeiro ao service designer interno da Perform I
 | 4    | S3 — Dores por Persona             | ✅ Concluída    | `spec-4-implement-done.md`                       |
 | 5    | S4 — Arquitetura As-is/To-be       | ✅ Concluída    | `spec-5-implement-done.md`                       |
 | 6    | S5 — Iniciativas                   | ✅ Concluída    | `spec-6-implement-done.md`                       |
-| 7    | S6 — Portal do Worker              | 🔀 Em paralelo | `spec-7-research-done.md`, `spec-7-plan-done.md` |
+| 7    | S6 — Portal do Worker              | ✅ Concluída    | `spec-7-research-done.md`, `spec-7-plan-done.md`, `spec-7-implement-done.md` |
 | 8    | S7 — Provocações e Próximos Passos | ✅ Concluída    | `spec-8-implement-done.md`                       |
-
-***
-
-## 2.1 Desenvolvimento Paralelo Ativo
-
-| Branch                     | Spec | Responsável | Arquivos exclusivos (não tocar nas demais branches)                                        |
-| -------------------------- | ---- | ----------- | ------------------------------------------------------------------------------------------ |
-| `spec/07-portal-do-worker` | 7    | Designer    | `src/components/portal/`, `src/components/sections/S6Portal/`, `src/hooks/usePortalNav.ts` |
-
-**Para agentes trabalhando nas Specs 2–6 e 8:** os arquivos listados acima são propriedade exclusiva da branch `spec/07-portal-do-worker`. Não criar, modificar nem referenciar esses caminhos. A seção S6Portal existe como placeholder — deixar intacta.
-
-**Integração:** quando a branch `spec/07-portal-do-worker` for mergeada na main, não haverá conflitos com as Specs 2–6 e 8. O merge será limpo por design.
 
 ***
 
@@ -160,6 +148,80 @@ gi-worker-report/
 ***
 
 ## 6. Histórico de Atualizações
+
+### Atualização — Spec 7 — S6 Portal do Worker — 2026-06-30
+
+**Status:** concluída ✅ · branch `spec/07-portal-do-worker` pronta para merge em `main`
+
+**Artefatos gerados:**
+
+* `src/data/dores.ts` (modificado — `D12` adicionado: sem registro centralizado de feedback/advertência)
+
+* `src/data/iniciativas.ts` (modificado — `I10.doresResolvidas` e `I10.telasRelacionadas` incluem `D12`/`'desenvolvimento'`)
+
+* `src/hooks/usePortalNav.ts` (modificado — `PortalScreen` estendido com `'desenvolvimento'`)
+
+* `src/assets/logo-worker-portal.svg` (novo — logo dedicado ao produto, branco para fundo `gi-navy`)
+
+* `src/components/portal/StatusPill.tsx` (novo — pílula com ponto colorido, substitui `Badge` no portal)
+
+* `src/components/portal/StatCard.tsx` (novo — métrica com acento de borda superior)
+
+* `src/components/portal/JornadaOverview.tsx` (novo — stepper clicável Admissão → Ciclo Ativo → Offboarding)
+
+* `src/components/portal/TelaInicio.tsx` (reescrito)
+
+* `src/components/portal/TelaDocumentos.tsx` (reescrito)
+
+* `src/components/portal/TelaSolicitacoes.tsx` (reescrito)
+
+* `src/components/portal/TelaTreinamentos.tsx` (reescrito)
+
+* `src/components/portal/TelaRescisao.tsx` (reescrito)
+
+* `src/components/portal/TelaDesenvolvimento.tsx` (novo — timeline de feedback/advertência, D12/I10)
+
+* `src/components/portal/PortalShell.tsx` (reescrito — 6 telas, ícones lucide, logo SVG, fullscreen mode)
+
+* `src/App.tsx` (modificado — branch de renderização fullscreen para a seção `portal`)
+
+* `docs/DESIGN-SYSTEM.md` §8 (reescrito — padrões visuais do portal alinhados com `gigroupholding.com`)
+
+* `tsconfig.json` (modificado — `"exclude": ["src/ref"]` para isolar referência Figma)
+
+* `tailwind.config.ts` (modificado — glob negativo `!./src/ref/**`)
+
+* `.agent/specs/spec-7-implement-done.md`
+
+**Desvios do plano:**
+
+* Escopo expandido para **6 telas** (5 do `SPECS.md` + `TelaDesenvolvimento`, aprovada em sessão Research com base nas transcrições da reunião com Carol).
+
+* `SCREENS_MAP` tipado como `Partial<Record<PortalScreen, ComponentType>>` — necessário porque `TelaInicio` exige prop `onNavigate` e é renderizada em branch separado no `PortalShell`.
+
+* Nova dor `D12` adicionada além do conjunto original de 11 dores documentado em `CONTEXT.md` §5 — emergiu durante o design da `TelaDesenvolvimento`.
+
+* `docs/DESIGN-SYSTEM.md` §8 reescrita após análise do site real (`gigroupholding.com`) e da referência Figma (`src/ref/Portal da GI/`) — `shadow-sm` em vez de `shadow-xl`, `border-radius` 8px, sem borda lateral em item ativo do menu.
+
+**Ajustes pós-implementação do designer (commits na branch):**
+
+* `feat: mobile breakpoints for Portal do Worker` — responsividade até breakpoints menores
+
+* `fix: resolve D02 gap and correct D11 initiative mismatch in TelaDocumentos` — correção de dados e lacuna de dor
+
+* `fix: smart tooltip positioning and TelaDocumentos layout hierarchy` — hierarquia visual da tela de documentos
+
+* `Alteração do tamanho da logo` — ajuste fino da logo no portal
+
+**Pendência pós-merge:**
+
+* `IniciativasList.tsx` (Spec 6): substituir `goTo(5)` fixo por `usePortalNav` com `telasRelacionadas[0]` de cada iniciativa. Detalhado em `spec-6-implement-done.md` e na memória de projeto.
+
+**Verificação de build:** `npx tsc --noEmit` e `npm run build` sem erros (bundle 370 KB / 114 KB gzip). Validação visual em navegador **pendente** — recomendada antes do PR para `main`.
+
+**Próxima etapa:** merge `spec/07-portal-do-worker` → `main`
+
+***
 
 ### Atualização — Spec 8 — S7 Provocações e Próximos Passos — 2026-06-29
 
