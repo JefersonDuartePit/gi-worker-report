@@ -14,12 +14,6 @@ export const PROVOCACOES: Provocacao[] = [
     destinatario: 'carol',
   },
   {
-    id: 'P03',
-    pergunta: 'O squad de TI tem capacidade para o portal do worker em paralelo com a admissão em OutSystems?',
-    contexto: 'Dois projetos de plataforma simultâneos exigem planejamento de capacity. Se houver conflito de prioridade, qual projeto trava?',
-    destinatario: 'carol',
-  },
-  {
     id: 'P04',
     pergunta: 'Quais BUs precisam alinhar antes de centralizar o controle do worker como holding?',
     contexto: 'A solução não pode ser desenhada para uma única BU. Se outras regionais tiverem processos divergentes, o portal do worker vira problema político antes de virar produto.',
