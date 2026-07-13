@@ -301,7 +301,7 @@ diretamente do humano (Jeff), item a item, aplicando-os de forma incremental.
 
 **Status:** plano completo, implementação em andamento via subagentes
 
-**Contexto:** O layout sidebar+scroll da Spec 1 foi substituído por uma experiência de galáxia lúdica e gamificada. Cada módulo do relatório é um planeta navegável. Esta é uma decisão de produto confirmada pelo humano (Jeff) antes de qualquer conteúdo ser implementado nas Specs 2–8.
+**Contexto:** O layout sidebar+scroll da Spec 1 foi substituído por uma experiência de ecossistema lúdica e gamificada. Cada módulo do relatório é um planeta navegável. Esta é uma decisão de produto confirmada pelo humano (Jeff) antes de qualquer conteúdo ser implementado nas Specs 2–8.
 
 **Impacto para Specs 2–8:**
 

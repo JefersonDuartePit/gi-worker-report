@@ -1,4 +1,4 @@
-# Design Spec — Layout Galáxia
+# Design Spec — Layout Ecossistema
 **Data:** 2026-06-23  
 **Projeto:** GI Group · Portal do Worker  
 **Autor:** Jefferson (Perform IT) via brainstorming session  
@@ -8,7 +8,7 @@
 
 ## Contexto
 
-O layout atual (Spec 1) usa sidebar fixa `gi-navy` + header topbar + scroll vertical — funcional, mas sem personalidade. A proposta substitui a navegação por uma metáfora de galáxia: cada módulo do relatório é um planeta. O objetivo é criar uma experiência lúdica e memorável para Carol (TI GI Group) e Jansen (CEO), sem perder a seriedade executiva do conteúdo.
+O layout atual (Spec 1) usa sidebar fixa `gi-navy` + header topbar + scroll vertical — funcional, mas sem personalidade. A proposta substitui a navegação por uma metáfora de ecossistema: cada módulo do relatório é um planeta. O objetivo é criar uma experiência lúdica e memorável para Carol (TI GI Group) e Jansen (CEO), sem perder a seriedade executiva do conteúdo.
 
 ---
 
@@ -21,14 +21,14 @@ O relatório opera em **3 estados distintos**, controlados por `uiState: 'splash
 | Estado | Gatilho de entrada | Visual |
 |--------|-------------------|--------|
 | `splash` | Abertura do relatório | Fundo espacial escuro, logo GI Group, animação pulsante |
-| `galaxy` | Auto-avança após splash / botão "← Galáxia" | Mapa completo com 7 planetas, sol GI, linhas orbitais |
+| `galaxy` | Auto-avança após splash / botão "← Ecossistema" | Mapa completo com 7 planetas, sol GI, linhas orbitais |
 | `module` | Click em qualquer planeta | Header fixo + sidebar mini-mapa + conteúdo da seção |
 
 ### Transições
 
-- **Splash → Galáxia:** fade dissolve, 600ms (Framer Motion `opacity`)
-- **Galáxia → Módulo:** planeta clicado faz `scale` 1→1.15→0 enquanto conteúdo entra com `opacity` 0→1, ~400ms total
-- **Módulo → Galáxia:** botão "← Galáxia" — conteúdo sai, galáxia reaparece com fade, ~300ms
+- **Splash → Ecossistema:** fade dissolve, 600ms (Framer Motion `opacity`)
+- **Ecossistema → Módulo:** planeta clicado faz `scale` 1→1.15→0 enquanto conteúdo entra com `opacity` 0→1, ~400ms total
+- **Módulo → Ecossistema:** botão "← Ecossistema" — conteúdo sai, ecossistema reaparece com fade, ~300ms
 - Nenhuma transição bloqueia leitura ou ultrapassa 600ms
 
 ---
@@ -47,7 +47,7 @@ O relatório opera em **3 estados distintos**, controlados por `uiState: 'splash
 
 ---
 
-## Estado 2 — Mapa da Galáxia
+## Estado 2 — Mapa da Ecossistema
 
 **Componente:** `GalaxyMap.tsx`
 
@@ -97,7 +97,7 @@ Cada planeta é renderizado pelo componente `Planet.tsx` com props: `id`, `label
 **Componente:** `Header.tsx` (existente, sem alteração funcional)  
 56px, fundo branco, `border-bottom: gi-border`
 - Esquerda: logo GI Group + separador + breadcrumb (`<NomeMódulo> · módulo 0N`)
-- Direita: botão "Apresentação" + botão "← Galáxia" (`bg-gi-blue`)
+- Direita: botão "Apresentação" + botão "← Ecossistema" (`bg-gi-blue`)
 
 ### Sidebar mini-mapa
 **Componente:** `MiniMap.tsx`  
@@ -138,7 +138,7 @@ Quando `mode === 'presentation'`:
 |-----------|-------------|-----------------|
 | `SplashScreen.tsx` | `src/components/layout/` | Tela de abertura + auto-avançar |
 | `GalaxyMap.tsx` | `src/components/layout/` | Mapa completo com planetas |
-| `GalaxyHeader.tsx` | `src/components/layout/` | Header do estado galáxia |
+| `GalaxyHeader.tsx` | `src/components/layout/` | Header do estado ecossistema |
 | `MiniMap.tsx` | `src/components/layout/` | SVG mini-mapa na sidebar |
 | `Planet.tsx` | `src/components/ui/` | Esfera reutilizável com props visuais |
 
@@ -149,7 +149,7 @@ Quando `mode === 'presentation'`:
 | Componente | O que muda |
 |-----------|-----------|
 | `App.tsx` | Adiciona `uiState: 'splash' | 'galaxy' | 'module'` + `activeSectionId` state + lógica de transição |
-| `Header.tsx` | Adiciona botão "← Galáxia" + breadcrumb com número do módulo |
+| `Header.tsx` | Adiciona botão "← Ecossistema" + breadcrumb com número do módulo |
 | `Sidebar.tsx` | **Removido** — substituído por `MiniMap.tsx` |
 | `useActiveSection.ts` | **Removido** — seção ativa passa a ser determinada pelo planeta clicado, não por Intersection Observer |
 

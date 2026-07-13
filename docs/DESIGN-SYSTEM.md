@@ -208,7 +208,7 @@ Posicionamento: sempre acima do elemento, nunca corta a tela. Implementar com `@
 ## 6. Layout do Relatório
 
 > **⚠️ Layout atualizado — Galaxy Layout (2026-06-23)**
-> O layout original (sidebar fixa + scroll) foi substituído por uma experiência de galáxia interativa. A descrição abaixo reflete o estado atual do projeto.
+> O layout original (sidebar fixa + scroll) foi substituído por uma experiência de ecossistema interativa. A descrição abaixo reflete o estado atual do projeto.
 
 ### 6.1 Estados de UI
 
@@ -217,7 +217,7 @@ O relatório opera em **3 estados distintos**, controlados por `uiState: 'splash
 | Estado | Quando aparece | Visual |
 |--------|---------------|--------|
 | `splash` | Abertura do relatório | Fundo espacial, logo GI, título, anel pulsante |
-| `galaxy` | Após splash / botão "← Galáxia" | Mapa com 7 planetas, sol GI, linhas orbitais |
+| `galaxy` | Após splash / botão "← Ecossistema" | Mapa com 7 planetas, sol GI, linhas orbitais |
 | `module` | Após click num planeta | Header fixo + sidebar mini-mapa + conteúdo |
 
 ### 6.2 Estado Splash
@@ -271,7 +271,7 @@ Configuração completa em `src/data/planets.ts`.
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│  HEADER: logo · 04 · Arquitetura · [Modo] [←Galáxia]│
+│  HEADER: logo · 04 · Arquitetura · [Modo] [←Ecossistema]│
 ├────────────┬────────────────────────────────────────┤
 │            │                                        │
 │  MINI-MAP  │       CONTEÚDO DO MÓDULO              │
@@ -283,7 +283,7 @@ Configuração completa em `src/data/planets.ts`.
 └────────────┴────────────────────────────────────────┘
 ```
 
-**Header (56px):** logo GI + `04 · Arquitetura` + botão "Apresentação" + botão "← Galáxia" (`bg-gi-blue`)
+**Header (56px):** logo GI + `04 · Arquitetura` + botão "Apresentação" + botão "← Ecossistema" (`bg-gi-blue`)
 
 **MiniMap (200px, `bg-gi-navy`):** SVG do mapa orbital em escala reduzida. Todos os planetas visíveis com labels de texto. Planeta ativo com glow e anel de destaque extra.
 

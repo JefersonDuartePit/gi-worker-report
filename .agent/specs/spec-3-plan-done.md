@@ -544,7 +544,7 @@ Esperado: sem erros.
 npm run dev
 ```
 
-Abrir http://localhost:5173, clicar no Planeta 02 (Diagnóstico) no mapa da galáxia e verificar:
+Abrir http://localhost:5173, clicar no Planeta 02 (Diagnóstico) no mapa da ecossistema e verificar:
 
 - [ ] Fundo branco, altura mínima de tela
 - [ ] Título "Diagnóstico Sistêmico" em navy, subtítulo em gi-text
