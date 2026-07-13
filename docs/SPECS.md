@@ -1,7 +1,10 @@
 # SPECS.md — GI Group · Portal do Worker
 
-**Versão:** 1.0
-**Total de specs:** 8
+**Versão:** 1.1
+**Atualizado em:** 13 de julho de 2026
+**Total de specs:** 10 (Specs 1–8 de conteúdo do relatório · Spec 9 — Navegação Iniciativas → Tela do Portal · Spec 10 — Testes e Ajustes Finais)
+
+> Specs 9 e 10 não têm entrada dedicada neste documento — foram trabalhos de integração/QA sobre o conteúdo já especificado abaixo, não novas seções de relatório. Detalhes em `PROJECT-STATE.md` §2 e §6.
 
 ---
 
@@ -136,6 +139,9 @@
 | D09 | 10 dias sem informação no desligamento            | Worker           | Offboarding   | Crítica    |
 | D10 | Baixa de documentos D4Sign feita uma a uma        | Colaborador GI   | Offboarding   | Alta       |
 | D11 | Sem canal de comunicação pós-desligamento         | Worker           | Offboarding   | Alta       |
+| D12 | Sem registro centralizado de feedback e desenvolvimento do worker | Worker + Col. GI | Ciclo Ativo | Média |
+
+> D12 adicionada na Spec 7 (S6 Portal do Worker), fora do conjunto original mapeado no workshop — emergiu durante o design da `TelaDesenvolvimento`. Resolvida pela Iniciativa I10.
 
 **Comportamento interativo:**
 - Cards clicáveis — ao clicar, expande para mostrar qual iniciativa resolve a dor
@@ -297,6 +303,14 @@
 
 *Dor resolvida: D09 — 10 dias sem informação no desligamento*
 
+**6. Desenvolvimento**
+- Timeline de feedbacks, acompanhamentos e advertências formais do worker
+- Registro centralizado, consultável pelo worker
+
+*Dor resolvida: D12 — sem registro centralizado de feedback e desenvolvimento*
+
+> Tela adicionada durante a Spec 7 (Research), fora do escopo original de 5 telas — aprovada em sessão com base nas transcrições da reunião com Carol. Ver `PROJECT-STATE.md` §6 (changelog Spec 7).
+
 **Tooltips de dor:**
 - Cada elemento relevante tem um tooltip (hover) que mostra:
   - Qual dor aquele elemento resolve (ex: "Resolve D01 — sem visibilidade do status")
@@ -305,7 +319,7 @@
 ### Critérios de aceite
 
 - [ ] Shell do portal com sidebar e topbar fiéis ao design do esboço
-- [ ] 5 telas implementadas com dados ilustrativos realistas
+- [ ] 6 telas implementadas com dados ilustrativos realistas (5 do escopo original + Desenvolvimento)
 - [ ] Navegação entre telas funcional via sidebar do portal
 - [ ] Tooltips de dor funcionais ao hover nos elementos-chave
 - [ ] Modal de nova solicitação funcional

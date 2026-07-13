@@ -1,7 +1,7 @@
 # CONTEXT.md — GI Group · Portal do Worker
 
-**Versão:** 1.0
-**Atualizado em:** Junho 2026
+**Versão:** 1.1
+**Atualizado em:** 13 de julho de 2026
 **Projeto:** Relatório Interativo — Centralização CARE & SMS / Jornada do Worker
 
 ---
@@ -69,6 +69,7 @@ Trabalhador temporário alocado em clientes da GI Group. Perfil majoritariamente
 - Fica 10 dias sem informação no processo de desligamento
 - Não sabe quem é seu contato na GI durante o contrato ativo
 - Acessa holerites e documentos por canais diferentes e desconexos
+- Não tem acesso a um registro centralizado dos próprios feedbacks e advertências formais (dor D12, identificada na Spec 7 — fora do mapeamento original do workshop)
 
 ### Colaborador GI (CARE/SMS)
 Analista interno responsável por operar os processos de admissão, acompanhamento e desligamento do worker. Altamente sobrecarregado por retrabalho manual, redigitação de dados entre sistemas e comunicação por WhatsApp pessoal.
@@ -113,6 +114,8 @@ Do aviso de desligamento à disponibilização dos documentos rescisórios. Incl
 
 Fonte: documento de tratamento do Workshop CARE & SMS, Dia 5 (18/06/2026).
 Organizadas por jornada. IDs numéricos conforme numeração original do workshop.
+
+> Nota: a dor **D12** (sem registro centralizado de feedback e desenvolvimento do worker) foi identificada depois do workshop, durante a Spec 7 (S6 Portal do Worker), e é resolvida pela Iniciativa I10 (Portal do Worker). Não faz parte das 17 iniciativas originais — é um refinamento de escopo da mesma iniciativa. Ver `PROJECT-STATE.md` §6 (changelog Spec 7) e `SPECS.md` (Spec 4 e Spec 7).
 
 ### Admissão
 

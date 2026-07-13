@@ -54,7 +54,7 @@ export const FASES: FasePlano[] = [
   },
   {
     numero: 3,
-    titulo: 'Maturidade e escala',
+    titulo: 'Governança e controle',
     periodo: 'H2 2027',
     iniciativaIds: ['I04', 'I09', 'I11', 'I15', 'I16'],
   },
