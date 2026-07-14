@@ -75,6 +75,12 @@ function DiagramaArquitetura({ diagrama, vista }: DiagramaArquiteturaProps) {
           {vista === 'as-is' ? 'acesso indireto' : 'automação'}
         </span>
       </div>
+
+      {diagrama.nota && (
+        <p className="absolute bottom-0 right-0 max-w-xs text-right text-[10px] text-gi-charcoal italic">
+          {diagrama.nota}
+        </p>
+      )}
     </div>
   )
 }

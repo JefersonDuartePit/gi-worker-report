@@ -104,6 +104,7 @@ export interface ArestaArq {
 export interface DiagramaArq {
   nos: NoArq[]
   arestas: ArestaArq[]
+  nota?: string
 }
 
 export interface ComparativoArq {
