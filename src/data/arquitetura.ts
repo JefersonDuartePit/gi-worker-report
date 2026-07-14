@@ -260,6 +260,7 @@ export const DIAGRAMA_TO_BE: DiagramaArq = {
     { from: 'api-layer', to: 'd4sign-tobe', estilo: 'solida' },
     { from: 'api-layer', to: 'soc-tobe', estilo: 'solida' },
   ],
+  nota: 'O nó "Candidato" foi omitido intencionalmente. Worker e candidato são o mesmo CPF, diferindo apenas por estado — este to-be considera o worker a partir do momento em que o estado é "contratado". A conexão com portal de candidatos e portal de vagas está fora do escopo desta fase (confirmado na reunião de apresentação dos insights sistêmicos, 13/07/2026).',
 }
 
 export const COMPARATIVO_ARQ: ComparativoArq[] = [
